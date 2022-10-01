@@ -4,3 +4,4 @@ Welcome to the mebook wiki!
 
 - [MVP list](mvp-list)
 - [Schema](schema)
+- [Sample State](sample-state)
