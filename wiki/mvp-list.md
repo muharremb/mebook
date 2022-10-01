@@ -12,11 +12,11 @@ MEBOOK, a Facebook(META) clone, is a social media platform.
 
 ### 3. Profiles (10/14/2022, 2 days)
 
-- Logged in users can send friend request to others
+- Users have a profile page and dashboard wall
 
-### 4. Comments (10/16/2022, 2 days)
+### 4. Comments/Posts (10/16/2022, 2 days)
 
-- Logged in users can post in own wall and others wall
+- Logged in users can post to others wall
 - Logged in user can add comments to posts
 
 ### 5. Friending (10/18/2022, 2 day)

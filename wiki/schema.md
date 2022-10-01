@@ -5,8 +5,8 @@
 | column name       | data type | details                   |
 | :---------------- | :-------: | :------------------------ |
 | `id`              |  integer  | not null, primary key     |
-| `name`            |  string   | not null                  |
-| `surname`         |  string   | not null                  |
+| `first_name`      |  string   | not null                  |
+| `last_name`       |  string   | not null                  |
 | `email`           |  string   | not null, indexed, unique |
 | `password_digest` |  string   | not null                  |
 | `session_token`   |  string   | not null, indexed, unique |
@@ -22,6 +22,7 @@
 | column name  | data type | details                        |
 | :----------- | :-------: | :----------------------------- |
 | `id`         |  integer  | not null, primary key          |
+| `body`       |  string   | not null, indexed              |
 | `author_id`  |  integer  | not null, indexed, foreign key |
 | `created_at` | datetime  | not null                       |
 | `updated_at` | datetime  | not null                       |
@@ -35,7 +36,9 @@
 | column name  | data type | details                        |
 | :----------- | :-------: | :----------------------------- |
 | `id`         |  integer  | not null, primary key          |
+| `body`       |  string   | not null, indexed              |
 | `author_id`  |  integer  | not null, indexed, foreign key |
+| `post_id`    |  integer  | not null, indexed, foreign key |
 | `created_at` | datetime  | not null                       |
 | `updated_at` | datetime  | not null                       |
 
