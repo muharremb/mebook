@@ -5,7 +5,8 @@
                 1: {
                     id: 1,
                     firstName: 'Xxx',
-                    lastName: 'Yyy'
+                    lastName: 'Yyy',
+                    friends: []
                 }
             },
             posts: {
@@ -32,3 +33,5 @@
         session: {currentUserId: 1}
     }
 ```
+
+NOTE: We might need to change users slice of state, eg friends.

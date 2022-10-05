@@ -22,7 +22,7 @@
 | column name  | data type | details                        |
 | :----------- | :-------: | :----------------------------- |
 | `id`         |  integer  | not null, primary key          |
-| `body`       |  string   | not null, indexed              |
+| `body`       |  string   | not null                       |
 | `author_id`  |  integer  | not null, indexed, foreign key |
 | `created_at` | datetime  | not null                       |
 | `updated_at` | datetime  | not null                       |
@@ -36,12 +36,15 @@
 | column name  | data type | details                        |
 | :----------- | :-------: | :----------------------------- |
 | `id`         |  integer  | not null, primary key          |
-| `body`       |  string   | not null, indexed              |
+| `body`       |  string   | not null                       |
 | `author_id`  |  integer  | not null, indexed, foreign key |
 | `post_id`    |  integer  | not null, indexed, foreign key |
 | `created_at` | datetime  | not null                       |
 | `updated_at` | datetime  | not null                       |
 
 - `author_id` references `users`
+- `post_id` references `posts`
 - index on `author_id`
+- index on `post_id`
 - `belongs_to user`
+- `belongs_to post`
