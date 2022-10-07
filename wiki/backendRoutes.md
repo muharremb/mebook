@@ -1,6 +1,4 @@
 # Backend Routes
-## HTML
-- ```GET /``` - ```StaticPagesController#root```
 
 ## API Endpoints
 ```users```

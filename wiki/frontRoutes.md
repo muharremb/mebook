@@ -8,18 +8,16 @@
    - ```SessionForm```
 - ```/feed```
    - ```PostIndex```
+      - ```PostForm```
       - ```PostIndexItem```
+
 - ```/users/:userId```
    - ```ProfileComponent```
-   - ```ProfileComponent```
-      - ```PostIndexItem```
+      - ```PostIndex```
+         - ```PostForm```
+         - ```PostIndexItem```
       - ```AboutItem```
       - ```FriendsItem```
-- ```/posts/new```
-    - ```PostForm```
-- ```/posts/:postId```
-    - ```PostShow```
-- ```/posts/:postId/edit```
-    - ```PostForm```
+
 
 NOTE: On the users frontend components, we might need to change. I initially planned to use tab version posts/about/friends. 
