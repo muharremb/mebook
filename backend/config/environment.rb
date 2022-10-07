@@ -5,4 +5,4 @@ require_relative "application"
 Rails.application.initialize!
 
 Jbuilder.key_format camelize: :lower
-Jbuilder.deep_transform_keys true
+Jbuilder.deep_format_keys true
