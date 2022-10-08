@@ -6,13 +6,18 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 import csrfFetch, { restoreCSRF } from './store/csrf';
-
+import * as sessionActions from './store/session'
 
 const store = configureStore();
+
+// await csrfFetch('/api/session', {method: 'DELETE'}).then(res => res.json())
+// await store.dispatch(sessionActions.login({email: 'muha@mb.io', password: 'password'}));
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;
   window.csrfFetch = csrfFetch;
+  window.sessionActions = sessionActions;
+  
 }
 
 function Root() {
