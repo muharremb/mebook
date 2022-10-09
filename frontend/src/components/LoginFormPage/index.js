@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as sessionActions from '../../store/session';
-import {Redirect} from 'react-router-dom';
+import {Redirect, useHistory} from 'react-router-dom';
 import './LoginFormPage.css';
+
 
 
 const LoginFormPage = () => {
@@ -12,6 +13,8 @@ const LoginFormPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
+
+    const history = useHistory();
    
     if (sessionUser) return <Redirect to='/' />
     
@@ -55,6 +58,11 @@ const LoginFormPage = () => {
         );
     }
 
+    const handleSignUpButton = (e) => {
+        e.preventDefault();
+        history.push("/signup");
+    }
+
     return ( 
         <>
             <div className="sign-form">
@@ -71,9 +79,8 @@ const LoginFormPage = () => {
                     <br />
                     <br />
                     <button id="demo-user-button" onClick={handleDemoSubmit}>Demo User</button>
-                    {/* <br />
-                    <br />
-                    <button type="submit" id="signup-button">Create New Account</button> */}
+                    <hr />
+                    <button id="signup-button" onClick={handleSignUpButton}>Create New Account</button>
 
                 </form>
             </div>
