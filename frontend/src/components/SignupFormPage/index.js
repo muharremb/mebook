@@ -36,7 +36,7 @@ const SignupFormPage = () => {
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="signup-form">
             <ul>
                 {errors.map(error => <li key={error}>{error}</li>)}
             </ul>

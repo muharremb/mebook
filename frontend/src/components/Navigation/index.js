@@ -4,9 +4,12 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
+import WelcomePage from '../WelcomePage';
 
 const Navigation = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
+
+    // if(!sessionUser) return null;
 
     let sessionLinks;
     if (sessionUser) {
@@ -16,19 +19,16 @@ const Navigation = () => {
     } else {
         sessionLinks = (
         <>
-            <LoginFormModal />
             <NavLink to="/signup">Sign Up</NavLink>
+            <WelcomePage />
         </>
         );
     }
     return ( 
-      <ul>
-        <li>
-            <NavLink exact to="/">Home</NavLink>
+        <>
             {sessionLinks}
-        </li>
-    </ul>
-     );
+        </>
+    );
 }
  
 export default Navigation;

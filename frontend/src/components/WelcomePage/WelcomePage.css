@@ -1,0 +1,10 @@
+.home-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#company-name {
+    color: blue;
+}

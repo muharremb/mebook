@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as sessionActions from '../../store/session';
 import {Redirect} from 'react-router-dom';
-import './LoginForm.css';
+import './LoginFormPage.css';
 
 
 const LoginFormPage = () => {
@@ -37,17 +37,26 @@ const LoginFormPage = () => {
 
     return ( 
         <>
-            <h2>Log In</h2>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map(error => <li key={error}>{error}</li>)}
-                </ul>
-                <input type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} required/>
-                <br />
-                <input type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} required/>
-                <br />
-                <button type="submit">Log In</button>
-            </form>
+            <div className="sign-form">
+                <form onSubmit={handleSubmit}>
+                    <ul>
+                        {errors.map(error => <li key={error}>{error}</li>)}
+                    </ul>
+                    <input type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                    <br />
+                    <input type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                    <br />
+                    <br />
+                    <button type="submit" id="login-button">Log In</button>
+                    {/* <br />
+                    <br />
+                    <button type="submit" id="demo-user-button">Demo User</button>
+                    <br />
+                    <br />
+                    <button type="submit" id="signup-button">Create New Account</button> */}
+
+                </form>
+            </div>
         </>
      );
 }
