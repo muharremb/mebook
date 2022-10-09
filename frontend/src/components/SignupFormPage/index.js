@@ -24,7 +24,6 @@ const SignupFormPage = () => {
             .catch(async (res) => {
             let data;
             try {
-              // .clone() essentially allows you to read the response body twice
               data = await res.clone().json();
             } catch {
               data = await res.text(); // Will hit this case if the server is down
@@ -44,8 +43,8 @@ const SignupFormPage = () => {
             <input type="text" required value={firstName} placeholder={"Firstname".toString()} onChange={(e) => setFirstName(e.target.value)} />
             <input type="text" required value={lastName} placeholder={"Lastname".toString()} onChange={(e) => setLastName(e.target.value)} />
             <input type="text" required value={email} placeholder={"Email".toString()} onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" required value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} />
-            <input type="password" required value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} />
+            <input type="text" required value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} />
+            <input type="text" required value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} />
             <button type="submit">Sign Up</button>
         </form>
     )

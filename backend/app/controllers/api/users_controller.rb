@@ -22,7 +22,7 @@ class Api::UsersController < ApplicationController
       # render json: {user: @user}
       
     else
-      render json: @user.errors.full_messages, status: 422
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
