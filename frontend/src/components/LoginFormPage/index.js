@@ -35,6 +35,26 @@ const LoginFormPage = () => {
         );
     }
 
+    const handleDemoSubmit = (e) => {
+        e.preventDefault();
+        setErrors([]);
+        const user = {email: "muha@mb.io", password: "password"};
+        // console.log("user ", user);
+        return dispatch(sessionActions.login(user))
+            .catch(async (res) => {
+                let data;
+                try {
+                    data = await res.clone().json();
+                } catch {
+                    data = await res.text()
+                }
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
+            }
+        );
+    }
+
     return ( 
         <>
             <div className="sign-form">
@@ -47,11 +67,11 @@ const LoginFormPage = () => {
                     <input type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} required/>
                     <br />
                     <br />
-                    <button type="submit" id="login-button">Log In</button>
+                    <button type="submit" id="login-button" >Log In</button>
+                    <br />
+                    <br />
+                    <button id="demo-user-button" onClick={handleDemoSubmit}>Demo User</button>
                     {/* <br />
-                    <br />
-                    <button type="submit" id="demo-user-button">Demo User</button>
-                    <br />
                     <br />
                     <button type="submit" id="signup-button">Create New Account</button> */}
 
