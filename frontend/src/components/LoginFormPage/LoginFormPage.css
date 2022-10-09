@@ -2,6 +2,7 @@
     background-color: #e5dddd;
     padding: 10px ;
     border-radius: 15px;
+    width: 350px;
 }
 
 input[type=text] {
@@ -10,6 +11,7 @@ input[type=text] {
     /* box-shadow:0 0 15px 4px rgba(0,0,0,0.06); */
     border-radius: 10px;
     border-color: #e5dddd;
+    width: 90%;
 }
 
 #login-button {
@@ -20,7 +22,7 @@ input[type=text] {
     border-radius:5px;
     border: none;
 }
-
+/* 
 #demo-user-button {
     width: 100%;
     padding: 7px;
@@ -38,4 +40,4 @@ input[type=text] {
     border-radius:5px;
     border: none;
 
-}
+} */

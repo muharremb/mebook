@@ -36,6 +36,8 @@ const SignupFormPage = () => {
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
     return (
+
+      <div className="signup-form">
         <form onSubmit={handleSubmit} className="signup-form">
             <ul>
                 {errors.map(error => <li key={error}>{error}</li>)}
@@ -45,8 +47,9 @@ const SignupFormPage = () => {
             <input type="text" required value={email} placeholder={"Email".toString()} onChange={(e) => setEmail(e.target.value)} />
             <input type="text" required value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} />
             <input type="text" required value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} />
-            <button type="submit">Sign Up</button>
+            <button type="submit" id="signup-button">Sign Up</button>
         </form>
+      </div>
     )
 }
  

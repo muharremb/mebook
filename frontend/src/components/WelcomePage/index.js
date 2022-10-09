@@ -1,8 +1,13 @@
 import './WelcomePage.css';
 import LoginFormPage from '../LoginFormPage';
 import SignupFormPage from '../SignupFormPage';
+import { useSelector } from 'react-redux';
 
 const WelcomePage = () => {
+    const sessionUser = useSelector(state => state.session.currentUserId);
+    
+    if (sessionUser) return null;
+    
     return ( 
         <>
             <div className="home-div">
@@ -13,7 +18,6 @@ const WelcomePage = () => {
                 <div className="login-form-div">
                     <LoginFormPage />
                 </div>
-
             </div>
         </>
 

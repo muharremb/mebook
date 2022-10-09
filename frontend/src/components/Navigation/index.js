@@ -9,24 +9,19 @@ import WelcomePage from '../WelcomePage';
 const Navigation = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
 
-    // if(!sessionUser) return null;
+    if(!sessionUser) return null;
 
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
         <ProfileButton user={sessionUser} />
         );
-    } else {
-        sessionLinks = (
-        <>
-            <NavLink to="/signup">Sign Up</NavLink>
-            <WelcomePage />
-        </>
-        );
-    }
+    } 
     return ( 
         <>
+        <div className="navigation-bar">
             {sessionLinks}
+        </div>
         </>
     );
 }
