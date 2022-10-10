@@ -1,6 +1,5 @@
 import './WelcomePage.css';
 import LoginFormPage from '../LoginFormPage';
-import SignupFormPage from '../SignupFormPage';
 import { useSelector } from 'react-redux';
 
 const WelcomePage = () => {

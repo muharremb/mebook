@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import * as sessionActions from '../../store/session';
 import {Redirect, useHistory} from 'react-router-dom';
 import './LoginFormPage.css';
+import SignupForm from '../SignupFormModal';
+import SignupFormModal from '../SignupFormModal';
 
 
 
@@ -15,6 +17,8 @@ const LoginFormPage = () => {
     const [errors, setErrors] = useState([]);
 
     const history = useHistory();
+
+    const [showSignupModal, setShowSignupModal] = useState(false)
    
     if (sessionUser) return <Redirect to='/' />
     
@@ -58,11 +62,12 @@ const LoginFormPage = () => {
         );
     }
 
-    const handleSignUpButton = (e) => {
+    const handleSignupMainButton = (e) => {
         e.preventDefault();
         history.push("/signup");
+        // setShowSignupModal(true);
     }
-
+    
     return ( 
         <>
             <div className="sign-form">
@@ -79,10 +84,13 @@ const LoginFormPage = () => {
                     <br />
                     <br />
                     <button id="demo-user-button" onClick={handleDemoSubmit}>Demo User</button>
-                    <hr />
-                    <button id="signup-button" onClick={handleSignUpButton}>Create New Account</button>
-
+                    <hr />           
                 </form>
+                
+                <div>
+                    <SignupFormModal />                    
+                </div>
+
             </div>
         </>
      );
