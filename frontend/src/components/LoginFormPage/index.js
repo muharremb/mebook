@@ -61,23 +61,17 @@ const LoginFormPage = () => {
             }
         );
     }
-
-    const handleSignupMainButton = (e) => {
-        e.preventDefault();
-        history.push("/signup");
-        // setShowSignupModal(true);
-    }
     
     return ( 
-        <>
+        <div className="login-page-form">
             <div className="sign-form">
                 <form onSubmit={handleSubmit}>
                     <ul>
                         {errors.map(error => <li key={error}>{error}</li>)}
                     </ul>
-                    <input type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                    <input id="email" type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} required/>
                     <br />
-                    <input type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                    <input id="password" type="password" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} required/>
                     <br />
                     <br />
                     <button type="submit" id="login-button" >Log In</button>
@@ -92,7 +86,7 @@ const LoginFormPage = () => {
                 </div>
 
             </div>
-        </>
+        </div>
      );
 }
  

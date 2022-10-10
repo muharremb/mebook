@@ -1,26 +1,46 @@
-.sign-form {
-    background-color: #e5dddd;
-    padding: 10px ;
-    border-radius: 15px;
-    width: 350px;
+.login-page-form {
+    display: flex;
+    justify-content: center;
 }
 
-input[type=text] {
+.sign-form {
+    background-color: #f2e8e8;
+    padding: 7px ;
+    border-radius: 15px;
+    width: 300px;
+}
+
+#login-to-message {
+    font-size: 30px;
+}
+
+#email {
     padding:10px;
     margin:10px 0;
-    /* box-shadow:0 0 15px 4px rgba(0,0,0,0.06); */
-    border-radius: 10px;
-    border-color: #e5dddd;
-    width: 90%;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 7px;
+    border: 0;
+    width: 94%;
+}
+
+#password {
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 0 15px 4px rgba(0,0,0, 0.05);
+    border-radius: 7px;
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #login-button {
-    width: 100%;
-    padding: 7px;
+    padding: 10px;
+    border: none;
     background-color:#4a62ec;
     color:#fff;
-    border-radius:5px;
-    border: none;
+    border-radius:7px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #demo-user-button {
@@ -40,3 +60,23 @@ input[type=text] {
     border-radius:5px;
     border: none;
 }
+
+/* #email {
+    padding: 10px;
+    margin: 10px 0;
+    border: 0;
+    border-radius: 7px;
+    box-shadow: 0 0 15px 4px rgba(0,0,0, 0.05);
+    font-size: 15px;
+    
+}
+
+#password {
+    padding: 10px;
+    margin: 10px 0;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 4px rgba(0,0,0, 0.05);
+    font-size: 15px;
+
+} */
