@@ -37,5 +37,7 @@ ApplicationRecord.transaction do
       }) 
     end
   
-    puts "Done!"
+    puts "Users Done!"
+
+    
   end
