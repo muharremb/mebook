@@ -35,16 +35,18 @@ const SignupForm = () => {
     };
     return (
 
-      <div className="signup-form-top">
+      <div className="signup-form-container">
         <form onSubmit={handleSubmit} className="signup-form">
             <ul>
                 {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
-            <input type="text" required value={firstName} placeholder={"First Name".toString()} onChange={(e) => setFirstName(e.target.value)} />
-            <input type="text" required value={lastName} placeholder={"Last Name".toString()} onChange={(e) => setLastName(e.target.value)} />
-            <input type="text" required value={email} placeholder={"Email".toString()} onChange={(e) => setEmail(e.target.value)} />
-            <input type="text" required value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} />
-            <input type="text" required value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} />
+            <div className="name-block">
+              <input type="text" required value={firstName} placeholder={"First Name".toString()} onChange={(e) => setFirstName(e.target.value)} />
+              <input type="text" required value={lastName} placeholder={"Last Name".toString()} onChange={(e) => setLastName(e.target.value)} />
+            </div>
+            <input id="signup-form-email" type="text" required value={email} placeholder={"Email".toString()} onChange={(e) => setEmail(e.target.value)} />
+            <input className="signup-form-password" type="text" required value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} />
+            <input className="signup-form-password" type="text" required value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} />
             <button type="submit" id="signup-button">Sign Up</button>
         </form>
       </div>

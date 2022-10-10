@@ -10,7 +10,7 @@ const Navigation = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
 
     if(!sessionUser) return null;
-
+    // console.log('sessionUser in nav, ', sessionUser)
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
