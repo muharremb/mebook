@@ -61,16 +61,26 @@ const LoginFormPage = () => {
             }
         );
     }
+    console.log('errors', errors)
     
-    return ( 
+    return (
+
         <div className="login-page-form">
             <div className="sign-form">
                 <form onSubmit={handleSubmit}>
-                    <ul>
+                    {/* <ul>
                         {errors.map(error => <li key={error}>{error}</li>)}
+                        {errors}
                     </ul>
-                    <input id="email" type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} required/>
-                    <input id="password" type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                     */}
+                    <input id={"email"} type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} />
+                    {errors[1] === "email" && (
+                        <div className="error-messages">{`The ${errors[1]} you entered is not valid.`}</div>
+                    )}
+                    <input id="password" type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} />
+                    {errors[1] === "password" && (
+                        <div className="error-messages">{`The ${errors[1]} you entered is not valid.`}</div>
+                    )}
                     <button type="submit" id="login-button" >Log In</button>
                     <div className="forget-password-div">
                         <a href="#">Forgot password?</a>

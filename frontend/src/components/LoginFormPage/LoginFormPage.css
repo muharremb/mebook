@@ -10,6 +10,23 @@
 
 }
 
+#error-email {
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 50px;
+    border: 1px solid red;
+    width: 380px;
+    font-size: 17px;
+}
+
+.error-messages {
+    color: red;
+    font-family: sans-serif;
+    list-style: none;
+    font-size: 0.8rem;
+
+    
+}
+
 #login-to-message {
     font-size: 50px;
 }
