@@ -10,10 +10,9 @@ import LoginFormPage from './components/LoginFormPage';
 function App() {
   return (
     <>
-      
+      <Navigation />
       <Switch>
         <Route exact path="/">
-          <Navigation />
           <WelcomePage />
         </Route>
         <Route path="/login">

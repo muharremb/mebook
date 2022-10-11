@@ -4,33 +4,30 @@
 }
 
 .sign-form {
-    background-color: #f2e8e8;
+    background-color: white;
     padding: 7px ;
-    border-radius: 15px;
-    width: 300px;
+    border-radius: 7px;
+    width: 400px;
 }
 
 #login-to-message {
-    font-size: 30px;
+    font-size: 50px;
 }
 
 #email {
-    padding:10px;
-    margin:10px 0;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
     border-radius: 7px;
-    border: 0;
-    width: 94%;
+    border: 1px solid #dddfe2;
+    width: 380px;
+    font-size: 15px;
 }
 
 #password {
-    padding: 10px;
-    margin: 10px 0;
     box-shadow: 0 0 15px 4px rgba(0,0,0, 0.05);
     border-radius: 7px;
-    border: 0;
-    width: 100%;
-    box-sizing: border-box;
+    border: 1px solid #dddfe2;
+    width: 380px;
+    font-size: 15px;
 }
 
 #login-button {

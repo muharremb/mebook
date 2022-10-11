@@ -1,3 +1,11 @@
 /* TODO Add site wide styles */
 
 @import-normalize;
+
+:root {
+    --main-bg-color: #f0f2f5;
+}
+
+body {
+    background-color: var(--main-bg-color);
+}

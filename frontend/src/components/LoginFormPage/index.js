@@ -71,7 +71,7 @@ const LoginFormPage = () => {
                     </ul>
                     <input id="email" type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} required/>
                     <br />
-                    <input id="password" type="password" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                    <input id="password" type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} required/>
                     <br />
                     <br />
                     <button type="submit" id="login-button" >Log In</button>
@@ -80,7 +80,6 @@ const LoginFormPage = () => {
                     <button id="demo-user-button" onClick={handleDemoSubmit}>Demo User</button>
                     <hr />           
                 </form>
-                
                 <div>
                     <SignupFormModal />                    
                 </div>

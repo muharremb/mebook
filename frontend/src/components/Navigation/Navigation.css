@@ -1,4 +1,8 @@
 .navigation-bar {
+    background-color: white;
+    height: 50px;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row;
+
+    justify-content: space-between;
 }

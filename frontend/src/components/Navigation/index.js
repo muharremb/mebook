@@ -1,16 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
 import WelcomePage from '../WelcomePage';
+import SignoutButton from './SignoutButton';
 
 const Navigation = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
 
     if(!sessionUser) return null;
-    // console.log('sessionUser in nav, ', sessionUser)
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
@@ -18,11 +18,9 @@ const Navigation = () => {
         );
     } 
     return ( 
-        <>
-        <div className="navigation-bar">
-            {sessionLinks}
-        </div>
-        </>
+        <nav className="navigation-bar">
+               {sessionLinks}
+        </nav>
     );
 }
  
