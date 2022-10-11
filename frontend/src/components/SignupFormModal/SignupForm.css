@@ -49,6 +49,24 @@
     width: 375px;
 }
 
+.gender-div {
+    display: flex;
+    justify-content: space-between;
+    width: 385px;
+}
+
+.gender-div label {
+    font-size: 15px;
+    border: 1px solid #ccd0d5;
+    margin: 0px;
+    padding: 5px;
+    border-radius: 5px;
+    height: 30px;
+    width: 110px;
+    font-family: sans-serif;
+    vertical-align: middle;
+}
+
 #signup-form-button {
     height: 36px;
     padding: 10px;
@@ -57,13 +75,15 @@
     background-color: rgb(32, 178, 32);
     border: none;
     border-radius: 5px;
-    width: 120px;
+    width: 180px;
+    font-size: 18px;
+    font-weight:bold;
 }
 
 .gender-div {
     display: flex;
     justify-content: space-between;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .gender-div input {
@@ -74,10 +94,18 @@
     display: flex;
     justify-content: flex-start;
     width: 385px;
+    margin: 0px;
 }
 
 .titles p {
     font-size: 15px;
     margin-top: 10px;
     color: #5e6063;
+}
+
+#disclaimer {
+    font-size: 10px;
+    margin: 7px;
+    padding: 7px;
+    font-family: sans-serif;
 }

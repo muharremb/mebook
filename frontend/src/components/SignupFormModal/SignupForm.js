@@ -136,19 +136,34 @@ const SignupForm = () => {
               </select>
             </div>
 
-            {/* <div className="gender-div">
+            <div className="titles">
+              <p>Gender</p>
+            </div>
+
+            <div className="gender-div">
               <label>Female
-                <input type="radio" value="Male"/>
+                <input 
+                type="radio" 
+                value="1"
+                name="gender"/>
               </label>
 
               <label>Male
-                <input type="radio" value="Male"/>
+                <input 
+                type="radio"
+                value="2"
+                name="gender"/>
               </label>
 
               <label>Custom
-                <input type="radio" value="Male"/>
+                <input 
+                type="radio"
+                value="3"
+                name="gender"/>
               </label>
-            </div> */}
+            </div>
+
+            <p id="disclaimer">By clicking Sign Up, you agree to our Terms, Privary Policy and Cookies Policy.</p>
             
             <button type="submit" id="signup-form-button">Sign Up</button>
         </form>
