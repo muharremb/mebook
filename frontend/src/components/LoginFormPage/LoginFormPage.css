@@ -1,13 +1,13 @@
-.login-page-form {
-    display: flex;
-    justify-content: center;
-}
-
 .sign-form {
     background-color: white;
-    padding: 7px ;
-    border-radius: 7px;
+    padding: 10px ;
+    border-radius: 8px;
     width: 400px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
 }
 
 #login-to-message {
@@ -19,7 +19,7 @@
     border-radius: 7px;
     border: 1px solid #dddfe2;
     width: 380px;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 #password {
@@ -27,53 +27,58 @@
     border-radius: 7px;
     border: 1px solid #dddfe2;
     width: 380px;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 #login-button {
     padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px ;
     border: none;
-    background-color:#4a62ec;
+    background-color: #3b69de;
     color:#fff;
     border-radius:7px;
     width: 100%;
-    box-sizing: border-box;
+    font-size: 20px;
+    cursor: pointer;
 }
+
+.forget-password-div {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a {
+    color: #3b69de;
+}
+
+a:link {
+    text-decoration: none;
+    font-size: 17px;
+    color: #3b69de;
+    font-family: sans-serif;
+}
+
 
 #demo-user-button {
-    width: 100%;
-    padding: 7px;
+    padding: 10px;
+    border: none;
     background-color:#050c1d;
     color:#fff;
-    border-radius:5px;
-    border: none;
-}
-
-#create-new-user {
+    border-radius:7px;
     width: 100%;
-    padding: 5px;
-    background-color:#078623;
-    color:#fff;
-    border-radius:5px;
     border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+
 }
 
-/* #email {
-    padding: 10px;
-    margin: 10px 0;
-    border: 0;
-    border-radius: 7px;
-    box-shadow: 0 0 15px 4px rgba(0,0,0, 0.05);
-    font-size: 15px;
-    
+.signup-modal-div {
+    margin-top: 10px;
 }
-
-#password {
-    padding: 10px;
-    margin: 10px 0;
-    border: 0;
-    border-radius: 10px;
-    box-shadow: 0 0 15px 4px rgba(0,0,0, 0.05);
-    font-size: 15px;
-
-} */

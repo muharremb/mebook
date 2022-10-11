@@ -70,20 +70,17 @@ const LoginFormPage = () => {
                         {errors.map(error => <li key={error}>{error}</li>)}
                     </ul>
                     <input id="email" type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} required/>
-                    <br />
                     <input id="password" type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} required/>
-                    <br />
-                    <br />
                     <button type="submit" id="login-button" >Log In</button>
-                    <br />
-                    <br />
+                    <div className="forget-password-div">
+                        <a href="#">Forgot password?</a>
+                    </div>
                     <button id="demo-user-button" onClick={handleDemoSubmit}>Demo User</button>
                     <hr />           
                 </form>
-                <div>
+                <div className="signup-modal-div">
                     <SignupFormModal />                    
                 </div>
-
             </div>
         </div>
      );

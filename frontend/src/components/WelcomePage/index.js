@@ -11,11 +11,23 @@ const WelcomePage = () => {
         <>
             <div className="home-div">
                 <div className="welcome-message-div">
-                    <h2 id="company-name">MeBook</h2>
-                    <h3 id="company-motto">Connect with your friends on Mebook.</h3>
+                    <h1 id="company-name">mebook</h1>
+                    <h2 id="company-motto">Connect with your friends on Mebook.</h2>
                 </div>
                 <div className="login-form-div">
                     <LoginFormPage />
+                </div>
+    
+            </div>
+            <div className="footer-div">
+                <div className="footer-info">
+                    <ul className="footer-items">
+                        <li >JavaScript</li>
+                        <li>Ruby</li>
+                        <li>Rails</li>
+                        <li>React</li>
+                        <li>Redux</li>
+                    </ul>
                 </div>
             </div>
         </>

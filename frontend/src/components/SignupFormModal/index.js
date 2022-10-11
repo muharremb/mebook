@@ -8,7 +8,7 @@ const SignupFormModal = () => {
 
     return (
         <div className="signup-modal-contaier">
-            <button id="create-new-user-button" onClick={() => setShowModal(true)}>Create New User</button>
+            <button id="create-new-user-button" onClick={() => setShowModal(true)}>Create New Account</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <SignupForm />
