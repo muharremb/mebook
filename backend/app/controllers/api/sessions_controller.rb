@@ -26,10 +26,10 @@ class Api::SessionsController < ApplicationController
     else
       is_found = User.find_by(email: params[:email])
       if is_found
-        render json: { errors: ['The password you entered is incorrect.', 'password']}, 
+        render json: { errors: ['', 'password']}, 
         status: :unauthorized
       else
-        render json: { errors: ['The email you entered is incorrect.', 'email'] }, 
+        render json: { errors: ['', 'email'] }, 
           status: :unauthorized
       end
     end

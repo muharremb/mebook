@@ -37,8 +37,9 @@ const SignupFormPage = () => {
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
     return (
-      <div className="signup-form-page-container">
-        <h2>Sign Up to Mebook</h2>
+      <div className="signup-page-container">
+        <div id='signup-company-logo'>mebook</div>
+        <div className='signup-form-message'>Create a new account </div>
         <SignupForm />
       </div>
     )

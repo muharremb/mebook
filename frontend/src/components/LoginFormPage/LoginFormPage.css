@@ -34,9 +34,15 @@
 #email {
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
     border-radius: 7px;
-    border: 1px solid #dddfe2;
     width: 380px;
     font-size: 17px;
+}
+
+.textInput {
+    border: 1px solid #dddfe2;
+}
+.error {
+    border: 1px solid red;
 }
 
 #password {

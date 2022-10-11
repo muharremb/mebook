@@ -62,7 +62,7 @@ const LoginFormPage = () => {
         );
     }
     // console.log('errors', errors)
-    
+    const emailFieldErrorClass = (errors[1] === "email") ? "error" : "";
     return (
 
         <div className="login-page-form">
@@ -73,11 +73,15 @@ const LoginFormPage = () => {
                         {errors}
                     </ul>
                      */}
-                    <input id={"email"} type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input id="email" type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} 
+                        className={"textInput " + emailFieldErrorClass}
+                    />
                     {errors[1] === "email" && (
                         <div className="error-messages">{`The ${errors[1]} you entered is not valid.`}</div>
                     )}
-                    <input id="password" type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input id="password" type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} 
+                        className="textInput"
+                    />
                     {errors[1] === "password" && (
                         <div className="error-messages">{`The ${errors[1]} you entered is not valid.`}</div>
                     )}
@@ -88,6 +92,7 @@ const LoginFormPage = () => {
                     <button id="demo-user-button" onClick={handleDemoSubmit}>Demo User</button>
                     <hr />           
                 </form>
+                
                 <div className="signup-modal-div">
                     <SignupFormModal />                    
                 </div>

@@ -1,6 +1,22 @@
-.signup-form-page-container {
+.signup-page-container {
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     align-items: center;
-    width: 400px;
+    width: 500px;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 70px;
+    /* margin: auto; */
+
+
+}
+.signup-form-message {
+    margin: 15px;
+    font-size: 30px;
+}
+
+#signup-company-logo {
+    font-size: 50px;
+    margin-top: 30px;
+    color: #113cab;
 }
