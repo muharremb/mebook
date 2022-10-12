@@ -63,6 +63,14 @@ const LoginFormPage = () => {
             }
         );
     }
+
+    const handleBlur = (e) => {
+        if(!email.includes('@'))  setEmailClientSideCheck(true);
+        else setEmailClientSideCheck(false);
+    }
+
+
+
     const emailFieldErrorClass = (errors[1] === "email") ? "error" : "";
     return (
         <div className="login-page-full">
@@ -72,6 +80,7 @@ const LoginFormPage = () => {
             <div className="credentials">
                 <input type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} 
                     className={(emailClientSideCheck || errors[0]) ? "error-div":"credentials" }
+                    onBlur={handleBlur}
                 />
                 {(emailClientSideCheck || errors[0]) && (
                     <div className="error-messages">{`Invalid email address.`}</div>

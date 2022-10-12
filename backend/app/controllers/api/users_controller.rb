@@ -22,7 +22,6 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render :show
       # render json: {user: @user}
-      
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
@@ -31,7 +30,8 @@ class Api::UsersController < ApplicationController
   def show 
     @user = User.find(params[:id])
     
-    render 'api/users/show'
+    # render json: {user: @user}
+    render 'api/users/getUser'
   end
   
 

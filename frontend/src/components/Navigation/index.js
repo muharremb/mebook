@@ -29,8 +29,8 @@ const Navigation = () => {
                <div className="navigation-home-button">
                     <button>Signout</button>
                 </div> */}
-                <NavLink to="/">Go to Profile</NavLink>
-                <h1>Hello {sessionUser.firstName}, here is your page</h1>
+                <NavLink to={`/users/${sessionUser.id}`}>Go to Profile</NavLink>
+                <h1>Hello {sessionUser.firstName}, your id is {sessionUser.id}, here is your page</h1>
                 <SignoutButton />
         </div>
     );

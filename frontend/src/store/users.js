@@ -31,15 +31,23 @@ export const fetchUser = (userId) => async dispatch => {
 }
 
 function usersReducer(state={}, action) {
-    const newState = {...state}
+    const newState = {...state};
+    
+    const byId = state["byId"] ? {...state["byId"]}:{};
+    const allIds = state["allIds"] ? state["allIds"]:[];
+
     switch(action.type) {
         case ADD_USER:
-            const user = action.payload;
-            newState[user.id] = user;
-            return {
-                ["byId"]: { ...newState["byId"], [user.id]: user },
-                // ["allIds"]: {...newState["allIds"], [user.id]} 
-            };
+            const user = action.payload.user;
+            // newState[user.id] = user;
+            const newbyId = {...byId, [user.id]: user};
+            allIds.push(user.id);
+            console.log('action.payload ', user);
+            return {"byId": newbyId, "allIds": allIds}
+
+            // return {
+            //     ["byId"]: { ...newState["byId"], [user.id]: user },
+            // };
         case ADD_USERS: 
             const users = action.payload;
             return {...state, ...users};

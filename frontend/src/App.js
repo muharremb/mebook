@@ -5,7 +5,7 @@ import SignupFormPage from './components/SignupFormPage';
 import Navigation from "./components/Navigation";
 import WelcomePage from './components/WelcomePage';
 import LoginFormPage from './components/LoginFormPage';
-
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   return (
@@ -20,6 +20,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <SignupFormPage />
+        </Route>
+        <Route path="/users/:userId">
+          <ProfilePage />
         </Route>
       </Switch>
     </>
