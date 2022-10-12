@@ -8,12 +8,14 @@ class Api::UsersController < ApplicationController
     last_name = user_params["last_name"].capitalize()
     email = user_params["email"]
     password = user_params["password"]
+    gender = user_params["gender"]
 
     @user = User.new(
       first_name: first_name,
       last_name: last_name,
       email: email,
-      password: password
+      password: password,
+      gender: gender
     )
 
     if @user.save
@@ -36,6 +38,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender)
   end
 end

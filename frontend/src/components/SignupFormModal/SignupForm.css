@@ -65,6 +65,9 @@
     width: 110px;
     font-family: sans-serif;
     vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 #signup-form-button {

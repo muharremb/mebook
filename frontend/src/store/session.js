@@ -42,7 +42,8 @@ export const signup = (user) => async (dispatch) => {
             email: user.email,
             password: user.password,
             first_name: user.firstName,
-            last_name: user.lastName
+            last_name: user.lastName,
+            gender: user.gender
         })
     });
     const data = await response.json();

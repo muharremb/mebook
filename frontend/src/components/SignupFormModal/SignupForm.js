@@ -11,6 +11,8 @@ const SignupForm = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [password, setPassword] = useState('');
+    const [gender, setGender] = useState('');
+
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
@@ -18,7 +20,9 @@ const SignupForm = () => {
         e.preventDefault();
         if (password === confirmPassword) {
           setErrors([]);
-          return dispatch(sessionActions.signup({ firstName, lastName, email, password }))
+          console.log("handleOnchangeValue ", gender)
+
+          return dispatch(sessionActions.signup({ firstName, lastName, email, password, gender }))
             .catch(async (res) => {
             let data;
             try {
@@ -33,6 +37,11 @@ const SignupForm = () => {
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
+    
+    const handleOnChange = (e) => {
+      setGender(e.target.value);
+    }
+
     return (
 
       <div className="signup-form-container">
@@ -143,25 +152,25 @@ const SignupForm = () => {
               <p>Gender</p>
             </div>
 
-            <div className="gender-div">
-              <label>Female
+            <div className="gender-div" onChange={handleOnChange}>
+              <label className="gender-class">Female
                 <input 
                 type="radio" 
-                value="1"
+                value="Female"
                 name="gender"/>
               </label>
 
-              <label>Male
+              <label className="gender-class">Male
                 <input 
                 type="radio"
-                value="2"
+                value="Male"
                 name="gender"/>
               </label>
 
-              <label>Custom
+              <label className="gender-class" >Custom
                 <input 
                 type="radio"
-                value="3"
+                value="Custom"
                 name="gender"/>
               </label>
             </div>
