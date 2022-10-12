@@ -21,7 +21,7 @@ class Api::SessionsController < ApplicationController
     if @user 
       login!(@user)
       # render json: {user: @user}
-      render 'api/users/show'
+      render 'api/session/show'
 
     else
       # is_found = User.find_by(email: params[:email])

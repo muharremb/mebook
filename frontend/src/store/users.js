@@ -21,13 +21,21 @@ export const fetchUsers = () => async dispatch => {
     const response = await csrfFetch('/api/users');
     const data = await response.json();
     dispatch(addUsers(data));
-} 
+}
+
+export const fetchUser = (userId) => async dispatch => {
+    const response = await csrfFetch(`/api/users/${userId}`)
+    const data = await response.json();
+    dispatch(addUser(data));
+    console.log('fetchUser data ', data);
+}
 
 function usersReducer(state={}, action) {
+    const newState = {...state}
     switch(action.type) {
         case ADD_USER:
-            const user = action.payload;
-            return {...state, [user.id]: user};
+            const user = action.payload;            
+            return {["byId"]: { ...newState["byId"], [user.id]: user }};
         case ADD_USERS: 
             const users = action.payload;
             return {...state, ...users};
