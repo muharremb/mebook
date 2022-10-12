@@ -34,13 +34,6 @@ class Api::UsersController < ApplicationController
     render 'api/users/show'
   end
   
-  def index
-    @users = User.all
-
-    # render json: {users: @users}
-    render 'api/users/index'
-
-  end
 
   private
 
