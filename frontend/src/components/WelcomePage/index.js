@@ -12,12 +12,11 @@ const WelcomePage = () => {
             <div className="home-div">
                 <div className="welcome-message-div">
                     <h1 id="company-name">mebook</h1>
-                    <h2 id="company-motto">Connect with your friends on Mebook.</h2>
+                    <h2 id="company-motto">Connect with your friends and the world around you on Mebook.</h2>
                 </div>
                 <div className="login-form-div">
                     <LoginFormPage />
                 </div>
-    
             </div>
             <div className="footer-div">
                 <div className="footer-info">

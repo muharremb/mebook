@@ -1,7 +1,7 @@
 #create-new-user-button {
     padding: 10px;
     border: none;
-    background-color:#078623;
+    background-color: rgb(32, 178, 32);
     color:#fff;
     border-radius:7px;
     border: none;
@@ -10,5 +10,23 @@
     margin-bottom: 15px;
     margin-left: 10px;
     margin-right: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
 
+.modal-signup-popup h1 {
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-top: 20px
+}
+
+.modal-signup-popup h2 {
+    font-size: 15px;
+    font-family: sans-serif;
+    margin-left: 30px;
+    margin-top: 10px;
+    color: gray;
+    width: 350px;
 }

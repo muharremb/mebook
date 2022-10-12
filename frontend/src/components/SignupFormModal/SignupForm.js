@@ -37,9 +37,12 @@ const SignupForm = () => {
 
       <div className="signup-form-container">
         <form onSubmit={handleSubmit} className="signup-form">
-            {/* <ul>
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul> */}
+           {errors[0] && (
+            <div className="signup-error">
+              <p>We Couldn't Create Your Account</p>
+              <p>We were not able to sign you up for Mebook.</p>
+            </div>
+           )}
             <div className="signup-name-block">
               <input className='name-items' type="text" value={firstName} placeholder={"First Name".toString()} onChange={(e) => setFirstName(e.target.value)} />
               <input className='name-items' type="text" value={lastName} placeholder={"Last Name".toString()} onChange={(e) => setLastName(e.target.value)} />

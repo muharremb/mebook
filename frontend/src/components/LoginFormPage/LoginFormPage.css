@@ -1,4 +1,4 @@
-.sign-form {
+.login-page-full {
     background-color: white;
     padding: 10px ;
     border-radius: 8px;
@@ -7,15 +7,37 @@
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-
+}
+.signin-form {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
 }
 
-#error-email {
-    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-    border-radius: 50px;
-    border: 1px solid red;
-    width: 380px;
+.credentials {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.credentials input {
+    width: 360px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 7px;
     font-size: 17px;
+    font-family: sans-serif;
+    border: 1px solid #ccd0d5;
+}
+
+.error-div {
+    width: 360px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 7px;
+    font-size: 17px;
+    font-family: sans-serif;
+    border:1px solid red;
+    color: red;
 }
 
 .error-messages {
@@ -23,35 +45,16 @@
     font-family: sans-serif;
     list-style: none;
     font-size: 0.8rem;
-
-    
 }
 
 #login-to-message {
     font-size: 50px;
 }
 
-#email {
-    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-    border-radius: 7px;
-    width: 380px;
-    font-size: 17px;
-}
-
 .textInput {
     border: 1px solid #dddfe2;
 }
-.error {
-    border: 1px solid red;
-}
 
-#password {
-    box-shadow: 0 0 15px 4px rgba(0,0,0, 0.05);
-    border-radius: 7px;
-    border: 1px solid #dddfe2;
-    width: 380px;
-    font-size: 17px;
-}
 
 #login-button {
     padding: 10px;
@@ -61,14 +64,14 @@
     background-color: #3b69de;
     color:#fff;
     border-radius:7px;
-    width: 100%;
+    width: 382px;
     font-size: 20px;
     cursor: pointer;
 }
 
 .forget-password-div {
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: center;
     cursor: pointer;
     font-size: 14px;
@@ -87,21 +90,19 @@ a:link {
     font-family: sans-serif;
 }
 
-
 #demo-user-button {
     padding: 10px;
-    border: none;
-    background-color:#050c1d;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color:#080e1dd7;
     color:#fff;
     border-radius:7px;
-    width: 100%;
     border: none;
+    width: 382px;
     font-size: 20px;
     cursor: pointer;
-    margin-bottom: 20px;
-
 }
 
 .signup-modal-div {
-    margin-top: 10px;
+    margin: 10px 10px 0px 10px;
 }

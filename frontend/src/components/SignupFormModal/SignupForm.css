@@ -109,3 +109,10 @@
     padding: 7px;
     font-family: sans-serif;
 }
+
+.signup-error {
+    color: red;
+    margin-top: 10px;
+    border: 1px solid red;
+    padding: 7px;
+}

@@ -1,12 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as sessionActions from '../../store/session';
 import {Redirect, useHistory} from 'react-router-dom';
 import './LoginFormPage.css';
-import SignupForm from '../SignupFormModal';
 import SignupFormModal from '../SignupFormModal';
-
-
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();
@@ -15,6 +12,7 @@ const LoginFormPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    const [emailClientSideCheck, setEmailClientSideCheck] = useState(false);
 
     const history = useHistory();
 
@@ -26,7 +24,12 @@ const LoginFormPage = () => {
         e.preventDefault();
         setErrors([]);
         const user = {email, password};
-        // console.log("user ", user);
+
+        if(!email.includes('@')) {
+            setEmailClientSideCheck(true);
+            return null;
+        } else setEmailClientSideCheck(false);
+            
         return dispatch(sessionActions.login(user))
             .catch(async (res) => {
                 let data;
@@ -46,7 +49,6 @@ const LoginFormPage = () => {
         e.preventDefault();
         setErrors([]);
         const user = {email: "muha@mb.io", password: "password"};
-        // console.log("user ", user);
         return dispatch(sessionActions.login(user))
             .catch(async (res) => {
                 let data;
@@ -61,41 +63,35 @@ const LoginFormPage = () => {
             }
         );
     }
-    // console.log('errors', errors)
     const emailFieldErrorClass = (errors[1] === "email") ? "error" : "";
     return (
+        <div className="login-page-full">
 
-        <div className="login-page-form">
-            <div className="sign-form">
-                <form onSubmit={handleSubmit}>
-                    {/* <ul>
-                        {errors.map(error => <li key={error}>{error}</li>)}
-                        {errors}
-                    </ul>
-                     */}
-                    <input id="email" type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} 
-                        className={"textInput " + emailFieldErrorClass}
-                    />
-                    {errors[1] === "email" && (
-                        <div className="error-messages">{`The ${errors[1]} you entered is not valid.`}</div>
-                    )}
-                    <input id="password" type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} 
-                        className="textInput"
-                    />
-                    {errors[1] === "password" && (
-                        <div className="error-messages">{`The ${errors[1]} you entered is not valid.`}</div>
-                    )}
-                    <button type="submit" id="login-button" >Log In</button>
-                    <div className="forget-password-div">
-                        <a href="#">Forgot password?</a>
-                    </div>
-                    <button id="demo-user-button" onClick={handleDemoSubmit}>Demo User</button>
-                    <hr />           
-                </form>
-                
-                <div className="signup-modal-div">
-                    <SignupFormModal />                    
-                </div>
+        <form onSubmit={handleSubmit} className="signin-form">
+
+            <div className="credentials">
+                <input type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} 
+                    className={(emailClientSideCheck || errors[0]) ? "error-div":"credentials" }
+                />
+                {(emailClientSideCheck || errors[0]) && (
+                    <div className="error-messages">{`Invalid email address.`}</div>
+                )}
+                <input type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} 
+                    className={errors[0] ? "error-div":"credentials" }
+                />
+                {(errors[0]) && (
+                    <div className="error-messages">{`Invalid password.`}</div>
+                )}
+            </div>
+            <button type="submit" id="login-button" >Log In</button>
+            <div className="forget-password-div">
+                <a href="#">Forgot password?</a>
+            </div>
+            <button id="demo-user-button" onClick={handleDemoSubmit}>Demo User</button>
+            <hr color="gray" width="70%" size="5"/>
+        </form>
+            <div className="signup-modal-div">
+                <SignupFormModal />                    
             </div>
         </div>
      );

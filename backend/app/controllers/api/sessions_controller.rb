@@ -24,14 +24,16 @@ class Api::SessionsController < ApplicationController
       render 'api/users/show'
 
     else
-      is_found = User.find_by(email: params[:email])
-      if is_found
-        render json: { errors: ['', 'password']}, 
+      # is_found = User.find_by(email: params[:email])
+      # if is_found
+      #   render json: { errors: ['', 'password']}, 
+      #   status: :unauthorized
+      # else
+      #   render json: { errors: ['', 'email'] }, 
+      #     status: :unauthorized
+      # end
+      render json: { errors: ['The provided credentials were invalid.'] }, 
         status: :unauthorized
-      else
-        render json: { errors: ['', 'email'] }, 
-          status: :unauthorized
-      end
     end
   end
 

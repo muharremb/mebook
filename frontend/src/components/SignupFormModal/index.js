@@ -11,7 +11,12 @@ const SignupFormModal = () => {
             <button id="create-new-user-button" onClick={() => setShowModal(true)}>Create New Account</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <SignupForm />
+                    <div className='modal-signup-popup'>  
+                        <h1>Sign Up</h1>
+                        <h2>It is quick and easy.</h2>
+                        <hr />
+                        <SignupForm />
+                    </div>
                 </Modal>
             )}
         </div>
