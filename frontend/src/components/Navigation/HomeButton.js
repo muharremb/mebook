@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
-function SignoutButton() {
+function HomeButton() {
   const dispatch = useDispatch();
 
   const logout = (e) => {
@@ -12,9 +12,9 @@ function SignoutButton() {
 
   return (
       <>
-        <button onClick={logout}>Log Out</button>
+        <button onClick={logout}>Home</button>
       </>
   );
 }
 
-export default SignoutButton;
+export default HomeButton;

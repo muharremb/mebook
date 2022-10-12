@@ -6,6 +6,7 @@ import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
 import WelcomePage from '../WelcomePage';
 import SignoutButton from './SignoutButton';
+import HomeButton from './HomeButton';
 
 const Navigation = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
@@ -16,11 +17,22 @@ const Navigation = () => {
         sessionLinks = (
         <ProfileButton user={sessionUser} />
         );
-    } 
+    }
+    // console.log('session user ', sessionUser); 
     return ( 
-        <nav className="navigation-bar">
+        <div className="navigation-full-page">
+                {/* <div className="navigation-home-button">
+                    <button>Home</button>
+                </div>
+                <h1>Hello {sessionUser.firstName} </h1>
                {sessionLinks}
-        </nav>
+               <div className="navigation-home-button">
+                    <button>Signout</button>
+                </div> */}
+                <NavLink to="/">Go to Profile</NavLink>
+                <h1>Hello {sessionUser.firstName}, here is your page</h1>
+                <SignoutButton />
+        </div>
     );
 }
  
