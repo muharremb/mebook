@@ -34,8 +34,12 @@ function usersReducer(state={}, action) {
     const newState = {...state}
     switch(action.type) {
         case ADD_USER:
-            const user = action.payload;            
-            return {["byId"]: { ...newState["byId"], [user.id]: user }};
+            const user = action.payload;
+            newState[user.id] = user;
+            return {
+                ["byId"]: { ...newState["byId"], [user.id]: user },
+                // ["allIds"]: {...newState["allIds"], [user.id]} 
+            };
         case ADD_USERS: 
             const users = action.payload;
             return {...state, ...users};
