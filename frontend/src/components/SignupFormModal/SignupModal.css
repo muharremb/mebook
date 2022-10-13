@@ -5,13 +5,12 @@
     color:#fff;
     border-radius:7px;
     border: none;
-    font-size: 18px;
+    font-size: 17px;
     cursor: pointer;
     margin-bottom: 15px;
     margin-left: 10px;
     margin-right: 10px;
     font-family: sans-serif;
-    font-weight: bold;
 }
 
 .modal-signup-popup h1 {
@@ -31,3 +30,8 @@
     width: 350px;
 }
 
+.x-image-signup-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}

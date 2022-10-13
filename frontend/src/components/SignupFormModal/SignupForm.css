@@ -6,6 +6,7 @@
     align-items: center;
     border-radius: 10px;
     width: 450px;
+
 }
 
 .signup-name-block {
@@ -15,9 +16,9 @@
 }
 
 .name-items {
-    width: 170px;
+    width: 175px;
     padding: 7px;
-    margin: 10px;
+    margin: 5px;
     margin-bottom: 0px;
     border: 1px solid #ccd0d5;
     font-size: 15px;
@@ -27,7 +28,7 @@
 .user-items {
     width: 375px;
     padding: 7px;
-    margin: 7px;
+    margin: 5px;
     border: 1px solid #ccd0d5;
     font-size: 15px;
     border-radius: 5px;
@@ -71,7 +72,7 @@
 }
 
 #signup-form-button {
-    height: 36px;
+    height: 40px;
     padding: 10px;
     margin: 25px;
     color: white;
@@ -81,6 +82,7 @@
     width: 180px;
     font-size: 18px;
     font-weight:bold;
+    text-align: center;
 }
 
 .gender-div {
@@ -115,7 +117,17 @@
 
 .signup-error {
     color: red;
+    background-color: pink;
     margin-top: 10px;
     border: 1px solid red;
     padding: 7px;
+    font-family: sans-serif;
+    font-size: 13px;
+    width: 375px;
+    text-align: center;
+}
+
+.titles p {
+    font-family: sans-serif;
+    font-size: 12px;
 }

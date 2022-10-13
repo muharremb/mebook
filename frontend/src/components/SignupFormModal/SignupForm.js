@@ -15,12 +15,13 @@ const SignupForm = () => {
 
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    const [firstnameError, setFirstnameError] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
           setErrors([]);
-          console.log("handleOnchangeValue ", gender)
+          // console.log("handleOnchangeValue ", gender)
 
           return dispatch(sessionActions.signup({ firstName, lastName, email, password, gender }))
             .catch(async (res) => {
@@ -42,6 +43,15 @@ const SignupForm = () => {
       setGender(e.target.value);
     }
 
+    const firstnameBlur = (e) => {
+      if(firstName === '') {
+        setFirstnameError(true);
+      } else {
+        setFirstnameError(false);
+      }
+      // console.log(firstnameError)
+    }
+    // console.log(firstName === '')
     return (
 
       <div className="signup-form-container">
@@ -53,13 +63,13 @@ const SignupForm = () => {
             </div>
            )}
             <div className="signup-name-block">
-              <input className='name-items' type="text" value={firstName} placeholder={"First Name".toString()} onChange={(e) => setFirstName(e.target.value)} />
+              <input className='name-items' type="text" onBlur={firstnameBlur} value={firstName} placeholder={"First Name".toString()} onChange={(e) => setFirstName(e.target.value)} />
               <input className='name-items' type="text" value={lastName} placeholder={"Last Name".toString()} onChange={(e) => setLastName(e.target.value)} />
             </div>
 
-            <input className='user-items' type="text" required value={email} placeholder={"Email".toString()} onChange={(e) => setEmail(e.target.value)} />
-            <input className='user-items' type="text" required value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} />
-            <input className='user-items' type="text" required value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} />
+            <input className='user-items' type="text"  value={email} placeholder={"Email".toString()} onChange={(e) => setEmail(e.target.value)} />
+            <input className='user-items' type="text"  value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} />
+            <input className='user-items' type="text"  value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} />
             
             <div className="titles">
               <p>Birthday</p>
