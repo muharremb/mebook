@@ -12,8 +12,10 @@ import GotoProfileButton from './GotoProfileButton';
 const Navigation = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
 
-    if(!sessionUser) return null;
     let sessionLinks;
+
+    if(!sessionUser) return null;
+    
     if (sessionUser) {
         sessionLinks = (
         <ProfileButton user={sessionUser} />
@@ -42,7 +44,7 @@ const Navigation = () => {
             
             <div className="navigation-right-bar">
                 <NavLink to={`/users/${sessionUser.id}`}> <GotoProfileButton /></NavLink>
-                <SignoutButton />                
+                <SignoutButton />
             </div>
             
         </div>

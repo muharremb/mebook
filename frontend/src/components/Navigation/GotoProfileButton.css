@@ -1,0 +1,20 @@
+.goto-profile-button-div {
+    background-color: #3b69de;
+    color: white;
+    font-family: sans-serif;
+    cursor: pointer;
+    margin: 10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+#goto-profile-button {
+    text-align: center;
+    font-size: 15px;
+    padding: 3px;
+}

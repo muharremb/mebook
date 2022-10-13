@@ -10,9 +10,9 @@ const GotoProfileButton = () => {
   const history = useHistory();
     
   return (
-      <>
-        <button>{sessionUser.firstName[0]}.{sessionUser.lastName[0]}.</button>
-      </>
+      <div className="goto-profile-button-div">
+        <h1 id="goto-profile-button">{sessionUser.firstName[0]}.{sessionUser.lastName[0]}.</h1>
+      </div>
   );
 }
  
