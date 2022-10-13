@@ -13,6 +13,7 @@ const LoginFormPage = () => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
     const [emailClientSideCheck, setEmailClientSideCheck] = useState(false);
+    const [passwordClientSideCheck, setPasswordClientSideCheck] = useState(false);
 
     const history = useHistory();
 
@@ -29,6 +30,12 @@ const LoginFormPage = () => {
             setEmailClientSideCheck(true);
             return null;
         } else setEmailClientSideCheck(false);
+
+        if(password.length < 6) {
+            setPasswordClientSideCheck(true);
+            return null;
+        } else setPasswordClientSideCheck(false);
+
             
         return dispatch(sessionActions.login(user))
             .catch(async (res) => {
@@ -65,11 +72,15 @@ const LoginFormPage = () => {
     }
 
     const handleBlur = (e) => {
-        if(!email.includes('@'))  setEmailClientSideCheck(true);
+        if(!email.includes('@') && email.length !== 0)  setEmailClientSideCheck(true);
         else setEmailClientSideCheck(false);
     }
 
-
+    // const handleBlurr = (e) => {
+    //     if(password.length > 5)  setPasswordClientSideCheck(true);
+    //     else setPasswordClientSideCheck(false);
+    //     console.log('handle blurr e.target ', e)
+    // }
 
     const emailFieldErrorClass = (errors[1] === "email") ? "error" : "";
     return (
@@ -79,17 +90,23 @@ const LoginFormPage = () => {
 
             <div className="credentials">
                 <input type="text" placeholder={"Email".toString()} value={email} onChange={(e) => setEmail(e.target.value)} 
-                    className={(emailClientSideCheck || errors[0]) ? "error-div":"credentials" }
-                    onBlur={handleBlur}
+                    id={(emailClientSideCheck) ? "error-div":"credentials" }
+                    // onBlur={handleBlur}
                 />
-                {(emailClientSideCheck || errors[0]) && (
-                    <div className="error-messages">{`Invalid email address.`}</div>
+                {(emailClientSideCheck) && (
+                    <div className="error-messages">{`The email you entered is not connected to an account. Find your account and log in.`}</div>
+                )}
+                {errors[0] && (
+                    <div className="error-messages">{`Invalid credentials.`}</div>
                 )}
                 <input type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} 
-                    className={errors[0] ? "error-div":"credentials" }
+                    id={(passwordClientSideCheck) ? "error-div":"credentials" }
                 />
-                {(errors[0]) && (
-                    <div className="error-messages">{`Invalid password.`}</div>
+                {(passwordClientSideCheck) && (
+                    <div className="error-messages">{`The password you have entered is incorrect. Forgot Password?`}</div>
+                )}
+                {errors[0] && (
+                    <div className="error-messages">{`Invalid credentials.`}</div>
                 )}
             </div>
             <button type="submit" id="login-button" >Log In</button>

@@ -7,6 +7,7 @@
     display: flex;
     flex-flow: column wrap;
     align-items: center;
+    font-family: sans-serif;
 }
 .signin-form {
     display: flex;
@@ -29,7 +30,7 @@
     border: 1px solid #ccd0d5;
 }
 
-.error-div {
+#error-div {
     width: 360px;
     padding: 10px;
     margin: 10px;
@@ -37,7 +38,6 @@
     font-size: 17px;
     font-family: sans-serif;
     border:1px solid red;
-    color: red;
 }
 
 .error-messages {
@@ -45,6 +45,8 @@
     font-family: sans-serif;
     list-style: none;
     font-size: 0.8rem;
+    padding-left: 12px;
+    font-size: 13px;
 }
 
 #login-to-message {
