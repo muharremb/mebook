@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import * as sessionActions from '../../store/session';
@@ -16,6 +16,8 @@ const SignupForm = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
     const [firstnameError, setFirstnameError] = useState(false);
+
+    const nameRef = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -51,7 +53,6 @@ const SignupForm = () => {
       }
       // console.log(firstnameError)
     }
-    // console.log(firstName === '')
     return (
 
       <div className="signup-form-container">
@@ -63,7 +64,7 @@ const SignupForm = () => {
             </div>
            )}
             <div className="signup-name-block">
-              <input className='name-items' type="text" onBlur={firstnameBlur} value={firstName} placeholder={"First Name".toString()} onChange={(e) => setFirstName(e.target.value)} />
+              <input  ref={nameRef} className='name-items' type="text" value={firstName} placeholder={"First Name".toString()} onChange={(e) => setFirstName(e.target.value)} />
               <input className='name-items' type="text" value={lastName} placeholder={"Last Name".toString()} onChange={(e) => setLastName(e.target.value)} />
             </div>
 
