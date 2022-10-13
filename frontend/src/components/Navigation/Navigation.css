@@ -3,6 +3,67 @@
     height: 50px;
     display: flex;
     flex-direction: row;
-
     justify-content: space-between;
+}
+
+.navigation-left-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.magnifiying-glass-div {
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+
+}
+
+.navigation-middle-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-icon-div {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.home-icon-div:hover {
+    background-color: lightgray;
+}
+
+.friends-icon-div {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.friends-icon-div:hover {
+    background-color: lightgray;
+}
+
+.navigation-right-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

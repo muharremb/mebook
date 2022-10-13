@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import {useHistory} from 'react-router-dom';
+import './HomeButton.css';
 
 function HomeButton() {
-  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
+  const gotoHome = (e) => {
+    history.push("/");
   };
 
   return (
-      <>
-        <button onClick={logout}>Home</button>
-      </>
+      <div className="home-button-div">
+        <button id="home-button" onClick={gotoHome}>m</button>
+      </div>
   );
 }
 

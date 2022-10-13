@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import {useHistory} from 'react-router-dom';
+import './SignoutButton.css';
 
 function SignoutButton() {
   const dispatch = useDispatch();
@@ -14,9 +15,9 @@ function SignoutButton() {
   };
 
   return (
-      <>
-        <button onClick={logout}>Log Out</button>
-      </>
+      <div className="logout-button-div">
+        <button id="logout-button" onClick={logout}>Log Out</button>
+      </div>
   );
 }
 

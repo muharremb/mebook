@@ -1,0 +1,13 @@
+#logout-button {
+    background-color: #3b69de;
+    font-size: 10px;
+    color: white;
+    font-family: sans-serif;
+    cursor: pointer;
+    margin: 10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: none;
+    font-weight: bold;
+}

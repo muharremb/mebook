@@ -7,6 +7,7 @@ import LoginFormModal from '../LoginFormModal';
 import WelcomePage from '../WelcomePage';
 import SignoutButton from './SignoutButton';
 import HomeButton from './HomeButton';
+import GotoProfileButton from './GotoProfileButton';
 
 const Navigation = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
@@ -18,20 +19,32 @@ const Navigation = () => {
         <ProfileButton user={sessionUser} />
         );
     }
-    // console.log('session user ', sessionUser); 
+
     return ( 
         <div className="navigation-full-page">
-                {/* <div className="navigation-home-button">
-                    <button>Home</button>
+
+            <div className="navigation-left-bar">
+                <HomeButton />
+                <div className="magnifiying-glass-div">
+                    <i id="magnify-glass" class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <h1>Hello {sessionUser.firstName} </h1>
-               {sessionLinks}
-               <div className="navigation-home-button">
-                    <button>Signout</button>
-                </div> */}
-                <NavLink to={`/users/${sessionUser.id}`}>Go to Profile</NavLink>
-                <h1>Hello {sessionUser.firstName}, your id is {sessionUser.id}, here is your page</h1>
-                <SignoutButton />
+            </div>
+
+            <div className="navigation-middle-bar">
+                <div className="home-icon-div">
+                    <i class="fa-solid fa-house-user"></i>                
+                </div>
+                
+                <div className="friends-icon-div">
+                    <i class="fa-solid fa-user-group"></i>                
+                </div>
+            </div>
+            
+            <div className="navigation-right-bar">
+                <NavLink to={`/users/${sessionUser.id}`}> <GotoProfileButton /></NavLink>
+                <SignoutButton />                
+            </div>
+            
         </div>
     );
 }
