@@ -7,14 +7,14 @@ class Api::PostsController < ApplicationController
       render 'api/posts/index'
     else
       render json: {errors: @post.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       render :show
-      # render json: {post: @post}
     else
       render json: {errors: @post.errors.full_messages}, status: :unprocessable_entity
     end
