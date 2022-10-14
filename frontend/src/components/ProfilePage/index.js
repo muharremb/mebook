@@ -29,19 +29,15 @@ const ProfilePage = () => {
                         <h1 id="add-bio">Add bio</h1>
                     </div>
                     <div className="add-details">
-                        <h1 id="add-home">Add home</h1>
+                        <h1 id="add-home">Add education</h1>
                     </div>
                     <div className="add-details">
-                        <h1 id="edit-details">Edit details</h1>
+                        <h1 id="edit-details">Add work</h1>
                     </div>
                     <div className="add-details">
                         <h1 id="add-hobbies">Add hobbies</h1>
                     </div>
-                    <div className="add-details">
-                        <h1 id="add-featured">Add featured</h1>
-                    </div>
                 </div>
-
                 <div className="post-side-div">
                     <div className="user-post-side">
                         <i id="user-post-photo" class="fa-solid fa-user"></i>
