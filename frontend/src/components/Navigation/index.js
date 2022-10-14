@@ -28,17 +28,17 @@ const Navigation = () => {
             <div className="navigation-left-bar">
                 <HomeButton />
                 <div className="magnifiying-glass-div">
-                    <i id="magnify-glass" class="fa-solid fa-magnifying-glass"></i>
+                    <i id="magnify-glass" className="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
 
             <div className="navigation-middle-bar">
                 <div className="home-icon-div">
-                    <i class="fa-solid fa-house-user"></i>                
+                    <i className="fa-solid fa-house-user"></i>                
                 </div>
                 
                 <div className="friends-icon-div">
-                    <i class="fa-solid fa-user-group"></i>                
+                    <i className="fa-solid fa-user-group"></i>                
                 </div>
             </div>
             
