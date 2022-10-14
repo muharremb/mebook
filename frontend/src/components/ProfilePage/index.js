@@ -7,16 +7,15 @@ import { fetchUser } from "../../store/users";
 const ProfilePage = () => {
     const {userId} = useParams();
     const dispatch = useDispatch();
-
+    
     const sessionUser = useSelector(state => state.session.currentUserId);
+    const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
+    const userProfile = usersById.byId[userId];
 
     useEffect(() => {
         dispatch(fetchUser(userId));    
     }, [userId, dispatch]);
 
-    const userIdStr = parseInt(userId);
-    const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
-    const userProfile = usersById.byId[userId];
 
 
     if(userProfile) {
