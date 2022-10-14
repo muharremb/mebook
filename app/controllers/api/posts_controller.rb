@@ -33,7 +33,14 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
+
+    if @post
+      @post.update(body: post_params[:body])
+      render 'api/posts/show'
+    else
+      render json: {errors: @post.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def destroy
