@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as sessionActions from '../../store/session';
+import * as userActions from '../../store/users'
 import {Redirect, useHistory} from 'react-router-dom';
 import './LoginFormPage.css';
 import SignupFormModal from '../SignupFormModal';
@@ -36,6 +37,7 @@ const LoginFormPage = () => {
             return null;
         } else setPasswordClientSideCheck(false);
 
+        // As user logs in add user into users slice
             
         return dispatch(sessionActions.login(user))
             .catch(async (res) => {

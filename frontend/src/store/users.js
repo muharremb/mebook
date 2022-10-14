@@ -27,7 +27,7 @@ export const fetchUser = (userId) => async dispatch => {
     const response = await csrfFetch(`/api/users/${userId}`)
     const data = await response.json();
     dispatch(addUser(data));
-    console.log('fetchUser data ', data);
+    // console.log('fetchUser data ', data);
 }
 
 function usersReducer(state={}, action) {
@@ -37,17 +37,16 @@ function usersReducer(state={}, action) {
     const allIds = state["allIds"] ? state["allIds"]:[];
 
     switch(action.type) {
+        
         case ADD_USER:
             const user = action.payload.user;
             // newState[user.id] = user;
             const newbyId = {...byId, [user.id]: user};
-            allIds.push(user.id);
-            console.log('action.payload ', user);
+
+            if(!allIds.includes(user.id)) allIds.push(user.id);
+            
             return {"byId": newbyId, "allIds": allIds}
 
-            // return {
-            //     ["byId"]: { ...newState["byId"], [user.id]: user },
-            // };
         case ADD_USERS: 
             const users = action.payload;
             return {...state, ...users};
