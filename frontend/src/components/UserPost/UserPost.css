@@ -1,0 +1,30 @@
+.user-post-div {
+    display: flex;
+    margin: auto;
+    background-color: white;
+    border-radius: 15px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+}
+
+.user-profile-photo-div {
+    margin: 10px 20px 10px 10px;
+}
+
+.user-post-div > form > input {
+    outline-width: 0;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 99px;
+    background-color: rgb(241, 238, 238);
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.user-post-div > form > button {
+    display: none;
+}
+

@@ -6,10 +6,14 @@ import Navigation from "./components/Navigation";
 import WelcomePage from './components/WelcomePage';
 import LoginFormPage from './components/LoginFormPage';
 import ProfilePage from './components/ProfilePage';
+import NavBar from './components/NavBar';
+import UserPost from './components/UserPost';
 
 function App() {
   return (
     <>
+    {/* //   <NavBar />
+    //   <UserPost /> */}
       <Navigation />
       <Switch>
         <Route exact path="/">
@@ -24,7 +28,7 @@ function App() {
         <Route path="/users/:userId">
           <ProfilePage />
         </Route>
-      </Switch>
+      </Switch> 
     </>
   );
 }

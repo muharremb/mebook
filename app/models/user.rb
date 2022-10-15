@@ -10,6 +10,12 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  gender          :string
+#  bio             :text
+#  education       :text
+#  work            :text
+#  hobbies         :text
+#  birthday        :string
 #
 class User < ApplicationRecord
   has_secure_password

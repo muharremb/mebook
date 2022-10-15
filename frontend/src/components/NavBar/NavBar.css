@@ -1,0 +1,38 @@
+.navbar-header {
+    background-color: white;
+    padding: 15px 20px 15px 20px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    top: 0;
+    margin-bottom: 25px;
+}
+
+.navbar-header-left {
+    width: 25%;
+}
+.navbar-header-middle {
+    display: flex;
+    justify-content: center;
+    width: 25%;
+}
+
+.navbar-header-right {
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-header i {
+    padding: 0px 15px 0px 15px;
+}
+
+.navbar-header i:hover {
+    color: #3b69de;
+    cursor: pointer;
+}
+
