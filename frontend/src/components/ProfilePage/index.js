@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import './ProfilePage.css'
 import { fetchUser } from "../../store/users";
+import { fetchPosts } from "../../store/posts";
 
 const ProfilePage = () => {
     const {userId} = useParams();
@@ -13,7 +14,8 @@ const ProfilePage = () => {
     const userProfile = usersById.byId[userId];
 
     useEffect(() => {
-        dispatch(fetchUser(userId));    
+        dispatch(fetchUser(userId));
+        dispatch(fetchPosts({author_id: userId}));    
     }, [userId, dispatch]);
 
 

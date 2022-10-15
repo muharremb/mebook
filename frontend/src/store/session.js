@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { fetchPosts } from "./posts";
 import { fetchUser } from "./users";
 
 const SET_CURRENT_USER = 'session/setCurrentUser';
@@ -33,6 +34,7 @@ export const login = (user) => async (dispatch) => {
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
     dispatch(fetchUser(data.user.id));
+    dispatch(fetchPosts(data.user.id));
     return response;
 };
 
