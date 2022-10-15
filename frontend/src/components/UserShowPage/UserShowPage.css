@@ -57,7 +57,7 @@
 .user-page-post-form {
     margin-left: 0;
 }
-.user-bio > h1 {
+.user-bio > h1, h2 {
     font-size: 2vw;
     margin: 25px;
     font-weight: bold;

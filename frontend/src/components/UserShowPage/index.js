@@ -50,6 +50,7 @@ const UserShowPage = () => {
                 <div className="user-show-down">
                     <div className="user-bio">
                         <h1>Intro</h1>
+                        <h2>{userProfile.bio}</h2>
                     </div>
     
                     <div className="user-post-section">
@@ -70,6 +71,7 @@ const UserShowPage = () => {
 
                         <div className="user-post-wall">
                             <h1>User Post Index</h1>
+                            <h2>Post1</h2>
                         </div>
                     </div>
     
