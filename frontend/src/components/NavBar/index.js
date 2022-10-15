@@ -1,12 +1,17 @@
+import { useHistory } from 'react-router-dom';
 import './NavBar.css'
 
 const NavBar = () => {
+    const history = useHistory();
+    const goToHome = (e) => {
+        history.push("/")
+    };
+
     return ( 
         <div className="navbar-header">
 
             <div className="navbar-header-left">
-                <i className="fa-solid fa-m fa-2xl"></i>
-                
+                <i className="fa-solid fa-m fa-2xl"></i> 
             </div>
 
             <div className="navbar-header-middle navbar-header-middle-active">

@@ -8,6 +8,7 @@ import LoginFormPage from './components/LoginFormPage';
 import ProfilePage from './components/ProfilePage';
 import NavBar from './components/NavBar';
 import UserPost from './components/UserPost';
+import UserShowPage from './components/UserShowPage';
 
 function App() {
   return (
@@ -16,17 +17,22 @@ function App() {
     //   <UserPost /> */}
       <Navigation />
       <Switch>
-        <Route exact path="/">
-          <WelcomePage />
-        </Route>
+        
         <Route path="/login">
           <LoginFormPage />
         </Route>
+        
         <Route path="/signup">
           <SignupFormPage />
         </Route>
+        
         <Route path="/users/:userId">
-          <ProfilePage />
+          {/* <ProfilePage /> */}
+          <UserShowPage />
+        </Route>
+
+        <Route exact path="/">
+          <WelcomePage />
         </Route>
       </Switch> 
     </>
