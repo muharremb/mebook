@@ -56,6 +56,13 @@ function postsReducer(state={}, action) {
                 if (!allIds.includes(post)) allIds.push(post)
             })
             return {"byId": newbyId, "allIds": allIds}
+        case ADD_POST:
+            const post = action.payload.post;
+            const newById = {...byId, [post.id]: post}
+
+            if(!allIds.includes(post.id)) allIds.push(post.id);
+
+            return {"byId": newById, "allIds": allIds}
         default:
             return state;
     }
