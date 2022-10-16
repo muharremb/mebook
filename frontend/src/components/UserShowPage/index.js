@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchPosts, getUserPosts } from '../../store/posts';
 import { fetchUser } from '../../store/users';
 import NavBar from '../NavBar';
+import EditPostForm from '../posts/EditPostForm/EditPostForm';
 import AddPostForm from '../posts/PostForm/PostForm';
 import PostLists from '../posts/PostLists';
 import UserPost from '../UserPost';
@@ -81,9 +82,7 @@ const UserShowPage = () => {
                             <AddPostForm />
                         </div>
                     </div>
-
                     <div className="user-post-wall">
-                        <h1>User Post Index</h1>
                         <PostLists authorId={userProfile.id}/>
                     </div>
                 </div>

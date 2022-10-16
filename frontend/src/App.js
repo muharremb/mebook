@@ -9,15 +9,15 @@ import ProfilePage from './components/ProfilePage';
 import NavBar from './components/NavBar';
 import UserPost from './components/UserPost';
 import UserShowPage from './components/UserShowPage';
+import FeedsPage from './components/posts/FeedsPage/FeedsPage';
 
 function App() {
   return (
     <>
     {/* //   <NavBar />
     //   <UserPost /> */}
-      <Navigation />
+      {/* <Navigation /> */}
       <Switch>
-        
         <Route path="/login">
           <LoginFormPage />
         </Route>
@@ -35,6 +35,7 @@ function App() {
 
         <Route exact path="/">
           <WelcomePage />
+          <FeedsPage />
         </Route>
       </Switch> 
     </>

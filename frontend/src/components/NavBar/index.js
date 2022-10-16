@@ -1,6 +1,8 @@
 import { useHistory } from 'react-router-dom';
-import {Link} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
+import { useSelector } from 'react-redux';
 import './NavBar.css'
+import SignoutButton from '../Navigation/SignoutButton';
 
 const NavBar = () => {
     const history = useHistory();
@@ -8,24 +10,35 @@ const NavBar = () => {
         history.push("/")
     };
 
+    const sessionUser = useSelector(state => state.session.currentUserId);
+    if(!sessionUser) return null;
+    
+    // console.log('sessionUser.id', sessionUser.id)
     return ( 
         <div className="navbar-header">
 
             <div className="navbar-header-left">
-                <Link to="/"><i className="fa-solid fa-m fa-2xl"></i></Link> 
+                <Link to="/"><i className="fa-solid fa-m fa-xl"></i></Link> 
             </div>
 
             <div className="navbar-header-middle navbar-header-middle-active">
-                <i className="fa-solid fa-house fa-2xl"></i>
-                <i className="fa-solid fa-user-group fa-2xl"></i>
+                <NavLink to="/">
+                    <i className="fa-solid fa-house fa-xl"></i>
+                </NavLink>
+
+                <NavLink to={`/users/${sessionUser.id}`}>
+                    <i className="fa-solid fa-user-group fa-xl"></i>
+                </NavLink>
             </div>
             
             <div className="navbar-header-right">
                 <div>
-                    <i className="fa-sharp fa-solid fa-bell fa-2xl"></i>
+                    <NavLink to={`/users/${sessionUser.id}`}>
+                        <i className="fa-solid fa-user fa-xl"></i>
+                    </NavLink>
                 </div>
                 <div>
-                    <i className="fa-solid fa-user fa-2xl"></i>
+                    <SignoutButton />
                 </div>
             </div>
         </div>

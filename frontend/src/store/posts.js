@@ -81,7 +81,6 @@ function postsReducer(state={}, action) {
 
             return {"byId": newById, "allIds": allIds}
         case UPDATE_POST:
-
             const {id, body, authorId} = action.payload;
             // const existingPost = newState.find(post => post.id === id);
             const existingPost = Object.values(byId).find(post => post.id === id);

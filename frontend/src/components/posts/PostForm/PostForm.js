@@ -11,8 +11,8 @@ const AddPostForm = () => {
     const onSavePostClicked = () => {
         if(content) {
             dispatch(createPost(content));
+            setContent('');
         }
-        setContent('');
     }
     return (
         <section>

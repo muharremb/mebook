@@ -15,9 +15,11 @@ function SignoutButton() {
   };
 
   return (
-      <div className="logout-button-div">
-        <button id="logout-button" onClick={logout}>Log Out</button>
-      </div>
+      // <div className="logout-button-div" onClick={logout}>
+      //   <button id="logout-button" onClick={logout} ></button>
+      // </div>
+      <button id="signout-button" onClick={logout}><i className="fa-solid fa-right-from-bracket fa-2xl"></i></button>
+      // <button onClick={logout}>Log Out</button>
   );
 }
 
