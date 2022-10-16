@@ -4,6 +4,7 @@ import csrfFetch from "./csrf";
 const ADD_POST = 'posts/addPost';
 const ADD_POSTS = 'posts/addPosts';
 const REMOVE_POST = 'posts/removePost';
+const UPDATE_POST = 'posts/updatePost';
 
 const addPost = post => ({
     type: ADD_POST,
@@ -12,6 +13,11 @@ const addPost = post => ({
 
 const removePost = post => ({
     type: REMOVE_POST,
+    payload: post
+})
+
+const updatePost = post => ({
+    type: UPDATE_POST,
     payload: post
 })
 
@@ -30,6 +36,17 @@ export const createPost = (post) => async dispatch => {
     const data = await response.json();
 
     dispatch(addPost(data))
+}
+
+export const editPost = (post) => async dispatch => {
+    const response = await csrfFetch(`/api/posts/${post.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            body: post.body
+        })
+    })
+    const data = await response.json()
+    dispatch(updatePost(data))
 }
 
 export const fetchPosts = filters => async dispatch => {
@@ -63,6 +80,16 @@ function postsReducer(state={}, action) {
             if(!allIds.includes(post.id)) allIds.push(post.id);
 
             return {"byId": newById, "allIds": allIds}
+        case UPDATE_POST:
+
+            const {id, body, authorId} = action.payload;
+            // const existingPost = newState.find(post => post.id === id);
+            const existingPost = Object.values(byId).find(post => post.id === id);
+
+            if(existingPost) {
+                existingPost.body = body;
+            }
+            return newState;
         default:
             return state;
     }
