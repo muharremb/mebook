@@ -63,11 +63,7 @@ function postsReducer(state={}, action) {
 
 export default postsReducer;
 
-// export const getUserPosts = userId => state => (
-//     Object.values(state.posts)
-//     .filter(post => post.userId === userId)
-//     .map(post => ({
-//         ...post,
-//         author: state.users[post.authorId]?.username
-//     }))
-// )
+export const getUserPosts = userId => state => (
+    Object.values(state.posts.byId)
+    .filter(post => post.authorId === userId)
+)

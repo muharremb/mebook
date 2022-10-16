@@ -5,6 +5,7 @@ import { fetchPosts } from '../../store/posts';
 import { fetchUser } from '../../store/users';
 import NavBar from '../NavBar';
 import AddPostForm from '../posts/PostForm/PostForm';
+import PostLists from '../posts/PostLists';
 import UserPost from '../UserPost';
 
 import './UserShowPage.css'
@@ -14,10 +15,10 @@ const UserShowPage = () => {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session.currentUserId);
-    // const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
-    // const userProfile = usersById.byId[userId];
+    const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
+    const userProfile = usersById.byId[userId];
     
-    const userProfile = useSelector(state => state.users.byId ? state.users.byId[userId] : {})
+    // const userProfile = useSelector(state => state.users.byId ? state.users.byId[userId] : {})
     // const userProfile = useSelector(state => state.users.byId.userId);
     // if(!userProfile) {
     //     return (
@@ -26,6 +27,7 @@ const UserShowPage = () => {
     //         </section>
     //     );
     // }
+
     
     useEffect(() => {
         dispatch(fetchUser(userId));
@@ -33,12 +35,6 @@ const UserShowPage = () => {
     }, [userId, dispatch]);
 
     const [post, setPost] = useState('');
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        setPost('')
-    }
     
     if(userProfile) {
 
@@ -83,7 +79,7 @@ const UserShowPage = () => {
 
                         <div className="user-post-wall">
                             <h1>User Post Index</h1>
-                            <h2>Post1</h2>
+                            <PostLists userId={userId}/>
                         </div>
                     </div>
     

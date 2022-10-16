@@ -34,7 +34,7 @@ export const login = (user) => async (dispatch) => {
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
     dispatch(fetchUser(data.user.id));
-    dispatch(fetchPosts(data.user.id));
+    // dispatch(fetchPosts(data.user.id));
     return response;
 };
 

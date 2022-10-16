@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 import './NavBar.css'
 
 const NavBar = () => {
@@ -11,7 +12,7 @@ const NavBar = () => {
         <div className="navbar-header">
 
             <div className="navbar-header-left">
-                <i className="fa-solid fa-m fa-2xl"></i> 
+                <Link to="/"><i className="fa-solid fa-m fa-2xl"></i></Link> 
             </div>
 
             <div className="navbar-header-middle navbar-header-middle-active">

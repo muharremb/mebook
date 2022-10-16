@@ -26,10 +26,12 @@ function App() {
           <SignupFormPage />
         </Route>
         
-        <Route path="/users/:userId">
-          {/* <ProfilePage /> */}
+        {/* <Route path="/users/:userId">
+          <ProfilePage />
           <UserShowPage />
-        </Route>
+        </Route> */}
+
+        <Route exact path="/users/:userId" component={UserShowPage} />
 
         <Route exact path="/">
           <WelcomePage />
