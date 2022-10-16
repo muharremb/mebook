@@ -23,7 +23,9 @@ const addPosts = posts => ({
 export const createPost = (post) => async dispatch => {
     const response = await csrfFetch('/api/posts', {
         method: 'POST',
-        body: JSON.stringify(post)
+        body: JSON.stringify({
+            body: post
+        })
     });
     const data = await response.json();
 

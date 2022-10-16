@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchPosts } from '../../store/posts';
 import { fetchUser } from '../../store/users';
 import NavBar from '../NavBar';
+import AddPostForm from '../posts/PostForm/PostForm';
 import UserPost from '../UserPost';
 
 import './UserShowPage.css'
@@ -13,9 +14,19 @@ const UserShowPage = () => {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session.currentUserId);
-    const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
-    const userProfile = usersById.byId[userId];
-
+    // const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
+    // const userProfile = usersById.byId[userId];
+    
+    const userProfile = useSelector(state => state.users.byId ? state.users.byId[userId] : {})
+    // const userProfile = useSelector(state => state.users.byId.userId);
+    // if(!userProfile) {
+    //     return (
+    //         <section>
+    //             <h1>User not found!</h1>
+    //         </section>
+    //     );
+    // }
+    
     useEffect(() => {
         dispatch(fetchUser(userId));
         dispatch(fetchPosts({author_id: parseInt(userId)}));    
@@ -28,7 +39,7 @@ const UserShowPage = () => {
 
         setPost('')
     }
-
+    
     if(userProfile) {
 
         return (
@@ -56,7 +67,7 @@ const UserShowPage = () => {
                     <div className="user-post-section">
                         <div className="user-page-post-form">
                             <div className="user-post-div">
-                                <i className="fa-regular fa-user fa-xl"></i>
+                                {/* <i className="fa-regular fa-user fa-xl"></i>
                                 <form>
                                     <input type="text"
                                     value = {post}
@@ -65,7 +76,8 @@ const UserShowPage = () => {
                                     placeholder={`What is on your mind?`}/>
 
                                     <button onClick={handleSubmit} type="submit">Hidden</button>
-                                </form>
+                                </form> */}
+                                <AddPostForm />
                             </div>
                         </div>
 
