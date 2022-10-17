@@ -16,8 +16,8 @@ const AddPostForm = (prob) => {
     }
     return (
         <div className='post-form-div'>
-            <img src={prob.imgURL} width="40px" height="40px" /> 
-            <div className="post-form-div">
+            <img src={prob.imgURL} /> 
+            <div className="post-form">
                 <form>
                     <input type="text" 
                     id="postContent" 

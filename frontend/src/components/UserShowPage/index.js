@@ -43,7 +43,7 @@ const UserShowPage = () => {
     if(!sessionUser || !userProfile) {
         return null;
     }
-
+    
     return (
         <>
             <NavBar />
