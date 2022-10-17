@@ -15,12 +15,6 @@
     padding: 25px;
 }
 
-/* .post-form {
-    background-color: rgb(241, 238, 238);
-    border-radius: 99px;
-    margin-left: 10px;
-} */
-
 .post-form > form > input {
     outline-width: 0;
     border: none;
@@ -46,4 +40,9 @@
     font-family: sans-serif;
     border-radius: 7px;
     font-weight: bold;
+    display: none;
+}
+
+#postContent {
+    width: 35vw;
 }
