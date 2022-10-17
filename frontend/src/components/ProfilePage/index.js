@@ -18,8 +18,6 @@ const ProfilePage = () => {
         dispatch(fetchPosts({author_id: userId}));    
     }, [userId, dispatch]);
 
-
-
     if(userProfile) {
     return ( 
         <div className="full-profile-page-container">

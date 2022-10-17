@@ -47,27 +47,26 @@ const UserShowPage = () => {
     return (
         <>
             <NavBar />
-        <div className="user-show">
-            {/* =======USER HEADER=========== */}
-            <div className="user-show-head">
-                <div className="user-profile-photo">
-                    <h1>{userProfile.firstName[0]}.{userProfile.lastName[0]}.</h1>
-                </div>
-                <div className="user-name">
-                    <h1>{userProfile.firstName} {userProfile.lastName}</h1>
-                </div>
-            </div>
-
-            {/* =======USER HEADER END=========== */}
-            {/* =======USER DOWN=========== */}
-            <div className="user-show-down">
-                <div className="user-bio">
-                    <h1>Intro</h1>
-                    <h2>{userProfile.bio}</h2>
+            <div className="user-show">  
+                
+                <img src="https://picsum.photos/seed/picsum/900/400" className='cover-image'/>
+                 
+                <div className="user-show-head">
+                    <div className="user-profile-photo">
+                        <img src={userProfile.photo} height="175px" width="175px"/>
+                    </div>
+                    <div className="user-name">
+                        <h1 id="username">{userProfile.firstName} {userProfile.lastName}</h1>
+                    </div>
                 </div>
 
-                <div className="user-post-section">
-                    <div className="user-page-post-form">
+                <div className="user-show-down">
+                    <div className="user-bio">
+                        <h1>Intro</h1>
+                        <p>{userProfile.bio}</p>
+                    </div>
+
+                    <div className="user-post-section">
                         <div className="user-post-div">
                             {/* <i className="fa-regular fa-user fa-xl"></i>
                             <form>
@@ -79,19 +78,18 @@ const UserShowPage = () => {
 
                                 <button onClick={handleSubmit} type="submit">Hidden</button>
                             </form> */}
-                            <AddPostForm />
+                            <AddPostForm imgURL={userProfile.photo} />
+                        </div>                        
+                        <div className="user-post-wall">
+                            <PostLists authorId={userProfile.id}/>
                         </div>
                     </div>
-                    <div className="user-post-wall">
-                        <PostLists authorId={userProfile.id}/>
-                    </div>
-                </div>
 
-            </div>
+                </div>
 
             {/* =======USER DOWN END=========== */}
 
-        </div>
+            </div>
         </> 
     );
 }

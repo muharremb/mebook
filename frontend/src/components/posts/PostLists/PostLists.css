@@ -1,0 +1,14 @@
+.post-excerpt {
+    background-color: white;
+    margin: 10px;
+    width: 100%;
+    line-height: 2;
+}
+
+.post-box {
+    padding: 25px;
+    background-color: white;
+    margin-top: 17px;
+    margin-left: 10px;
+    border-radius: 7px;
+}

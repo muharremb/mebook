@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createPost } from '../../../store/posts';
 import './PostForm.css';
 
-const AddPostForm = () => {
+const AddPostForm = (prob) => {
     const [content, setContent] = useState('');
     const dispatch = useDispatch();
 
@@ -15,13 +15,19 @@ const AddPostForm = () => {
         }
     }
     return (
-        <section>
-            <h2>Add a New Post</h2>
-            <form>
-                <input type="text" id="postContent" value={content} onChange={onContentChanged} />
-                <button type="button" onClick={onSavePostClicked}>Save Post</button>
-            </form>
-        </section>
+        <div className='post-form-div'>
+            <img src={prob.imgURL} width="40px" height="40px" /> 
+            <div className="post-form-div">
+                <form>
+                    <input type="text" 
+                    id="postContent" 
+                    value={content} 
+                    placeholder="What is on your mind?"
+                    onChange={onContentChanged} />
+                    <button type="button" onClick={onSavePostClicked}>Save</button>
+                </form>
+            </div>
+        </div >
     )
 }
 
