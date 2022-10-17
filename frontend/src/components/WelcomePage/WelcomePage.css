@@ -12,6 +12,10 @@
     width: 300px;
 }
 
+.welcome-message-div > h2 {
+    margin: 0px;
+}
+
 .login-form-div {
     margin-top: 20px;
 }

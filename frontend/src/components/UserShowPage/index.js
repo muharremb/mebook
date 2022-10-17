@@ -58,6 +58,10 @@ const UserShowPage = () => {
                     <div className="user-name">
                         <h1 id="username">{userProfile.firstName} {userProfile.lastName}</h1>
                     </div>
+
+                    {/* <div>
+                        <div className="edit-profile">Edit Profile</div>
+                    </div> */}
                 </div>
 
                 <div className="user-show-down">
@@ -67,28 +71,13 @@ const UserShowPage = () => {
                     </div>
 
                     <div className="user-post-section">
-                        <div className="user-post-div">
-                            {/* <i className="fa-regular fa-user fa-xl"></i>
-                            <form>
-                                <input type="text"
-                                value = {post}
-                                onChange={(e) => setPost(e.target.value)}
-                                className="user-post" 
-                                placeholder={`What is on your mind?`}/>
-
-                                <button onClick={handleSubmit} type="submit">Hidden</button>
-                            </form> */}
-                            <AddPostForm imgURL={userProfile.photo} />
-                        </div>                        
+                        <AddPostForm imgURL={userProfile.photo} />
                         <div className="user-post-wall">
                             <PostLists authorId={userProfile.id}/>
                         </div>
                     </div>
 
                 </div>
-
-            {/* =======USER DOWN END=========== */}
-
             </div>
         </> 
     );

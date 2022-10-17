@@ -26,11 +26,6 @@ function App() {
           <SignupFormPage />
         </Route>
         
-        {/* <Route path="/users/:userId">
-          <ProfilePage />
-          <UserShowPage />
-        </Route> */}
-
         <Route exact path="/users/:userId" component={UserShowPage} />
 
         <Route exact path="/">

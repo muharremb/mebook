@@ -22,7 +22,7 @@ const UserPost = () => {
                 className="user-post" 
                 placeholder={`What is on your mind?`}/>
 
-                <button onClick={handleSubmit} type="submit">Hidden</button>
+                <button onClick={handleSubmit} type="submit"></button>
             </form>
         </div>
      );
