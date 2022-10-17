@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as userActions from '../../../store/users';
+import { Modal } from "../../../context/Modal";
 
 import './EditProfileModal.css';
 
-const EditUserForm = ({userId}) => {
+const EditUserForm = ({userId, setShowModalFnc}) => {
 
     const dispatch = useDispatch();
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
@@ -24,41 +25,69 @@ const EditUserForm = ({userId}) => {
         // setEducation('');
         // setWork('');
         // setHobbies('');
+        setShowModalFnc(false);
     }
     
     return ( 
         <div className="edit-user-form-container">
-            <h1>Edit User Form</h1>
-            <form className="edit-user-form" onSubmit={handleSubmit}>
-                    <input type="text" 
+            <h1>Edit Profile</h1>
+            <hr />
+            <form className="edit-user-form" >
+                    <label htmlFor="bio">Bio</label>
+                    <input type="text"
+                        id="bio"
                         className="user-details"
                         placeholder= "bio"
                         value={bio}
                         onChange={e => setBio(e.target.value)}/>
                 
-                    <input type="text" 
+                    <label htmlFor="education">Education</label>
+                    <input type="text"
+                        id="education"
                         className="user-details"
                         placeholder="education" 
                         value={education}
                         onChange={e => setEducation(e.target.value)}/>
                 
-                    <input type="text" 
+                    <label htmlFor="work">Work</label>
+                    <input type="text"
+                        id="work" 
                         className="user-details" 
                         placeholder="work"
                         value={work}
                         onChange={e => setWork(e.target.value)}/>
-                
-                    <input type="text" 
+                    
+                    <label htmlFor="hobbies">Hobbies</label>
+                    <input type="text"
+                        id="hobbies" 
                         className="user-details"
                         placeholder="hobbies" 
                         value={hobbies}
                         onChange={e => setHobbies(e.target.value)}/>
-                    
-                    <button>Save</button>
+                    <div className="buttons-div">
+                        <button onClick={handleSubmit}>Save</button>
+                        <button onClick={() => setShowModalFnc(false)}>Cancel</button>
+                    </div>
             </form>
         </div>
-
      );
 }
+
+export const EditUserFormModal = ({userId}) => {
+    const [showModal, setShowModal] = useState(false);
+    
+    return (
+        <div className="edit-form-modal-button-div">
+            <button className="edit-form-modal-button" onClick={() => setShowModal(true)}>Edit Profile</button>
+                {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                        <EditUserForm userId={userId} setShowModalFnc={setShowModal}/>
+                    </Modal>
+            )}
+        </div>
+    )
+}
+
+
  
 export default EditUserForm;

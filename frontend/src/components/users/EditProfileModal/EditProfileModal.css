@@ -1,9 +1,57 @@
 .edit-user-form-container {
+    width: 500px;
     display: flex;
     flex-direction: column;
+}
+
+.edit-user-form-container > h1 {
+    font-size: 40px;
+    margin-bottom: 5px;
+    padding: 15px;
 }
 
 .edit-user-form {
     display: flex;
     flex-direction: column;
+}
+
+.edit-user-form > label {
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+.edit-user-form > input {
+    padding: 10px;
+    margin: 15px;
+    font-size: 17px;
+}
+
+.buttons-div {
+    display: flex;
+    margin: 6px;
+
+}
+
+.buttons-div :first-child {
+    padding: 10px;
+    margin: 5px;
+    background-color: #3b69de; /* Green */
+    border: none;
+    color: white;
+    border-radius: 7px;
+    width: 50%;
+    font-weight: bold;
+}
+
+.buttons-div :last-child {
+    padding: 10px;
+    margin: 5px;
+    background-color: lightgray; /* Green */
+    border: none;
+    color: black;
+    border-radius: 7px;
+    width: 50%;
+    font-weight: bold;
 }

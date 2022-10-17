@@ -71,9 +71,12 @@ function usersReducer(state={}, action) {
             return {"byId": newbyId, "allIds": allIds}
 
         case UPDATE_USER:
-            const {id, bio, education, work, hobbies, birthday } = action.payload;
+            const {id, bio, education, work, hobbies, birthday } = action.payload.user;
 
             const existingUser = Object.values(byId).find(user => user.id === id)
+            console.log('existingUser ', existingUser)
+            // console.log('Object.values(byId) ', Object.values(byId))
+            // console.log('action.payload ', action.payload)
             if(existingUser) {
                 existingUser.bio = bio;
                 existingUser.education = education;
