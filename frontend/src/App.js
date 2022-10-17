@@ -14,9 +14,6 @@ import FeedsPage from './components/posts/FeedsPage/FeedsPage';
 function App() {
   return (
     <>
-    {/* //   <NavBar />
-    //   <UserPost /> */}
-      {/* <Navigation /> */}
       <Switch>
         <Route path="/login">
           <LoginFormPage />
@@ -32,6 +29,7 @@ function App() {
           <WelcomePage />
           <FeedsPage />
         </Route>
+        
       </Switch> 
     </>
   );

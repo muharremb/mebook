@@ -7,9 +7,8 @@ import NavBar from '../NavBar';
 import EditPostForm from '../posts/EditPostForm/EditPostForm';
 import AddPostForm from '../posts/PostForm/PostForm';
 import PostLists from '../posts/PostLists';
-import UserPost from '../UserPost';
-
 import './UserShowPage.css'
+import EditUserForm from '../users/EditProfileModal';
 
 const UserShowPage = () => {
     const {userId} = useParams();
@@ -18,21 +17,7 @@ const UserShowPage = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
     const userProfile = usersById.byId[userId];
-    
-    // console.log('userProfile ', userProfile)
-
-    // const posts = useSelector(getUserPosts(userProfile["id"]));
-    // console.log('posts ', posts)
-    // const userProfile = useSelector(state => state.users.byId ? state.users.byId[userId] : {})
-    // const userProfile = useSelector(state => state.users.byId.userId);
-    // if(!userProfile) {
-    //     return (
-    //         <section>
-    //             <h1>User not found!</h1>
-    //         </section>
-    //     );
-    // }
-        
+            
     useEffect(() => {
         dispatch(fetchUser(userId));
         dispatch(fetchPosts({author_id: parseInt(userId)}));    
@@ -59,15 +44,17 @@ const UserShowPage = () => {
                         <h1 id="username">{userProfile.firstName} {userProfile.lastName}</h1>
                     </div>
 
-                    {/* <div>
-                        <div className="edit-profile">Edit Profile</div>
-                    </div> */}
+                    <EditUserForm userId={userProfile.id}/>
                 </div>
 
                 <div className="user-show-down">
                     <div className="user-bio">
                         <h1>Intro</h1>
                         <p>{userProfile.bio}</p>
+                        {userProfile.education ? <p>{userProfile.education}</p> : <p>Add education</p>}
+                        {userProfile.work ? <p>{userProfile.work}</p> : <p>Add work</p>}
+                        {userProfile.hobbies ? <p>{userProfile.hobbies}</p> : <p>Add hobbies</p>}
+                        
                     </div>
 
                     <div className="user-post-section">

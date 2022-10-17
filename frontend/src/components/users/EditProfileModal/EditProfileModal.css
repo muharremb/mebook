@@ -1,0 +1,9 @@
+.edit-user-form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-user-form {
+    display: flex;
+    flex-direction: column;
+}
