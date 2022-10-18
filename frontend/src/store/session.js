@@ -72,7 +72,8 @@ export const restoreSession = () => async (dispatch) => {
     // console.log('restore session data.user ', data.user);
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
-    dispatch(fetchPosts(data.user.id));
+    dispatch(fetchPosts({author_id: data.user.id}));
+    // console.log('data.user.id ', data.user.id)
     dispatch(fetchUser(data.user.id));
 
     return response;
