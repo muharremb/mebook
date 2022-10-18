@@ -19,7 +19,6 @@ const FeedsPage = () => {
     }, [userId, dispatch]);
 
     if(!sessionUser || !userId) return null;
-    console.log('sessionUser ', userProfile)
     
     return ( 
         <>

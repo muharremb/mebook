@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+# require 'open-uri'
 
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
@@ -24,6 +25,7 @@ ApplicationRecord.transaction do
       password: 'password'
     )
 
+    # file = URI.open('app/assets/image/istanbul.jpg')
     file = File.open('app/assets/image/istanbul.jpg')
     user.photo.attach(io: file, filename: 'istanbul.jpg')
 

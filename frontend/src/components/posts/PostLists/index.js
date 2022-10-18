@@ -11,6 +11,7 @@ const PostLists = ({authorId}) => {
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
     const userProfile = usersById.byId[authorId];
 
+    
     if(!posts) {
         return (
             <p>User has no posts</p>
