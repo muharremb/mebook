@@ -2,12 +2,24 @@ import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NavBar from '../../NavBar';
 import PostLists from '../PostLists';
+import { fetchUser } from '../../../store/users';
+import { fetchPosts } from '../../../store/posts';
 import './FeedsPage.css'
 
 const FeedsPage = () => {
-    const sessionUser = useSelector(state => state.session.currentUserId);
+    const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.currentUserId ? state.session.currentUserId : {currentUserId: {}} );
+    const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
+    const userProfile = usersById.byId[sessionUser.id];
+    const userId = sessionUser ? sessionUser.id : 0;
 
-    if(!sessionUser) return null;
+    useEffect(() => {
+        dispatch(fetchUser(userId));
+        dispatch(fetchPosts({author_id: userId}));    
+    }, [userId, dispatch]);
+
+    if(!sessionUser || !userId) return null;
+    console.log('sessionUser ', userProfile)
     
     return ( 
         <>
