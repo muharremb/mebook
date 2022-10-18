@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { getUserPosts } from '../../../store/posts';
+import { TimeAgo } from '../TimeAgo';
 import './PostLists.css';
 
 const PostLists = ({authorId}) => {
@@ -20,7 +21,10 @@ const PostLists = ({authorId}) => {
         <div className="post-box" key={post.id}>
             <div className="profile-pic-name">
                 <img src={userProfile.photo}/>
-                <p>{userProfile.firstName} {userProfile.lastName}</p>
+                <div className="username-timeago">
+                    <p>{userProfile.firstName} {userProfile.lastName}</p>
+                    <TimeAgo timestamp={post.updatedAt} />
+                </div>
             </div>
             <p className="post-content">{post.body}</p>
         </div>

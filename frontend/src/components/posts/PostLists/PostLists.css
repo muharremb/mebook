@@ -22,11 +22,15 @@
     display: flex;
 }
 
-.profile-pic-name > p {
+.profile-pic-name p {
     padding: 5px;
     font-size: 15px;
     font-weight: bold;
-    
+}
+
+.profile-pic-name i {
+    font-size: 12px;
+    padding: 5px;
 }
 
 .profile-pic-name > img {
