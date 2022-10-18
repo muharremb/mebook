@@ -12,11 +12,12 @@ const FeedsPage = () => {
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
     const userProfile = usersById.byId[sessionUser.id];
     const userId = sessionUser ? sessionUser.id : 0;
-
+    console.log('in feedspage')
+    
     useEffect(() => {
         dispatch(fetchUser(userId));
         dispatch(fetchPosts({author_id: userId}));    
-    }, [userId, dispatch]);
+    }, []);
 
     if(!sessionUser) return null;
     

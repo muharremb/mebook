@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getUserPosts } from '../../../store/posts';
 import { TimeAgo } from '../TimeAgo';
@@ -10,9 +10,11 @@ const PostLists = ({authorId}) => {
     
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
     const userProfile = usersById.byId[authorId];
+    
+    console.log('In postList PostLists', userProfile)
 
     
-    if(!posts) {
+    if(!posts || !userProfile) {
         return (
             <p>User has no posts</p>
         )

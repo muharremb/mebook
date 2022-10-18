@@ -33,12 +33,11 @@ export const login = (user) => async (dispatch) => {
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
     dispatch(fetchUser(data.user.id));
-    dispatch(fetchPosts({author_id: data.user.id}));
+    dispatch(fetchPosts({author_id: data.user.id}))
     return response;
 };
 
 export const signup = (user) => async (dispatch) => {
-    // console.log("user: ", user);
     const response = await csrfFetch("/api/users", {
         method: "POST",
         body: JSON.stringify({
@@ -68,13 +67,8 @@ export const restoreSession = () => async (dispatch) => {
     const response = await csrfFetch('/api/session');
     storeCSRFToken(response);
     const data = await response.json();
-    // console.log('restore session data.user ', data.user);
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
-    // dispatch(fetchPosts({author_id: data.user.id}));
-    // console.log('data.user.id ', data.user.id)
-    // dispatch(fetchUser(data.user.id));
-
     return response;
 }
 
