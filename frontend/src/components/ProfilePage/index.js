@@ -31,7 +31,6 @@ const ProfilePage = () => {
                     {/* <h1 id="first-last-name">First Name + Last Name</h1> */}
                     <h1>userProfile: {userProfile.firstName} {userProfile.lastName}</h1>
                 </div>
-
             </div>
             <div className="user-friend-request-button">
                 <h1 id="friend-request-button">Edit Profile</h1>

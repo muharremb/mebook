@@ -19,7 +19,6 @@ export const removeCurrentUser = () => {
 }
 
 // thunk action creator
-
 export const login = (user) => async (dispatch) => {
     const {email, password} = user;
 
@@ -34,7 +33,7 @@ export const login = (user) => async (dispatch) => {
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
     dispatch(fetchUser(data.user.id));
-    dispatch(fetchPosts(data.user.id));
+    dispatch(fetchPosts({author_id: data.user.id}));
     return response;
 };
 
@@ -72,9 +71,9 @@ export const restoreSession = () => async (dispatch) => {
     // console.log('restore session data.user ', data.user);
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
-    dispatch(fetchPosts({author_id: data.user.id}));
+    // dispatch(fetchPosts({author_id: data.user.id}));
     // console.log('data.user.id ', data.user.id)
-    dispatch(fetchUser(data.user.id));
+    // dispatch(fetchUser(data.user.id));
 
     return response;
 }

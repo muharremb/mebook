@@ -69,8 +69,8 @@ const SignupForm = () => {
             </div>
 
             <input className='user-items' type="text"  value={email} placeholder={"Email".toString()} onChange={(e) => setEmail(e.target.value)} />
-            <input className='user-items' type="text"  value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} />
-            <input className='user-items' type="text"  value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} />
+            <input className='user-items' type="password"  value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} />
+            <input className='user-items' type="password"  value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} />
             
             <div className="titles">
               <p>Birthday</p>

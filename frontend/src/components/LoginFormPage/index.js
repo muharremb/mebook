@@ -101,7 +101,7 @@ const LoginFormPage = () => {
                 {errors[0] && (
                     <div className="error-messages">{`Invalid credentials.`}</div>
                 )}
-                <input type="text" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} 
+                <input type="password" placeholder={"Password".toString()} value={password} onChange={(e) => setPassword(e.target.value)} 
                     id={(passwordClientSideCheck) ? "error-div":"credentials" }
                 />
                 {(passwordClientSideCheck) && (

@@ -4,11 +4,9 @@ import NavBar from '../../NavBar';
 import PostLists from '../PostLists';
 import './FeedsPage.css'
 
-
-
 const FeedsPage = () => {
-    
     const sessionUser = useSelector(state => state.session.currentUserId);
+
     if(!sessionUser) return null;
     
     return ( 
