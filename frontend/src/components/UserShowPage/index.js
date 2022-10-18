@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchPosts, getUserPosts } from '../../store/posts';
+import { fetchPosts } from '../../store/posts';
 import { fetchUser } from '../../store/users';
 import NavBar from '../NavBar';
-import EditPostForm from '../posts/EditPostForm/EditPostForm';
 import AddPostForm from '../posts/PostForm/PostForm';
 import PostLists from '../posts/PostLists';
 import './UserShowPage.css'
-import EditUserForm, { EditUserFormModal } from '../users/EditProfileModal';
+import { EditUserFormModal } from '../users/EditProfileModal';
 
 const UserShowPage = () => {
     const {userId} = useParams();
@@ -18,7 +17,6 @@ const UserShowPage = () => {
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
     const userProfile = usersById.byId[userId];
     
-    console.log('userProfile details ', userProfile);
     useEffect(() => {
         dispatch(fetchUser(userId));
         dispatch(fetchPosts({author_id: parseInt(userId)}));    

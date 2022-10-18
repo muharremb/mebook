@@ -1,6 +1,5 @@
-.post-excerpt {
-    background-color: white;
-    margin: 10px;
+.post-content {
+    margin: 5px;
     width: 100%;
     line-height: 2;
 }
@@ -11,4 +10,28 @@
     margin-top: 17px;
     margin-left: 10px;
     border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
+
+.post-box > p {
+    margin-top: 13px;
+}
+.profile-pic-name {
+    display: flex;
+}
+
+.profile-pic-name > p {
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    
+}
+
+.profile-pic-name > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+

@@ -1,0 +1,9 @@
+.feeds-page-container {
+    display: flex;
+
+}
+
+.feeds-middle {
+    width: 50%;
+    margin: auto;
+}

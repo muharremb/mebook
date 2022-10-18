@@ -13,7 +13,6 @@ const NavBar = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
     if(!sessionUser) return null;
     
-    // console.log('sessionUser.id', sessionUser.id)
     return ( 
         <div className="navbar-header">
 
