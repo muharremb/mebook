@@ -19,7 +19,6 @@ const EditUserForm = ({userId, setShowModalFnc}) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        // console.log({userId, bio, education, work, hobbies});
         dispatch(userActions.editUser({userId, bio, education, work, hobbies}));
         // setBio('');
         // setEducation('');
@@ -34,7 +33,7 @@ const EditUserForm = ({userId, setShowModalFnc}) => {
             <hr />
             <form className="edit-user-form" >
                     <label htmlFor="bio">Bio</label>
-                    <input type="text"
+                    <input 
                         id="bio"
                         className="user-details"
                         placeholder= "bio"

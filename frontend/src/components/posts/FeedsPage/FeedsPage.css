@@ -1,9 +1,33 @@
 .feeds-page-container {
     display: flex;
-
 }
 
 .feeds-middle {
     width: 50%;
     margin: auto;
+    margin-top: 15px;
+}
+
+.user-pic-name > button {
+    size: 100%;
+    border-radius: 10px;
+}
+
+.post-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-form > button {
+    width: 450px;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    font-size: 20px;
+    font-family: sans-serif;
+    color: rgb(170, 167, 167);
+    cursor: pointer;
+    margin-left: 0px;
+    text-align: start;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getUserPosts } from '../../../store/posts';
+import AddPostForm from '../PostForm/PostForm';
 import { TimeAgo } from '../TimeAgo';
 import './PostLists.css';
 
@@ -11,7 +12,7 @@ const PostLists = ({authorId}) => {
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
     const userProfile = usersById.byId[authorId];
     
-    console.log('In postList PostLists', userProfile)
+    // console.log('In postList PostLists', userProfile)
 
     
     if(!posts || !userProfile) {
@@ -34,7 +35,7 @@ const PostLists = ({authorId}) => {
     ))
 
     return (
-        <>
+        <>  
             {renderedPosts}
         </>
     )
