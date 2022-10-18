@@ -18,7 +18,7 @@ const FeedsPage = () => {
         dispatch(fetchPosts({author_id: userId}));    
     }, [userId, dispatch]);
 
-    if(!sessionUser || !userId) return null;
+    if(!sessionUser) return null;
     
     return ( 
         <>
