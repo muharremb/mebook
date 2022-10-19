@@ -16,8 +16,10 @@ const FeedsPage = () => {
     const userId = sessionUser ? sessionUser.id : 0;
     
     useEffect(() => {
-        dispatch(fetchUser(userId));
-        dispatch(fetchPosts({author_id: userId}));    
+        if(userId) {
+            dispatch(fetchUser(userId));
+            dispatch(fetchPosts({author_id: userId}));    
+        }
     }, []);
 
     const [showModal, setShowModal] = useState(false)
