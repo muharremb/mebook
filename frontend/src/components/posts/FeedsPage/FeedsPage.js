@@ -23,7 +23,6 @@ const FeedsPage = () => {
     const [showModal, setShowModal] = useState(false)
 
     if(!sessionUser || !userProfile) return null;
-    // console.log('setModal ', showModal)
     return ( 
         <>
             <NavBar />

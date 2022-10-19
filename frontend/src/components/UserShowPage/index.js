@@ -8,10 +8,14 @@ import AddPostForm from '../posts/PostForm/PostForm';
 import PostLists from '../posts/PostLists';
 import './UserShowPage.css'
 import { EditUserFormModal } from '../users/EditProfileModal';
+import { Modal } from '../../context/Modal';
+import { PostModal } from '../posts/PostForm/PostForm';
 
 const UserShowPage = () => {
     const {userId} = useParams();
     const dispatch = useDispatch();
+
+    const [showModal, setShowModal] = useState(false)
     
     const sessionUser = useSelector(state => state.session.currentUserId);
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
@@ -67,7 +71,19 @@ const UserShowPage = () => {
                     </div>
 
                     <div className="user-post-section">
-                        <AddPostForm imgURL={userProfile.photo} />
+                        <div className="post-form-div">
+                            <div className="post-form" onClick={() => setShowModal(true)}>
+                                <div className="user-pic-name">
+                                    <img src={userProfile.photo} width="50px" height="50px" />
+                                </div>                       
+                        <button id="new-post-input">What is on your mind?</button>
+                    </div>
+                            {showModal && (
+                                <Modal onClose={() => setShowModal(false)} >
+                                    <PostModal userProfile={userProfile} setShowModalFnc={setShowModal} />
+                                </Modal>
+                            )}
+                        </div>
                         <div className="user-post-wall">
                             <PostLists authorId={userProfile.id}/>
                         </div>
