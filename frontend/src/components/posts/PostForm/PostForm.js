@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Modal } from '../../../context/Modal';
 import { createPost } from '../../../store/posts';
 import './PostForm.css';
+import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
+
 
 const AddPostForm = (prob) => {
     const [content, setContent] = useState('');
@@ -61,7 +63,7 @@ export const PostModal = (prob) => {
             <h1>Create a post</h1>
             <hr />
             <div className="user-pic-name">
-                <img src={prob.userProfile.photo} width="50px" height="50px" />
+                <img src={prob.userProfile.photo || defaultProfilePhoto} width="50px" height="50px" />
                 <h2>{prob.userProfile.firstName} {prob.userProfile.lastName}</h2>
             </div>
             

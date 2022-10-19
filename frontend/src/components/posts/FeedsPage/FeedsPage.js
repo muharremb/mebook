@@ -8,6 +8,8 @@ import { fetchPosts } from '../../../store/posts';
 import './FeedsPage.css'
 import { PostModal } from '../PostForm/PostForm';
 import { Modal } from '../../../context/Modal';
+import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
+
 
 const FeedsPage = () => {
     const dispatch = useDispatch();
@@ -33,7 +35,7 @@ const FeedsPage = () => {
                 <div className='feeds-left'>
                     <NavLink to={`/users/${sessionUser.id}`} >
                     <div className="photo-firstname-lastname">
-                        <img src={userProfile.photo} width="50px" height="50px" alt=''/>
+                        <img src={userProfile.photo || defaultProfilePhoto} width="50px" height="50px" alt=''/>
                         <h1>{userProfile.firstName} {userProfile.lastName}</h1>
                         <a href=""></a>
                     </div>
@@ -53,7 +55,7 @@ const FeedsPage = () => {
                     <div className="post-form-div">
                         <div className="post-form" onClick={() => setShowModal(true)}>
                             <div className="user-pic-name">
-                                <img src={userProfile.photo} width="50px" height="50px" />
+                                <img src={userProfile.photo || defaultProfilePhoto} width="50px" height="50px" />
                             </div>                       
                             <button id="new-post-input">What is on your mind, {userProfile.firstName}?</button>
                         </div>

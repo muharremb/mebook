@@ -4,6 +4,7 @@ import { getUserPosts } from '../../../store/posts';
 import AddPostForm from '../PostForm/PostForm';
 import { TimeAgo } from '../TimeAgo';
 import './PostLists.css';
+import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
 
 const PostLists = ({authorId}) => {
     const posts = useSelector(state => state.posts.byId ? state.posts : {byId: {}})
@@ -24,7 +25,7 @@ const PostLists = ({authorId}) => {
     const renderedPosts = userPosts.map(post => (
         <div className="post-box" key={post.id}>
             <div className="profile-pic-name">
-                <img src={userProfile.photo}/>
+                <img src={userProfile.photo || defaultProfilePhoto}/>
                 <div className="username-timeago">
                     <p>{userProfile.firstName} {userProfile.lastName}</p>
                     <TimeAgo timestamp={post.updatedAt} />

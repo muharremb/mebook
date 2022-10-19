@@ -10,6 +10,8 @@ import './UserShowPage.css'
 import { EditUserFormModal } from '../users/EditProfileModal';
 import { Modal } from '../../context/Modal';
 import { PostModal } from '../posts/PostForm/PostForm';
+import defaultProfilePhoto from '../../assets/defaultProfileImage.png';
+
 
 const UserShowPage = () => {
     const {userId} = useParams();
@@ -43,7 +45,7 @@ const UserShowPage = () => {
                     <div className="user-left-head">
 
                         <div className="user-profile-photo">
-                            <img src={userProfile.photo} height="175px" width="175px"/>
+                            <img src={userProfile.photo || defaultProfilePhoto} height="175px" width="175px"/>
                         </div>
                         <div className="user-name">
                             <h1 id="username">{userProfile.firstName} {userProfile.lastName}</h1>
@@ -67,8 +69,7 @@ const UserShowPage = () => {
                         <h2>Work</h2>
                         {userProfile.work ? <p>{userProfile.work}</p> : <p>Add work</p>}
                         <h2>Hobbies</h2>
-                        {userProfile.hobbies ? <p>{userProfile.hobbies}</p> : <p>Add hobbies</p>}
-                        
+                        {userProfile.hobbies ? <p>{userProfile.hobbies}</p> : <p>Add hobbies</p>}    
                     </div>
 
                     <div className="user-post-section">
