@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NavBar from '../../NavBar';
+import { NavLink } from 'react-router-dom';
 import PostLists from '../PostLists';
 import { fetchUser } from '../../../store/users';
 import { fetchPosts } from '../../../store/posts';
@@ -30,11 +31,13 @@ const FeedsPage = () => {
             <NavBar />
             <div className="feeds-page-container">
                 <div className='feeds-left'>
+                    <NavLink to={`/users/${sessionUser.id}`} >
                     <div className="photo-firstname-lastname">
                         <img src={userProfile.photo} width="50px" height="50px" alt=''/>
                         <h1>{userProfile.firstName} {userProfile.lastName}</h1>
                         <a href=""></a>
                     </div>
+                    </NavLink>
                     <div className="linkedin">
                         <i className="fa-brands fa-linkedin fa-2xl"></i>
                         <h1>Linkedin</h1>

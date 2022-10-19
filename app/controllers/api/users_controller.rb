@@ -18,7 +18,7 @@ class Api::UsersController < ApplicationController
       gender: gender
     )
 
-    if @user.save!
+    if @user.save
       login!(@user)
       render :show
       # render json: {user: @user}
