@@ -24,6 +24,7 @@
     cursor: pointer;
 }
 
+
 .linkedin {
     display: flex;
     align-items: center;
@@ -53,7 +54,11 @@
     background-color: rgb(237, 234, 234);
 }
 
-.github > h1 {
+.github > a:visited {
+    color: inherit;
+}
+
+.github > a > h1 {
     font-size: 17px;
     padding-left: 13px;
 }

@@ -29,16 +29,19 @@ const FeedsPage = () => {
             <div className="feeds-page-container">
                 <div className='feeds-left'>
                     <div className="photo-firstname-lastname">
-                        <img src={userProfile.photo} width="50px" height="50px" />
+                        <img src={userProfile.photo} width="50px" height="50px" alt=''/>
                         <h1>{userProfile.firstName} {userProfile.lastName}</h1>
+                        <a href=""></a>
                     </div>
                     <div className="linkedin">
-                        <i class="fa-brands fa-linkedin fa-2xl"></i>
+                        <i className="fa-brands fa-linkedin fa-2xl"></i>
                         <h1>Linkedin</h1>
                     </div>
                     <div className="github">
-                    <i class="fa-brands fa-github fa-2xl"></i>
-                        <h1>Github</h1>
+                        <i className="fa-brands fa-github fa-2xl"></i>
+                        <a href="https://github.com/muharremb" target="_blank">
+                            <h1>Github</h1>
+                        </a>
                     </div>
                 </div>
                 <div className="feeds-middle">
