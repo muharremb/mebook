@@ -1,11 +1,84 @@
 .feeds-page-container {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.feeds-left {
+    width: 24%;
+    margin-top: 10px;
+    padding: 7px;
+}
+
+.feeds-left img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.photo-firstname-lastname {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.linkedin {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.linkedin:hover {
+    background-color: rgb(237, 234, 234);
+}
+
+.linkedin > h1 {
+    font-size: 17px;
+    padding-left: 17px;
+}
+
+.github {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.github:hover {
+    background-color: rgb(237, 234, 234);
+}
+
+.github > h1 {
+    font-size: 17px;
+    padding-left: 13px;
+}
+
+
+.photo-firstname-lastname:hover {
+    background-color: rgb(237, 234, 234);
+
+}
+
+.photo-firstname-lastname > h1 {
+    font-size: 17px;
+    padding-left: 10px;
 }
 
 .feeds-middle {
     width: 50%;
-    margin: auto;
+    /* margin: auto; */
     margin-top: 15px;
+}
+
+.feeds-right{
+    width: 24%;
+    margin-top: 15px;
+    margin-left: 7px;
 }
 
 .user-pic-name > button {

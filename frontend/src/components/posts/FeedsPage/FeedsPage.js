@@ -26,14 +26,28 @@ const FeedsPage = () => {
     return ( 
         <>
             <NavBar />
-            <div className="feeds-page-contaier">
+            <div className="feeds-page-container">
+                <div className='feeds-left'>
+                    <div className="photo-firstname-lastname">
+                        <img src={userProfile.photo} width="50px" height="50px" />
+                        <h1>{userProfile.firstName} {userProfile.lastName}</h1>
+                    </div>
+                    <div className="linkedin">
+                        <i class="fa-brands fa-linkedin fa-2xl"></i>
+                        <h1>Linkedin</h1>
+                    </div>
+                    <div className="github">
+                    <i class="fa-brands fa-github fa-2xl"></i>
+                        <h1>Github</h1>
+                    </div>
+                </div>
                 <div className="feeds-middle">
                     <div className="post-form-div">
                         <div className="post-form" onClick={() => setShowModal(true)}>
                             <div className="user-pic-name">
                                 <img src={userProfile.photo} width="50px" height="50px" />
                             </div>                       
-                            <button id="new-post-input">What is on your mind?</button>
+                            <button id="new-post-input">What is on your mind, {userProfile.firstName}?</button>
                         </div>
                     </div>
                     {showModal && (
@@ -43,6 +57,7 @@ const FeedsPage = () => {
                     )}
                     <PostLists authorId={sessionUser.id} />
                 </div>
+                <div className='feeds-right'></div>
             </div>
         </>
      );

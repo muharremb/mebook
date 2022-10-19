@@ -60,7 +60,8 @@ const UserShowPage = () => {
                         <h1>Intro</h1>
 
                         <h2>Bio</h2>
-                        <p>{userProfile.bio}</p>
+                        {userProfile.bio ? <p>{userProfile.bio}</p> : <p>Add bio</p>}
+
                         <h2>Education</h2>
                         {userProfile.education ? <p>{userProfile.education}</p> : <p>Add education</p>}
                         <h2>Work</h2>
