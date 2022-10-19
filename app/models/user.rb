@@ -19,13 +19,19 @@
 #
 class User < ApplicationRecord
   has_secure_password
-  validates :first_name, 
-    length: {in: 2..30}, 
-    format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+  # validates :first_name, 
+  #   length: {in: 2..30}, 
+  #   format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+  
+    validates :first_name, 
+    length: {in: 2..30}
       
+  # validates :last_name, 
+  #   length: {in: 2..30}, 
+  #   format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+
   validates :last_name, 
-    length: {in: 2..30}, 
-    format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+    length: {in: 2..30} 
 
   validates :email, 
     uniqueness: true, 

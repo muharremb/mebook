@@ -11,6 +11,7 @@ import { EditUserFormModal } from '../users/EditProfileModal';
 import { Modal } from '../../context/Modal';
 import { PostModal } from '../posts/PostForm/PostForm';
 import defaultProfilePhoto from '../../assets/defaultProfileImage.png';
+import defaultCoverImage from '../../assets/grayBackground.jpg';
 
 
 const UserShowPage = () => {
@@ -34,12 +35,21 @@ const UserShowPage = () => {
         return null;
     }
     
+    // let imageSource = "https://picsum.photos/seed/picsum/900/400";
+    const imageSource = defaultCoverImage;
+
+    if(userProfile.id === 1) {
+        const imageSource = "https://picsum.photos/seed/picsum/900/400";
+    } 
+
+    console.log('userProfile.id ', userProfile.id === 1)
+
     return (
         <>
             <NavBar />
             <div className="user-show">  
                 
-                <img src="https://picsum.photos/seed/picsum/900/400" className='cover-image'/>
+                <img src={imageSource} className='cover-image'/>
                  
                 <div className="user-show-head">
                     <div className="user-left-head">
