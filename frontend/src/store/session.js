@@ -14,7 +14,7 @@ export const setCurrentUser = (user) => {
 
 export const removeCurrentUser = () => {
     return {
-        type: REMOVE_CURRENT_USER,
+        type: REMOVE_CURRENT_USER
     }
 }
 
