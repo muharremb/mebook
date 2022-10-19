@@ -5,7 +5,6 @@ import { createPost } from '../../../store/posts';
 import './PostForm.css';
 import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
 
-
 const AddPostForm = (prob) => {
     const [content, setContent] = useState('');
     const dispatch = useDispatch();
@@ -62,7 +61,7 @@ export const PostModal = (prob) => {
         <div className="post-modal-div">
             <h1>Create a post</h1>
             <hr />
-            <div className="user-pic-name">
+            <div className="user-pic-name-modal">
                 <img src={prob.userProfile.photo || defaultProfilePhoto} width="50px" height="50px" />
                 <h2>{prob.userProfile.firstName} {prob.userProfile.lastName}</h2>
             </div>

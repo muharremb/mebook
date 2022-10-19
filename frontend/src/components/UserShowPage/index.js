@@ -12,6 +12,7 @@ import { Modal } from '../../context/Modal';
 import { PostModal } from '../posts/PostForm/PostForm';
 import defaultProfilePhoto from '../../assets/defaultProfileImage.png';
 import defaultCoverImage from '../../assets/grayBackground.jpg';
+import demoCoverImage from '../../assets/demoCoverImage.jpeg';
 
 
 const UserShowPage = () => {
@@ -36,20 +37,18 @@ const UserShowPage = () => {
     }
     
     // let imageSource = "https://picsum.photos/seed/picsum/900/400";
-    const imageSource = defaultCoverImage;
+    let imageSource = defaultCoverImage;
 
     if(userProfile.id === 1) {
-        const imageSource = "https://picsum.photos/seed/picsum/900/400";
+        let imageSource = demoCoverImage;
     } 
-
-    console.log('userProfile.id ', userProfile.id === 1)
 
     return (
         <>
             <NavBar />
             <div className="user-show">  
                 
-                <img src={imageSource} className='cover-image'/>
+                <img src={userProfile.id === 1 ? demoCoverImage:defaultCoverImage} className='cover-image'/>
                  
                 <div className="user-show-head">
                     <div className="user-left-head">
@@ -61,9 +60,10 @@ const UserShowPage = () => {
                             <h1 id="username">{userProfile.firstName} {userProfile.lastName}</h1>
                         </div>
                     </div>
-
                         <div className='edit-user-form-modal-div'>
-                            <EditUserFormModal userId={userProfile.id}/>
+                            {sessionUser.id === userProfile.id && (
+                                <EditUserFormModal userId={userProfile.id}/>
+                            )}
                         </div>
                 </div>
 
@@ -86,7 +86,7 @@ const UserShowPage = () => {
                         <div className="post-form-div">
                             <div className="post-form" onClick={() => setShowModal(true)}>
                                 <div className="user-pic-name">
-                                    <img src={userProfile.photo} width="50px" height="50px" />
+                                    <img src={userProfile.photo || defaultProfilePhoto} width="50px" height="50px" />
                                 </div>                       
                         <button id="new-post-input">What is on your mind?</button>
                     </div>
