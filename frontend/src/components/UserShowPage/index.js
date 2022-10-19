@@ -36,7 +36,6 @@ const UserShowPage = () => {
         return null;
     }
     
-    // let imageSource = "https://picsum.photos/seed/picsum/900/400";
     let imageSource = defaultCoverImage;
 
     if(userProfile.id === 1) {
