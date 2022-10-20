@@ -17,9 +17,9 @@ There are three main slices in the Redux store; session, users and posts. For us
 ![Mebook SliceState](app/assets/images/MebookSliceState.png)
 
 ## Modal Components
-There are many modals in Facebook platform. In Mebook, modals are used for open sign up, create post and edit post functions. The modals implemented using Portals(to render children into a node that outside of the hierarchy of the parent component) and useContext hook(to access the main modal through all components). 
+There are many modals in Facebook platform. In Mebook, modals are used for sign up, create a post and edit a post functions. The modals implemented using Portals(to render children into a node that outside of the hierarchy of the parent component) and useContext hook(to access the main modal through all components). 
 
-This approach enables to convert forms/divs into modal as wrapping target component with main modal component. 
+This approach enables to convert forms/divs into modal by wrapping target component with main modal component. 
 
 ```javascript
 export const EditPostModal = ({onClose, postId, userProfile}) => {
@@ -41,7 +41,7 @@ export const EditPostModal = ({onClose, postId, userProfile}) => {
 - User Feeds Page. When user logs in, directed to feeds page. User can post here by clicking "What is on your mind, 'UserFirstName'?" button. Create a post window is designed as a modal.
 
 ## User Profile Page
-- User Profile Page. User can access to profile page by clicking profile icon in the feeds page. The profile page has a cover image, profile photo, user info and user post sections.
+- User Profile Page. User can access to profile page by clicking profile icon in the feeds page. The profile page has a cover image, profile photo, user info and user post sections. When user clicks on three dots in the post section, it opens a dropdown list that user can either edit or delete the post. The edit post button opens up a new modal on the screen. 
 
 ![Mebook User Profile](app/assets/images/MebookUserProfilePage.png)
 
@@ -49,4 +49,3 @@ Edit Profile button opens a new modal for user to edit intro section.
 
 ![Mebook Edit Profile](app/assets/images/MebookEditProfileButton.png)
 
-When user clicks on three dots in the post section, it opens a dropdown list that user can either edit or delete the post. The edit post button opens up a new modal on the screen. 
