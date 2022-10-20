@@ -13,11 +13,14 @@ const EditDropDownButton = ({post}) => {
         if(!showMenu) return;
         
         const closeMenu = (e) => {
-            console.log('closeMenu e ', e.target);
+            // console.log('closeMenu e ', e.target);
+            // setShowMenu(false);
 
             if(e.target.id !== "editPostModalDiv" && e.target.id !== "postContent") {
                 setShowModal(false);
+                setShowMenu(false);
             }
+
         };
 
         document.addEventListener('click', closeMenu);
