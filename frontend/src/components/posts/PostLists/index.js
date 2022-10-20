@@ -50,7 +50,7 @@ const PostLists = ({authorId}) => {
                 </div>
             </div>
             <div className="edit-post-button-div">
-                {<EditDropDownButton post={post}/>}
+                {<EditDropDownButton post={post} userProfile={userProfile}/>}
             </div>
             </div>
             <p className="post-content">{post.body}</p>

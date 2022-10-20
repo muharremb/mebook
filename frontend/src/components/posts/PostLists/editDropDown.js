@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import * as postActions from "../../../store/posts";
 import EditPostForm, { EditPostModal } from "../EditPostForm/EditPostForm";
 
-const EditDropDownButton = ({post}) => {
+const EditDropDownButton = ({post, userProfile}) => {
     const dispatch = useDispatch();
 
     const [showMenu, setShowMenu] = useState(false);
@@ -49,7 +49,7 @@ const EditDropDownButton = ({post}) => {
                     <div onClick={handleDeletePost} className="delete-post-div">Move to trash</div>
                     <div onClick={openEditPostModal} id="editPostModalDiv" className="edit-post-div">Edit a Post
                         {showModal && (
-                                <EditPostModal onClose={() => setShowModal(false)} postId={post.id}/>
+                                <EditPostModal onClose={() => setShowModal(false)} postId={post.id} userProfile={userProfile}/>
                             )}
                     </div>
                 </div>
