@@ -99,10 +99,8 @@ function postsReducer(state={}, action) {
             const postId = action.payload;
             
             delete byId.postId;
-            // const newByIds = {}
             const {[postId]: _remove, ...newByIds} = byId 
             const newAllIds = allIds.filter(item => item !== postId.toString());
-            // console.log('newAllIds vs allIds', newAllIds, allIds);
             
             return {"byId": newByIds, "allIds": newAllIds}
 

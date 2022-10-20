@@ -37,7 +37,6 @@ const FeedsPage = () => {
                     <div className="photo-firstname-lastname">
                         <img src={userProfile.photo || defaultProfilePhoto} width="50px" height="50px" alt=''/>
                         <h1>{userProfile.firstName} {userProfile.lastName}</h1>
-                        <a href=""></a>
                     </div>
                     </NavLink>
                     <div className="linkedin">
