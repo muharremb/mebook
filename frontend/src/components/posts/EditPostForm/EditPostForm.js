@@ -5,7 +5,6 @@ import { editPost } from '../../../store/posts';
 import { Modal } from '../../../context/Modal';
 import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
 
-
 const EditPostForm = ({postId, onClose, userProfile}) => {
     const posts = useSelector(state => state.posts.byId ? state.posts : {byId: {}});
     const post = Object.values(posts.byId).find(post => post.id === postId);
@@ -30,12 +29,10 @@ const EditPostForm = ({postId, onClose, userProfile}) => {
         <div className="post-modal-div">
             <h1>Edit Post</h1>
             <hr />
-
             <div className="user-pic-name-modal">
                 <img src={userProfile.photo || defaultProfilePhoto} width="50px" height="50px" />
                 <h2>{userProfile.firstName} {userProfile.lastName}</h2>
             </div>
-
             <div className="textarea-div">
                 <textarea id="postContent" value={content} onChange={onContentChanged} name="post-text" placeholder='What is on your mind?'></textarea>
             </div>
@@ -43,16 +40,6 @@ const EditPostForm = ({postId, onClose, userProfile}) => {
             <div className="post-button-div">
                 <button onClick={onSavePostClicked}>Post</button>
             </div>
-
-            {/* <form>
-                <input type="text" 
-                id="postContent" 
-                value={content} 
-                onChange={onContentChanged}
-                placeholder="whats on your mind" />
-                
-                <button type="button" id="save-post-button" onClick={onSavePostClicked}>Save Post</button>
-            </form> */}
         </div>
     )
 }
