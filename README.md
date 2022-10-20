@@ -48,4 +48,3 @@ export const EditPostModal = ({onClose, postId, userProfile}) => {
 Edit Profile button opens a new modal for user to edit intro section. 
 
 ![Mebook Edit Profile](app/assets/images/MebookEditProfileButton.png)
-
