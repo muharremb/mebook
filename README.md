@@ -37,13 +37,8 @@ export const EditPostModal = ({onClose, postId, userProfile}) => {
 ## Login Page
 ![Mebook Login Page](app/assets/images/MebookLoginPage.png)
 
-## Signup Page
-![Mebook Signup Page](app/assets/images/MebookSignupPage.png)
-
 ## User Feeds Page
 - User Feeds Page. When user logs in, directed to feeds page. User can post here by clicking "What is on your mind, 'UserFirstName'?" button. Create a post window is designed as a modal.
-
-![Mebook Create Post](app/assets/images/MebookFeedsPagePost.png)
 
 ## User Profile Page
 - User Profile Page. User can access to profile page by clicking profile icon in the feeds page. The profile page has a cover image, profile photo, user info and user post sections.
