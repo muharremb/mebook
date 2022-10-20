@@ -63,12 +63,24 @@
 
 .delete-post-div {
     background-color: white;
-    margin: 10px;
+    /* margin: 10px; */
     padding: 10px;
+}
+
+.delete-post-div:hover {
+    background-color: lightgray;
 }
 
 .edit-post-div {
     background-color: white;
-    margin: 10px;
+    /* margin: 10px; */
     padding: 10px;
+}
+
+.edit-post-div:hover {
+    background-color: lightgray;
+}
+
+.edit-post-dropdown-items {
+    background-color: white;
 }
