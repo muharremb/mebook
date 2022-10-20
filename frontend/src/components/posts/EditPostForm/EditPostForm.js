@@ -7,7 +7,7 @@ import { Modal } from '../../../context/Modal';
 const EditPostForm = ({postId, onClose}) => {
     const posts = useSelector(state => state.posts.byId ? state.posts : {byId: {}});
     const post = Object.values(posts.byId).find(post => post.id === postId);
-    
+
     const [content, setContent] = useState(post.body);
 
     const dispatch = useDispatch();
@@ -22,7 +22,9 @@ const EditPostForm = ({postId, onClose}) => {
             dispatch(editPost(post));
         }
     }
+
     if (!post) return null;
+    
     return (
         <div className="post-modal-div">
             <h1>Edit Post</h1>
