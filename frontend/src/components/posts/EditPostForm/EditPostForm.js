@@ -16,7 +16,6 @@ const EditPostForm = ({postId, onClose}) => {
     const onContentChanged = e => setContent(e.target.value);
 
     const onSavePostClicked = () => {
-        console.log('post ', post);
         if(content) {
             post.body = content;
             dispatch(editPost(post));
