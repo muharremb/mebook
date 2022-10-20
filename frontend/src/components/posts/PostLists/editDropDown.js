@@ -46,12 +46,12 @@ const EditDropDownButton = ({post, userProfile}) => {
             <i className="fa-solid fa-ellipsis fa-xl" id="three-dots"></i>
             {showMenu && (
                 <div className="edit-post-dropdown-items" id="myDropdown">
-                    <div onClick={handleDeletePost} className="delete-post-div">Move to trash</div>
                     <div onClick={openEditPostModal} id="editPostModalDiv" className="edit-post-div">Edit a Post
                         {showModal && (
-                                <EditPostModal onClose={() => setShowModal(false)} postId={post.id} userProfile={userProfile}/>
+                            <EditPostModal onClose={() => setShowModal(false)} postId={post.id} userProfile={userProfile}/>
                             )}
                     </div>
+                    <div onClick={handleDeletePost} className="delete-post-div">Move to trash</div>
                 </div>
             )}
         </div>
