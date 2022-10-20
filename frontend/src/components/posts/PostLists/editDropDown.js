@@ -47,9 +47,9 @@ const EditDropDownButton = ({post}) => {
             {showMenu && (
                 <div className="edit-post-dropdown-items" id="myDropdown">
                     <div onClick={handleDeletePost} className="delete-post-div">Move to trash</div>
-                    <div onClick={openEditPostModal} id="editPostModalDiv" className="edit-post-div">Edit Post
+                    <div onClick={openEditPostModal} id="editPostModalDiv" className="edit-post-div">Edit a Post
                         {showModal && (
-                                <EditPostModal onClose={() => setShowModal(false)} postId={post.id} />
+                                <EditPostModal onClose={() => setShowModal(false)} postId={post.id}/>
                             )}
                     </div>
                 </div>

@@ -53,10 +53,12 @@
 
 .edit-pots-dropdown-items {
     position: relative;
+    cursor: pointer;
 }
 
 .edit-form-dropdown {
     position: absolute;
+    cursor: pointer;
 }
 
 .delete-post-div {

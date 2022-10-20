@@ -21,13 +21,22 @@ const EditPostForm = ({postId, onClose}) => {
             post.body = content;
             dispatch(editPost(post));
         }
-
     }
     if (!post) return null;
     return (
-        <section>
-            <h2>Edit Post</h2>
-            <form>
+        <div className="post-modal-div">
+            <h1>Edit Post</h1>
+            <hr />
+
+            <div className="textarea-div">
+                <textarea id="postContent" value={content} onChange={onContentChanged} name="post-text" placeholder='What is on your mind?'></textarea>
+            </div>
+
+            <div className="post-button-div">
+                <button onClick={onSavePostClicked}>Post</button>
+            </div>
+
+            {/* <form>
                 <input type="text" 
                 id="postContent" 
                 value={content} 
@@ -35,8 +44,8 @@ const EditPostForm = ({postId, onClose}) => {
                 placeholder="whats on your mind" />
                 
                 <button type="button" id="save-post-button" onClick={onSavePostClicked}>Save Post</button>
-            </form>
-        </section>
+            </form> */}
+        </div>
     )
 }
 
