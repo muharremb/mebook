@@ -46,6 +46,15 @@
     padding-left: 17px;
 }
 
+.linkedin > a:visited {
+    color: inherit;
+}
+
+.linkedin > a > h1 {
+    font-size: 17px;
+    padding-left: 13px;
+}
+
 .github {
     display: flex;
     align-items: center;

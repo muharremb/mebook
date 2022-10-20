@@ -39,15 +39,19 @@ const PostLists = ({authorId}) => {
 
     const renderedPosts = userPosts.map(post => (
         <div className="post-box" key={post.id}>
+            <div className="head-post-form">
+
             <div className="profile-pic-name">
+                
                 <img src={userProfile.photo || defaultProfilePhoto}/>
                 <div className="username-timeago">
                     <p>{userProfile.firstName} {userProfile.lastName}</p>
                     <TimeAgo timestamp={post.updatedAt} />
                 </div>
-                <div className="edit-post-button-div">
-                    {<EditDropDownButton post={post}/>}
-                </div>
+            </div>
+            <div className="edit-post-button-div">
+                {<EditDropDownButton post={post}/>}
+            </div>
             </div>
             <p className="post-content">{post.body}</p>
         </div>

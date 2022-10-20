@@ -39,3 +39,34 @@
     border-radius: 50%;
 }
 
+.edit-post-button-div {
+    display: flex;
+    justify-content: center;
+}
+
+
+.head-post-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.edit-pots-dropdown-items {
+    position: relative;
+}
+
+.edit-form-dropdown {
+    position: absolute;
+}
+
+.delete-post-div {
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+}
+
+.edit-post-div {
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+}

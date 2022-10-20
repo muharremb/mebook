@@ -41,7 +41,9 @@ const FeedsPage = () => {
                     </NavLink>
                     <div className="linkedin">
                         <i className="fa-brands fa-linkedin fa-2xl"></i>
-                        <h1>Linkedin</h1>
+                        <a href="https://www.linkedin.com/in/muharremboztepe/" target="_blank">
+                            <h1>Linkedin</h1>
+                        </a>
                     </div>
                     <div className="github">
                         <i className="fa-brands fa-github fa-2xl"></i>
