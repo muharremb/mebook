@@ -44,6 +44,7 @@ class User < ApplicationRecord
   before_validation :ensure_session_token
   has_many :posts, foreign_key: :author_id, dependent: :destroy, inverse_of: :author
   has_one_attached :photo
+  has_one_attached :cover_image
 
   def self.find_by_credentials(email, password)
 

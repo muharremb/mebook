@@ -41,13 +41,14 @@ const UserShowPage = () => {
     if(userProfile.id === 1) {
         let imageSource = demoCoverImage;
     } 
+    // console.log(userProfile.coverImage);
 
     return (
         <>
             <NavBar />
             <div className="user-show">  
                 
-                <img src={userProfile.id === 1 ? demoCoverImage:defaultCoverImage} className='cover-image'/>
+                <img src={userProfile.coverImage ? userProfile.coverImage : defaultCoverImage} className='cover-image'/>
                  
                 <div className="user-show-head">
                     <div className="user-left-head">
