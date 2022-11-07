@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchPosts } from '../../store/posts';
-import { fetchUser } from '../../store/users';
+import { fetchUser, uploadPhoto } from '../../store/users';
 import NavBar from '../NavBar';
 import AddPostForm from '../posts/PostForm/PostForm';
 import PostLists from '../posts/PostLists';
@@ -13,13 +13,15 @@ import { PostModal } from '../posts/PostForm/PostForm';
 import defaultProfilePhoto from '../../assets/defaultProfileImage.png';
 import defaultCoverImage from '../../assets/grayBackground.jpg';
 import demoCoverImage from '../../assets/demoCoverImage.jpeg';
+import csrfFetch from '../../store/csrf';
 
 
 const UserShowPage = () => {
     const {userId} = useParams();
     const dispatch = useDispatch();
 
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false);
+    const [profilePhoto, setProfilePhoto] = useState(null);
     
     const sessionUser = useSelector(state => state.session.currentUserId);
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
@@ -40,14 +42,33 @@ const UserShowPage = () => {
 
     if(userProfile.id === 1) {
         let imageSource = demoCoverImage;
-    } 
-    // console.log(userProfile.coverImage);
+    }
+
+    const handleUpload = async e => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        
+        if(profilePhoto) {
+            formData.append('user[photo]', profilePhoto);
+        }
+        const res = await csrfFetch(`/api/users/${userProfile.id}`, {
+            method: 'PUT',
+            body: formData
+        });
+        dispatch(fetchUser(userProfile.id));
+    }
+    const handleFile = e => {
+        const file = e.currentTarget.files[0];
+        setProfilePhoto(file);
+        // setProfilePhoto(file);
+        // console.log('in handle file ', profilePhoto);
+    }
 
     return (
         <>
             <NavBar />
             <div className="user-show">  
-                
                 <img src={userProfile.coverImage ? userProfile.coverImage : defaultCoverImage} className='cover-image'/>
                  
                 <div className="user-show-head">
@@ -55,6 +76,10 @@ const UserShowPage = () => {
 
                         <div className="user-profile-photo">
                             <img src={userProfile.photo || defaultProfilePhoto} height="175px" width="175px"/>
+                            <form onSubmit={handleUpload}>
+                                <input type="file" onChange={handleFile} />
+                                <button>upload</button>
+                            </form>
                         </div>
                         <div className="user-name">
                             <h1 id="username">{userProfile.firstName} {userProfile.lastName}</h1>

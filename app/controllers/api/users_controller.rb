@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   
-  wrap_parameters include: User.attribute_names + ['password']
+  wrap_parameters include: User.attribute_names + ['password'] + ['photo']
   before_action :require_logged_out, only: [:create]
 
   def create
@@ -37,16 +37,20 @@ class Api::UsersController < ApplicationController
   def update
     @user = current_user
     
-    if @user.update(user_params)
-      render 'api/users/getUser'
+    if params.has_key?(:photo)
+      @user.photo.attach(params[:photo])
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      if @user.update(user_params)
+        render 'api/users/getUser'
+      else
+        render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      end
     end
   end
   
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :bio, :education, :work, :hobbies, :birthday)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :bio, :education, :work, :hobbies, :birthday, :photo)
   end
 end

@@ -52,6 +52,15 @@ export const editUser = (user) => async dispatch => {
     dispatch(updateUser(data));
 }
 
+export const uploadPhoto = (user, formData) => async dispatch => {
+    const response = await csrfFetch(`/api/users/${user.id}`, {
+        method: 'PUT',
+        body: formData
+    });
+    const data = response.json();
+    console.log('uploadPhoto res ', data);
+}
+
 function usersReducer(state={}, action) {
     const newState = {...state};
     
