@@ -28,8 +28,11 @@ class Api::UsersController < ApplicationController
   end
 
   def show 
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.includes(:sent_requests, :received_requests).find(params[:id])
     
+    @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
+    @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
     # render json: {user: @user}
     render 'api/users/getUser'
   end

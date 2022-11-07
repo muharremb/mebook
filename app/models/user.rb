@@ -46,6 +46,16 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_one_attached :cover_image
 
+  has_many :sent_requests,
+    foreign_key: :request_sender_id,
+    inverse_of: :request_sender,
+    class_name: :Friendship
+
+  has_many :received_requests,
+    foreign_key: :request_receiver_id,
+    inverse_of: :request_receiver,
+    class_name: :Friendship
+
   def self.find_by_credentials(email, password)
 
     user = User.find_by(email: email)
