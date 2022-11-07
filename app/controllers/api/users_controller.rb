@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   
-  wrap_parameters include: User.attribute_names + ['password'] + ['photo']
+  wrap_parameters include: User.attribute_names + ['password'] + ['photo'] + ['friending']
   before_action :require_logged_out, only: [:create]
 
   def create
@@ -42,6 +42,19 @@ class Api::UsersController < ApplicationController
     
     if params.has_key?(:photo)
       @user.photo.attach(params[:photo])
+    
+    elsif params.has_key?(:friending)
+      # sender, receive
+      friendship = Friendship.new(
+        request_sender_id: @user.id,
+        request_receiver_id: user_params["friending"]
+      )
+      # need to check for error
+      friendship.save
+      @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
+      @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
+      render 'api/users/getUser'
+
     else
       if @user.update(user_params)
         render 'api/users/getUser'
@@ -54,6 +67,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :bio, :education, :work, :hobbies, :birthday, :photo)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :bio, :education, :work, :hobbies, :birthday, :photo, :friending)
   end
 end

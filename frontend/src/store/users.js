@@ -52,6 +52,18 @@ export const editUser = (user) => async dispatch => {
     dispatch(updateUser(data));
 }
 
+export const sendFriendRequest = (userId) => async dispatch => {
+    const response = await csrfFetch(`/api/users/${userId}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            friending: userId
+        })
+    })
+    const data = await response.json()
+    console.log('sendFriendRequest data ', data)
+    dispatch(updateUser(data));
+}
+
 export const uploadPhoto = (user, formData) => async dispatch => {
     const response = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PUT',
@@ -82,7 +94,7 @@ function usersReducer(state={}, action) {
             const {id, bio, education, work, hobbies, birthday } = action.payload.user;
 
             const existingUser = Object.values(byId).find(user => user.id === id)
-            console.log('existingUser ', existingUser)
+            // console.log('existingUser ', existingUser)
             // console.log('Object.values(byId) ', Object.values(byId))
             // console.log('action.payload ', action.payload)
             if(existingUser) {

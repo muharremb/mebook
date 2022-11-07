@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchPosts } from '../../store/posts';
-import { fetchUser, uploadPhoto } from '../../store/users';
+import { fetchUser, uploadPhoto, sendFriendRequest } from '../../store/users';
 import NavBar from '../NavBar';
 import AddPostForm from '../posts/PostForm/PostForm';
 import PostLists from '../posts/PostLists';
@@ -65,6 +65,14 @@ const UserShowPage = () => {
         // console.log('in handle file ', profilePhoto);
     }
 
+    const handleFriendRequest = e => {
+        dispatch(sendFriendRequest(userId));
+    }
+    const friending = 
+    <>
+        <h2>Request sent</h2>
+    </>
+
     return (
         <>
             <NavBar />
@@ -86,9 +94,11 @@ const UserShowPage = () => {
                         </div>
                     </div>
                         <div className='edit-user-form-modal-div'>
-                            {sessionUser.id === userProfile.id && (
+                            {sessionUser.id === userProfile.id ? 
+                            (
                                 <EditUserFormModal userId={userProfile.id}/>
-                            )}
+                            ): (<button onClick={handleFriendRequest}>Friend Request</button>)}
+                            {friending}
                         </div>
                 </div>
 
