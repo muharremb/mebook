@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   
-  wrap_parameters include: User.attribute_names + ['password'] + ['photo'] + ['friending'] + ['accepting']
+  wrap_parameters include: User.attribute_names + ['password'] + ['photo'] + ['friending'] + ['accepting'] + ['cancelling']
   before_action :require_logged_out, only: [:create]
 
   def create
@@ -51,7 +51,7 @@ class Api::UsersController < ApplicationController
           request_sender_id: @user.id,
           request_receiver_id: user_params["friending"]
         )      
-        friendship.save
+        created_friendship.save
         @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
         @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
         render 'api/users/getUser'
@@ -61,6 +61,17 @@ class Api::UsersController < ApplicationController
       requested_friendship = Friendship.find_by(request_sender_id: user_params[:accepting], request_receiver_id: @user.id)
       if requested_friendship
         requested_friendship.update(confirmed: true)
+        @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
+        @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
+        render 'api/users/getUser'
+      end
+    elsif params.has_key?(:cancelling)
+      cancelled_friendship = Friendship.find_by(
+        request_sender_id: @user.id,
+        request_receiver_id: user_params[:cancelling]
+      )
+      if cancelled_friendship
+        cancelled_friendship.destroy
         @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
         @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
         render 'api/users/getUser'
@@ -77,6 +88,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :bio, :education, :work, :hobbies, :birthday, :photo, :friending, :accepting)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :bio, :education, :work, :hobbies, :birthday, :photo, :friending, :accepting, :cancelling)
   end
 end

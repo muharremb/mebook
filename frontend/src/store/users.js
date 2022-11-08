@@ -72,6 +72,17 @@ export const acceptFriendRequest = (userId) => async dispatch => {
     dispatch(updateUser(data))
 }
 
+export const cancelFriendRequest = (userId) => async dispatch => {
+    const response = await csrfFetch(`/api/users/${userId}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            cancelling: userId
+        })
+    })
+    const data = await response.json()
+    dispatch(updateUser(data));
+}
+
 export const uploadPhoto = (user, formData) => async dispatch => {
     const response = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PUT',
@@ -91,20 +102,24 @@ function usersReducer(state={}, action) {
     
     const byId = state["byId"] ? {...state["byId"]}:{};
     const allIds = state["allIds"] ? state["allIds"]:[];
+    let user;
+    let newbyId;
 
     switch(action.type) {
         
         case ADD_USER:
-            const user = action.payload.user;
-            const newbyId = {...byId, [user.id]: user};
+            user = action.payload.user;
+            newbyId = {...byId, [user.id]: user};
 
             if(!allIds.includes(user.id)) allIds.push(user.id);
             
             return {"byId": newbyId, "allIds": allIds}
         
         case ADD_USERS:
-            
-
+            let userArr = action.payload
+            // console.log('addusers action.payload ', userArr);
+            return state
+    
         case UPDATE_USER:
             const {id, bio, education, work, hobbies, birthday } = action.payload.user;
 

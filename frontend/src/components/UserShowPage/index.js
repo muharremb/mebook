@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchPosts } from '../../store/posts';
-import { fetchUser, uploadPhoto, sendFriendRequest } from '../../store/users';
+import { fetchUser, uploadPhoto, sendFriendRequest, fetchUsers, cancelFriendRequest } from '../../store/users';
 import NavBar from '../NavBar';
 import AddPostForm from '../posts/PostForm/PostForm';
 import PostLists from '../posts/PostLists';
@@ -22,20 +22,22 @@ const UserShowPage = () => {
 
     const [showModal, setShowModal] = useState(false);
     const [profilePhoto, setProfilePhoto] = useState(null);
+    const [friendStatus, setFriendStatus] = useState(null);
     
     const sessionUser = useSelector(state => state.session.currentUserId);
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
     const userProfile = usersById.byId[userId];
+    const sessionUserProfile = useSelector(state => state.users.byId ? state.users.byId[sessionUser.id] : {byId: {}})
     
     useEffect(() => {
         dispatch(fetchUser(userId));
         dispatch(fetchUser(sessionUser.id));
-        dispatch(fetchPosts({author_id: parseInt(userId)}));    
-    }, [userId, dispatch]);
+        dispatch(fetchPosts({author_id: parseInt(userId)}));
+    }, [userId, friendStatus, dispatch]);
 
     const [post, setPost] = useState('');
     
-    if(!sessionUser || !userProfile) {
+    if(!sessionUser || !userProfile || !sessionUserProfile) {
         return null;
     }
     
@@ -62,18 +64,20 @@ const UserShowPage = () => {
     const handleFile = e => {
         const file = e.currentTarget.files[0];
         setProfilePhoto(file);
-        // setProfilePhoto(file);
-        // console.log('in handle file ', profilePhoto);
     }
 
     const handleFriendRequest = e => {
         dispatch(sendFriendRequest(userId));
+        // window.location.reload(false);
+        setFriendStatus('pending');
     }
-    const friending = 
-    <>
-        <h2>Request sent</h2>
-    </>
 
+    const handleCancelRequest = e => {
+        dispatch(cancelFriendRequest(userId));
+        setFriendStatus('notFriend');
+        console.log('cancelRequest ');
+    }
+    
     return (
         <>
             <NavBar />
@@ -95,11 +99,22 @@ const UserShowPage = () => {
                         </div>
                     </div>
                         <div className='edit-user-form-modal-div'>
-                            {sessionUser.id === userProfile.id ? 
+                            {sessionUser.id === userProfile.id && 
                             (
                                 <EditUserFormModal userId={userProfile.id}/>
-                            ): (<button onClick={handleFriendRequest}>Friend Request</button>)}
-                            {friending}
+                            )}
+                        </div>
+                        <div className="friending">
+                            {sessionUserProfile.pendings.includes(parseInt(userId)) && (
+                                <button onClick={handleCancelRequest}>Pending</button>
+                            )}
+                            {sessionUserProfile.friends.includes(parseInt(userId)) && (
+                                <button>Friends</button>
+                            )}
+                            {sessionUser.id !== userProfile.id && !sessionUserProfile.friends.includes(parseInt(userId)) && !sessionUserProfile.pendings.includes(parseInt(userId)) &&
+                            (
+                                <button onClick={handleFriendRequest}>Add Friend</button>
+                            )}
                         </div>
                 </div>
 

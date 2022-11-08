@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import NavBar from '../../NavBar';
 import { NavLink } from 'react-router-dom';
 import PostLists from '../PostLists';
-import { fetchUser } from '../../../store/users';
+import { fetchUser, fetchUsers } from '../../../store/users';
 import { fetchPosts } from '../../../store/posts';
 import './FeedsPage.css'
 import { PostModal } from '../PostForm/PostForm';
@@ -17,10 +17,12 @@ const FeedsPage = () => {
     const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
     const userProfile = usersById.byId[sessionUser.id];
     const userId = sessionUser ? sessionUser.id : 0;
+    // console.log('FeedPage userProfile.friends ',userProfile.friends);
     
     useEffect(() => {
         if(userId) {
             dispatch(fetchUser(userId));
+            // dispatch(fetchUsers(userProfile.friends))
             dispatch(fetchPosts({author_id: userId}));    
         }
     }, []);
