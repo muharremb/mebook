@@ -13,18 +13,11 @@ import FeedsPage from './components/posts/FeedsPage/FeedsPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { fetchUser } from './store/users';
+import { addSessionUser, fetchUser, getCurrentUser } from './store/users';
 
 function App() {
-  const sessionUserId = useSelector(state => state.session.currentUserId.id);
-  const dispatch = useDispatch();
-
-  const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
-    dispatch(fetchUser(sessionUserId)).then(() => setLoaded(true));
-  }, [dispatch])
-
-  return loaded && (
+  
+  return (
     <>
       <Switch>
         <Route path="/login">

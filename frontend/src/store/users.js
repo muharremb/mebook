@@ -25,10 +25,8 @@ export const updateUser = (user) => {
     }
 }
 
-export const fetchUsers = () => async dispatch => {
-    const response = await csrfFetch('/api/users');
-    const data = await response.json();
-    dispatch(addUsers(data));
+export const fetchUsers = (userList) => async dispatch => {
+    dispatch(addUsers(userList));
 }
 
 export const fetchUser = (userId) => async dispatch => {
@@ -60,8 +58,18 @@ export const sendFriendRequest = (userId) => async dispatch => {
         })
     })
     const data = await response.json()
-    console.log('sendFriendRequest data ', data)
     dispatch(updateUser(data));
+}
+
+export const acceptFriendRequest = (userId) => async dispatch => {
+    const response = await csrfFetch(`/api/users/${userId}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            accepting: userId
+        })
+    })
+    const data = await response.json()
+    dispatch(updateUser(data))
 }
 
 export const uploadPhoto = (user, formData) => async dispatch => {
@@ -70,7 +78,12 @@ export const uploadPhoto = (user, formData) => async dispatch => {
         body: formData
     });
     const data = response.json();
-    console.log('uploadPhoto res ', data);
+}
+
+export const addSessionUser = () => async dispatch => {
+    const res = await csrfFetch('/api/session');
+    const data = await res.json();
+    return dispatch(fetchUser(data.user.id))
 }
 
 function usersReducer(state={}, action) {
@@ -83,12 +96,14 @@ function usersReducer(state={}, action) {
         
         case ADD_USER:
             const user = action.payload.user;
-            // newState[user.id] = user;
             const newbyId = {...byId, [user.id]: user};
 
             if(!allIds.includes(user.id)) allIds.push(user.id);
             
             return {"byId": newbyId, "allIds": allIds}
+        
+        case ADD_USERS:
+            
 
         case UPDATE_USER:
             const {id, bio, education, work, hobbies, birthday } = action.payload.user;

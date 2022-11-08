@@ -29,6 +29,7 @@ const UserShowPage = () => {
     
     useEffect(() => {
         dispatch(fetchUser(userId));
+        dispatch(fetchUser(sessionUser.id));
         dispatch(fetchPosts({author_id: parseInt(userId)}));    
     }, [userId, dispatch]);
 

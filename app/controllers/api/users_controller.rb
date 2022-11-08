@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   
-  wrap_parameters include: User.attribute_names + ['password'] + ['photo'] + ['friending']
+  wrap_parameters include: User.attribute_names + ['password'] + ['photo'] + ['friending'] + ['accepting']
   before_action :require_logged_out, only: [:create]
 
   def create
@@ -28,33 +28,43 @@ class Api::UsersController < ApplicationController
   end
 
   def show 
-    # @user = User.find(params[:id])
     @user = User.includes(:sent_requests, :received_requests).find(params[:id])
     
     @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
     @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
-    # render json: {user: @user}
+    
     render 'api/users/getUser'
   end
 
   def update
-    @user = current_user
+    # @user = current_user
+    # TODO not sure update has @user
+    @user = User.includes(:sent_requests, :received_requests).find(current_user.id)
     
     if params.has_key?(:photo)
       @user.photo.attach(params[:photo])
     
     elsif params.has_key?(:friending)
-      # sender, receive
-      friendship = Friendship.new(
-        request_sender_id: @user.id,
-        request_receiver_id: user_params["friending"]
-      )
-      # need to check for error
-      friendship.save
-      @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
-      @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
-      render 'api/users/getUser'
-
+      friendship = Friendship.find_by(request_receiver_id: user_params[:friending], request_sender_id: @user.id)
+      if !friendship
+        created_friendship = Friendship.new(
+          request_sender_id: @user.id,
+          request_receiver_id: user_params["friending"]
+        )      
+        friendship.save
+        @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
+        @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
+        render 'api/users/getUser'
+      end
+    
+    elsif params.has_key?(:accepting)
+      requested_friendship = Friendship.find_by(request_sender_id: user_params[:accepting], request_receiver_id: @user.id)
+      if requested_friendship
+        requested_friendship.update(confirmed: true)
+        @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
+        @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
+        render 'api/users/getUser'
+      end
     else
       if @user.update(user_params)
         render 'api/users/getUser'
@@ -67,6 +77,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :bio, :education, :work, :hobbies, :birthday, :photo, :friending)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :bio, :education, :work, :hobbies, :birthday, :photo, :friending, :accepting)
   end
 end
