@@ -68,14 +68,12 @@ const UserShowPage = () => {
 
     const handleFriendRequest = e => {
         dispatch(sendFriendRequest(userId));
-        // window.location.reload(false);
         setFriendStatus('pending');
     }
 
     const handleCancelRequest = e => {
         dispatch(cancelFriendRequest(userId));
         setFriendStatus('notFriend');
-        console.log('cancelRequest ');
     }
     
     return (
@@ -105,13 +103,16 @@ const UserShowPage = () => {
                             )}
                         </div>
                         <div className="friending">
-                            {sessionUserProfile.pendings.includes(parseInt(userId)) && (
-                                <button onClick={handleCancelRequest}>Pending</button>
+                            {sessionUserProfile.senders.includes(parseInt(userId)) && (
+                                <button onClick={handleCancelRequest}>Cancel Request</button>
                             )}
                             {sessionUserProfile.friends.includes(parseInt(userId)) && (
                                 <button>Friends</button>
                             )}
-                            {sessionUser.id !== userProfile.id && !sessionUserProfile.friends.includes(parseInt(userId)) && !sessionUserProfile.pendings.includes(parseInt(userId)) &&
+                            {sessionUser.id !== userProfile.id && 
+                                !sessionUserProfile.friends.includes(parseInt(userId)) && 
+                                !sessionUserProfile.receivers.includes(parseInt(userId)) &&
+                                !sessionUserProfile.senders.includes(parseInt(userId)) &&
                             (
                                 <button onClick={handleFriendRequest}>Add Friend</button>
                             )}

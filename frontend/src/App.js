@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { addSessionUser, fetchUser, getCurrentUser } from './store/users';
+import Friends from './components/Friends';
 
 function App() {
   
@@ -29,6 +30,7 @@ function App() {
         </Route>
         
         <Route exact path="/users/:userId" component={UserShowPage} />
+        <Route exact path="/friends" component={Friends} />
 
         <Route exact path="/">
           <WelcomePage />

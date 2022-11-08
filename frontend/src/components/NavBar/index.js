@@ -25,7 +25,7 @@ const NavBar = () => {
                     <i className="fa-solid fa-house fa-xl"></i>
                 </NavLink>
 
-                <NavLink to={`/users/${sessionUser.id}`}>
+                <NavLink to={`/friends`}>
                     <i className="fa-solid fa-user-group fa-xl"></i>
                 </NavLink>
             </div>
