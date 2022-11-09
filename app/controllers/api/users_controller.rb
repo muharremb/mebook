@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   
-  wrap_parameters include: User.attribute_names + ['password'] + ['photo'] + ['friending'] + ['accepting'] + ["cancelling"]
+  wrap_parameters include: User.attribute_names + ['password'] + ['photo'] + ['friending'] + ['accepting'] + ["cancelling"] + ["removing"]
   before_action :require_logged_out, only: [:create]
 
   def create
@@ -76,6 +76,16 @@ class Api::UsersController < ApplicationController
         @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
         render 'api/users/getUser'
       end
+    elsif params.has_key?(:removing)
+      removed_friendship = Friendship.find_request(
+        @user.id, user_params[:removing] 
+      )
+      if removed_friendship
+        removed_friendship.destroy
+        @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
+        @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
+        render 'api/users/getUser'
+      end
     else
       if @user.update(user_params)
         render 'api/users/getUser'
@@ -88,6 +98,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :bio, :education, :work, :hobbies, :birthday, :photo, :friending, :accepting, :cancelling)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :bio, :education, :work, :hobbies, :birthday, :photo, :friending, :accepting, :cancelling, :removing)
   end
 end

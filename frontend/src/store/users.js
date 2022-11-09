@@ -1,3 +1,4 @@
+import Friends from "../components/Friends";
 import csrfFetch from "./csrf";
 
 const ADD_USER = 'users/addUser';
@@ -25,6 +26,20 @@ export const updateUser = (user) => {
     }
 }
 
+export const getPendingRequesters = (pendings) => state => {
+    let pendingsList = [];
+    if (!state.users) {
+        return pendingsList
+    } else {
+        Object.values(state.users).forEach(user => {
+            if(pendings.includes(user.id)) {
+                pendingsList.push(user);
+            }
+        });
+    }
+    return pendingsList;
+} 
+
 export const fetchUsers = (userList) => async dispatch => {
     dispatch(addUsers(userList));
 }
@@ -32,7 +47,7 @@ export const fetchUsers = (userList) => async dispatch => {
 export const fetchUser = (userId) => async dispatch => {
     const response = await csrfFetch(`/api/users/${userId}`)
     const data = await response.json();
-    dispatch(addUser(data));
+    dispatch(addUser(data.user));
 }
 
 export const editUser = (user) => async dispatch => {
@@ -61,14 +76,16 @@ export const sendFriendRequest = (userId) => async dispatch => {
     dispatch(updateUser(data));
 }
 
-export const acceptFriendRequest = (userId) => async dispatch => {
-    const response = await csrfFetch(`/api/users/${userId}`, {
+export const acceptFriendRequest = (id, userId) => async dispatch => {
+    console.log('acceptFriend')
+    const response = await csrfFetch(`/api/users/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
             accepting: userId
         })
     })
     const data = await response.json()
+    // console.log('data accepFriendship ', data);
     dispatch(updateUser(data))
 }
 
@@ -80,6 +97,17 @@ export const cancelFriendRequest = (userId) => async dispatch => {
         })
     })
     const data = await response.json()
+    dispatch(updateUser(data));
+}
+
+export const removeFriendship = (id, userId) => async dispatch => {
+    const response = await csrfFetch(`/api/users/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            removing: userId
+        })
+    })
+    const data = await response.json();
     dispatch(updateUser(data));
 }
 
@@ -108,17 +136,13 @@ function usersReducer(state={}, action) {
     switch(action.type) {
         
         case ADD_USER:
-            user = action.payload.user;
-            newbyId = {...byId, [user.id]: user};
+            // user = action.payload.user;
+            // newbyId = {...byId, [user.id]: user};
 
-            if(!allIds.includes(user.id)) allIds.push(user.id);
+            // if(!allIds.includes(user.id)) allIds.push(user.id);
             
-            return {"byId": newbyId, "allIds": allIds}
-        
-        case ADD_USERS:
-            let userArr = action.payload
-            // console.log('addusers action.payload ', userArr);
-            return state
+            // return {"byId": newbyId, "allIds": allIds}
+            return {...state, [action.payload.id]: action.payload}
     
         case UPDATE_USER:
             const {id, bio, education, work, hobbies, birthday } = action.payload.user;

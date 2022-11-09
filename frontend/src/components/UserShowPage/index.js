@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchPosts } from '../../store/posts';
-import { fetchUser, uploadPhoto, sendFriendRequest, fetchUsers, cancelFriendRequest } from '../../store/users';
+import { fetchUser, uploadPhoto, sendFriendRequest, fetchUsers, cancelFriendRequest, removeFriendship } from '../../store/users';
 import NavBar from '../NavBar';
 import AddPostForm from '../posts/PostForm/PostForm';
 import PostLists from '../posts/PostLists';
@@ -25,9 +25,11 @@ const UserShowPage = () => {
     const [friendStatus, setFriendStatus] = useState(null);
     
     const sessionUser = useSelector(state => state.session.currentUserId);
-    const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
-    const userProfile = usersById.byId[userId];
-    const sessionUserProfile = useSelector(state => state.users.byId ? state.users.byId[sessionUser.id] : {byId: {}})
+    // const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
+    // const userProfile = usersById.byId[userId];
+    // const sessionUserProfile = useSelector(state => state.users.byId ? state.users.byId[sessionUser.id] : {byId: {}})
+    const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === parseInt(userId)));
+    const sessionUserProfile = useSelector(state => Object.values(state.users).find((row) => row.id === sessionUser.id))
     
     useEffect(() => {
         dispatch(fetchUser(userId));
@@ -75,6 +77,11 @@ const UserShowPage = () => {
         dispatch(cancelFriendRequest(userId));
         setFriendStatus('notFriend');
     }
+
+    const handleRemoveFriendship = e => {
+        dispatch(removeFriendship(sessionUser.id, userId));
+        setFriendStatus('notFriend');
+    }
     
     return (
         <>
@@ -107,7 +114,7 @@ const UserShowPage = () => {
                                 <button onClick={handleCancelRequest}>Cancel Request</button>
                             )}
                             {sessionUserProfile.friends.includes(parseInt(userId)) && (
-                                <button>Friends</button>
+                                <button onClick={handleRemoveFriendship}>Unfriend</button>
                             )}
                             {sessionUser.id !== userProfile.id && 
                                 !sessionUserProfile.friends.includes(parseInt(userId)) && 

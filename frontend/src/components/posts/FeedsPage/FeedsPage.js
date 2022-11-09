@@ -13,11 +13,14 @@ import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
 
 const FeedsPage = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.currentUserId ? state.session.currentUserId : {currentUserId: {}} );
-    const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
-    const userProfile = usersById.byId[sessionUser.id];
+    const sessionUser = useSelector(state => state.session.currentUserId);
+    // const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
+    // const userProfile = usersById.byId[sessionUser.id];
     const userId = sessionUser ? sessionUser.id : 0;
+    const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === userId));
+
     // console.log('FeedPage userProfile.friends ',userProfile.friends);
+    // console.log('userId ', userId)    
     
     useEffect(() => {
         if(userId) {

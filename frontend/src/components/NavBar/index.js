@@ -11,6 +11,7 @@ const NavBar = () => {
     };
 
     const sessionUser = useSelector(state => state.session.currentUserId);
+    
     if(!sessionUser) return null;
     
     return ( 

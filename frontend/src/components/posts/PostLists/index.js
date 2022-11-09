@@ -11,9 +11,9 @@ const PostLists = ({authorId}) => {
     const posts = useSelector(state => state.posts.byId ? state.posts : {byId: {}})
     const userPosts = Object.values(posts.byId).reverse().filter(post => post.authorId === authorId);
     
-    const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
-    const userProfile = usersById.byId[authorId];
-    
+    // const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
+    // const userProfile = usersById.byId[authorId];
+    const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === authorId))
     const [showMenu, setShowMenu] = useState(false);
     
     useEffect(() => {

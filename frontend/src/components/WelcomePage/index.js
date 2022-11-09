@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 const WelcomePage = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
-    
     if (sessionUser) return null;
     
     return ( 

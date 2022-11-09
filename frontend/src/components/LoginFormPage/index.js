@@ -112,9 +112,7 @@ const LoginFormPage = () => {
                 )}
             </div>
             <button type="submit" id="login-button" >Log In</button>
-            <div className="forget-password-div">
-                <a href="#">Forgot password?</a>
-            </div>
+            
             <button id="demo-user-button" onClick={handleDemoSubmit}>Demo User</button>
             <hr color="gray" width="70%" size="5"/>
         </form>
