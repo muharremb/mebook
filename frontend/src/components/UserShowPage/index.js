@@ -97,7 +97,7 @@ const UserShowPage = () => {
                             </form> */}
                             {sessionUser.id === userProfile.id && 
                             <div className="upload-pic">
-                                <i className="fa-solid fa-camera fa-2x"></i>
+                                    <i className="fa-solid fa-camera fa-2x"></i>
                             </div>
                             }
                         </div>
