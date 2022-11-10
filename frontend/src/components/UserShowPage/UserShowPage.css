@@ -30,6 +30,21 @@
     border-radius: 50%;
 }
 
+.upload-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background-color: lightgray;
+    position: relative;
+    bottom: 30px;
+    left: 130px;
+    cursor: pointer;
+}
+
 .user-name {
     display: flex;
     flex-direction: column;

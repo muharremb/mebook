@@ -22,7 +22,7 @@ const FeedsPagePostList = ({authorId, friends}) => {
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
 
-    if(!posts || !userProfile) {
+    if(!userPosts || !userProfile) {
         return (
             <p>User has no posts</p>
         )

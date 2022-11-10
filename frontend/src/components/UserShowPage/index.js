@@ -13,6 +13,7 @@ import defaultProfilePhoto from '../../assets/defaultProfileImage.png';
 import defaultCoverImage from '../../assets/grayBackground.jpg';
 import demoCoverImage from '../../assets/demoCoverImage.jpeg';
 import csrfFetch from '../../store/csrf';
+import UploadPhotoForm from './UploadPhotoForm';
 
 
 const UserShowPage = () => {
@@ -90,10 +91,15 @@ const UserShowPage = () => {
 
                         <div className="user-profile-photo">
                             <img src={userProfile.photo || defaultProfilePhoto} height="175px" width="175px"/>
-                            <form onSubmit={handleUpload}>
+                            {/* <form onSubmit={handleUpload}>
                                 <input type="file" onChange={handleFile} />
                                 <button>upload</button>
-                            </form>
+                            </form> */}
+                            {sessionUser.id === userProfile.id && 
+                            <div className="upload-pic">
+                                <i className="fa-solid fa-camera fa-2x"></i>
+                            </div>
+                            }
                         </div>
                         <div className="user-name">
                             <h1 id="username">{userProfile.firstName} {userProfile.lastName}</h1>
