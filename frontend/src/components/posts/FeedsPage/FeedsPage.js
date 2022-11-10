@@ -3,36 +3,38 @@ import { useSelector, useDispatch } from 'react-redux';
 import NavBar from '../../NavBar';
 import { NavLink } from 'react-router-dom';
 import PostLists from '../PostLists';
-import { fetchUser, fetchUsers } from '../../../store/users';
+import { fetchUser, fetchUsers, getFriends } from '../../../store/users';
 import { fetchPosts } from '../../../store/posts';
 import './FeedsPage.css'
 import { PostModal } from '../PostForm/PostForm';
 import { Modal } from '../../../context/Modal';
 import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
-
+import FeedsPagePostList from './FeedsPagePostList';
 
 const FeedsPage = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.currentUserId);
-    // const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
-    // const userProfile = usersById.byId[sessionUser.id];
     const userId = sessionUser ? sessionUser.id : 0;
     const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === userId));
+    const friends = useSelector(getFriends(userProfile ? userProfile.friends : []))
+    const [loaded, setLoaded] = useState(false);
 
-    // console.log('FeedPage userProfile.friends ',userProfile.friends);
-    // console.log('userId ', userId)    
-    
     useEffect(() => {
         if(userId) {
-            dispatch(fetchUser(userId));
-            // dispatch(fetchUsers(userProfile.friends))
+            dispatch(fetchUser(userId)).then(() => setLoaded(true));
             dispatch(fetchPosts({author_id: userId}));    
+            
+            if(userProfile) {
+                userProfile.friends.forEach(friend => dispatch(fetchUser(friend)));
+                userProfile.friends.forEach(friend => dispatch(fetchPosts(friend)));
+            }
         }
-    }, []);
+    }, [loaded]);
 
     const [showModal, setShowModal] = useState(false)
 
     if(!sessionUser || !userProfile) return null;
+
     return ( 
         <>
             <NavBar />
@@ -71,7 +73,7 @@ const FeedsPage = () => {
                             <PostModal userProfile={userProfile} setShowModalFnc={setShowModal} />
                         </Modal>
                     )}
-                    <PostLists authorId={sessionUser.id} />
+                    <FeedsPagePostList authorId={sessionUser.id} friends={friends} />
                 </div>
                 <div className='feeds-right'></div>
             </div>

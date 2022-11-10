@@ -88,6 +88,8 @@ class Api::UsersController < ApplicationController
       end
     else
       if @user.update(user_params)
+        @friends = @user.sent_requests.select {|ele| ele.confirmed }.concat(@user.received_requests.select {|ele| ele.confirmed})
+        @pendings = @user.received_requests.select {|ele| !ele.confirmed}.concat(@user.sent_requests.select {|ele| !ele.confirmed})
         render 'api/users/getUser'
       else
         render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity

@@ -25,10 +25,8 @@ const ProfilePage = () => {
             <div className="user-left">
                 <div className="user-photo-div">
                     <img src={userProfile.photo} height="200px" width="200px"/>
-                    {/* <i id="user-photo" className="fa-solid fa-user"></i> */}
                 </div>
                 <div className="user-name-div">
-                    {/* <h1 id="first-last-name">First Name + Last Name</h1> */}
                     <h1>userProfile: {userProfile.firstName} {userProfile.lastName}</h1>
                 </div>
             </div>

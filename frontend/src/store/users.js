@@ -40,6 +40,20 @@ export const getPendingRequesters = (pendings) => state => {
     return pendingsList;
 } 
 
+export const getFriends = (friends) => state => {
+    let friendsList = [];
+    if(!state.users) {
+        return friendsList;
+    } else {
+        Object.values(state.users).forEach(user => {
+            if(friends.includes(user.id)) {
+                friendsList.push(user);
+            }
+        })
+    }
+    return friendsList;
+}
+
 export const fetchUsers = (userList) => async dispatch => {
     dispatch(addUsers(userList));
 }
@@ -143,7 +157,15 @@ function usersReducer(state={}, action) {
             
             // return {"byId": newbyId, "allIds": allIds}
             return {...state, [action.payload.id]: action.payload}
-    
+        
+        case ADD_USERS:
+            const users = action.payload;
+            // users.forEach((user) => {
+            //     newState[user.id] = user;
+            // })
+            console.log('acrtion.payload in addusers ', users)
+            return newState;
+
         case UPDATE_USER:
             const {id, bio, education, work, hobbies, birthday } = action.payload.user;
 

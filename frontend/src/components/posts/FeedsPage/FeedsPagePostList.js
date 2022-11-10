@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getUserPosts } from '../../../store/posts';
-import AddPostForm from '../PostForm/PostForm';
 import { TimeAgo } from '../TimeAgo';
-import './PostLists.css';
 import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
-import EditDropDownButton from './editDropDown';
+import EditDropDownButton from '../PostLists/editDropDown';
 
-const PostLists = ({authorId}) => {
+const FeedsPagePostList = ({authorId, friends}) => {
     const posts = useSelector(state => state.posts.byId ? state.posts : {byId: {}})
-    const userPosts = Object.values(posts.byId).reverse().filter(post => post.authorId === authorId);
     const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === authorId))
-
+    const userPosts = Object.values(posts.byId).reverse().filter(post => post.authorId === authorId || userProfile.friends.includes(post.authorId));
+    
     const [showMenu, setShowMenu] = useState(false);
+    const [postUpdated, setPostUpdated] = useState(false);
     
     useEffect(() => {
         if(!showMenu) return;
@@ -35,20 +33,28 @@ const PostLists = ({authorId}) => {
         setShowMenu(true);
     }
 
+    userPosts.forEach((post) => {
+        if(post.authorId === userProfile.id) {
+            post['authorDetails'] = userProfile;
+        } else {
+            post['authorDetails'] = friends.find((friend) => friend.id === post.authorId)
+        }
+    })
+
     const renderedPosts = userPosts.map(post => (
         <div className="post-box" key={post.id}>
             <div className="head-post-form">
 
             <div className="profile-pic-name">
                 
-                <img src={userProfile.photo || defaultProfilePhoto}/>
+                <img src={post.authorDetails.photo || defaultProfilePhoto}/>
                 <div className="username-timeago">
-                    <p>{userProfile.firstName} {userProfile.lastName}</p>
+                    <p>{post.authorDetails.firstName} {post.authorDetails.lastName}</p>
                     <TimeAgo timestamp={post.updatedAt} />
                 </div>
             </div>
             <div className="edit-post-button-div">
-                {<EditDropDownButton post={post} userProfile={userProfile}/>}
+                { userProfile.id === post.authorDetails.id && <EditDropDownButton post={post} userProfile={userProfile}/>}
             </div>
             </div>
             <p className="post-content">{post.body}</p>
@@ -62,4 +68,4 @@ const PostLists = ({authorId}) => {
     )
 }
 
-export default PostLists;
+export default FeedsPagePostList;

@@ -8,8 +8,7 @@ import './EditProfileModal.css';
 const EditUserForm = ({userId, setShowModalFnc}) => {
 
     const dispatch = useDispatch();
-    const usersById = useSelector(state => state.users.byId ? state.users : {byId: {}});
-    const userProfile = usersById.byId[userId];
+    const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === userId))
 
     const [bio, setBio] = useState(userProfile.bio ? userProfile.bio : '')
     const [education, setEducation] = useState(userProfile.education ? userProfile.education : '')
