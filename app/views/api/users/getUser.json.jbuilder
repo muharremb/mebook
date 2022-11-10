@@ -12,7 +12,6 @@ json.user do
         end
     end
 
-    # json.friends @friends, :request_sender_id, :request_receiver_id
     json.friends friends_id_list
     
     sender_pending_id_list = []
@@ -28,6 +27,4 @@ json.user do
 
     json.senders sender_pending_id_list
     json.receivers receiver_pending_id_list
-    # json.pendings @pendings, :request_sender_id, :request_receiver_id
-    # need to add friends as an array here, so that friends: [3]
 end
