@@ -75,12 +75,6 @@ const LoginFormPage = () => {
         else setEmailClientSideCheck(false);
     }
 
-    // const handleBlurr = (e) => {
-    //     if(password.length > 5)  setPasswordClientSideCheck(true);
-    //     else setPasswordClientSideCheck(false);
-    //     console.log('handle blurr e.target ', e)
-    // }
-
     const emailFieldErrorClass = (errors[1] === "email") ? "error" : "";
     return (
         <div className="login-page-full">

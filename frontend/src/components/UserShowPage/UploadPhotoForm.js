@@ -4,7 +4,7 @@ import { Modal } from "../../context/Modal";
 import csrfFetch from "../../store/csrf";
 import { fetchUser } from "../../store/users";
 
-const UploadPhotoForm = ({sessionUserProfile}) => {
+const UploadPhotoForm = ({sessionUserProfile, close}) => {
     const [profilePhoto, setProfilePhoto] = useState(null);
     const dispatch = useDispatch();
 
@@ -21,14 +21,13 @@ const UploadPhotoForm = ({sessionUserProfile}) => {
         if(profilePhoto) {
             formData.append('user[photo]', profilePhoto);
         }
-        // console.log('sessionUserProfile ', sessionUserProfile)
         const res = await csrfFetch(`/api/users/${sessionUserProfile.id}`, {
             method: 'PUT',
             body: formData
         });
         const data = await res.json()
-        // console.log('handleUpload data ', data.user.id)
         dispatch(fetchUser(data.user.id));
+        close(false);
     }
     return ( 
         <>
@@ -54,7 +53,7 @@ export const UploadPhotoModal = ({sessionUserProfile}) => {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <UploadPhotoForm sessionUserProfile={sessionUserProfile}/>
+                    <UploadPhotoForm sessionUserProfile={sessionUserProfile} close={setShowModal}/>
                 </Modal>
             )}
         </>
