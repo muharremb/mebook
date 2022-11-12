@@ -3,19 +3,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TimeAgo } from '../TimeAgo';
 import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
 import EditDropDownButton from '../PostLists/editDropDown';
+import { fetchUser } from '../../../store/users';
+import { fetchPosts } from '../../../store/posts';
 
 const FeedsPagePostList = ({userId}) => {
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.currentUserId);
     const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === parseInt(userId)));
     const sessionUserProfile = useSelector(state => Object.values(state.users).find((row) => row.id === sessionUser.id))
     const posts = useSelector(state => state.posts.byId);
-    // const posts = useSelector(state => state.posts.byId ? state.posts : {byId: {}})
     const users = useSelector(state => state.users);
 
     const [showMenu, setShowMenu] = useState(false);
+    const [friendsFetch, setFriendsFetch] = useState(false);
+
+    useEffect(() => {
+        if(userId) {
+            userProfile.friends.forEach(friend => dispatch(fetchUser(friend)));
+            userProfile.friends.forEach(friend => dispatch(fetchPosts(friend)));
+        }
+    }, []);
 
     const allUsers = [userProfile];
-    
     Object.values(users).forEach((user) => {
         if(userProfile.friends.includes(user.id)) {
             allUsers.push(user)
@@ -45,7 +54,7 @@ const FeedsPagePostList = ({userId}) => {
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
     
-    if(!userProfile || !sessionUser) {
+    if(!userProfile || !sessionUser ) {
         return (
             <p>User has no posts</p>
             )
@@ -55,7 +64,7 @@ const FeedsPagePostList = ({userId}) => {
         if(showMenu) return;
         setShowMenu(true);
     }
-
+    console.log('posts onemli ', relatedPosts)
     const renderedPosts = relatedPosts.map(post => (
         <div className="post-box" key={post.id}>
             <div className="head-post-form">
