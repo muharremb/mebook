@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NavBar from '../../NavBar';
 import { NavLink } from 'react-router-dom';
-import PostLists from '../PostLists';
-import { fetchUser, fetchUsers, getFriends } from '../../../store/users';
+import { fetchUser } from '../../../store/users';
 import { fetchPosts } from '../../../store/posts';
 import './FeedsPage.css'
 import { PostModal } from '../PostForm/PostForm';
@@ -16,9 +15,9 @@ const FeedsPage = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
     const userId = sessionUser ? sessionUser.id : 0;
     const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === userId));
-    const friends = useSelector(getFriends(userProfile ? userProfile.friends : []))
     const [loaded, setLoaded] = useState(false);
-
+    const posts = useSelector(state => state.posts.byId ? state.posts : {byId: {}})
+        
     useEffect(() => {
         if(userId) {
             dispatch(fetchUser(userId)).then(() => setLoaded(true));
@@ -65,7 +64,7 @@ const FeedsPage = () => {
                             <div className="user-pic-name">
                                 <img src={userProfile.photo || defaultProfilePhoto} width="50px" height="50px" />
                             </div>                       
-                            <button id="new-post-input">What is on your mind, {userProfile.firstName}?</button>
+                            <button id="new-post-input">What is on your mind?</button>
                         </div>
                     </div>
                     {showModal && (
@@ -73,7 +72,7 @@ const FeedsPage = () => {
                             <PostModal userProfile={userProfile} setShowModalFnc={setShowModal} />
                         </Modal>
                     )}
-                    <FeedsPagePostList authorId={sessionUser.id} friends={friends} />
+                    <FeedsPagePostList userId={userId} />
                 </div>
                 <div className='feeds-right'></div>
             </div>

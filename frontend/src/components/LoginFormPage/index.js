@@ -36,9 +36,6 @@ const LoginFormPage = () => {
             setPasswordClientSideCheck(true);
             return null;
         } else setPasswordClientSideCheck(false);
-
-        // As user logs in add user into users slice
-            
         return dispatch(sessionActions.login(user))
             .catch(async (res) => {
                 let data;

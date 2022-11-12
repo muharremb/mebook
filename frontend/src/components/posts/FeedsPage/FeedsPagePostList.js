@@ -1,16 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TimeAgo } from '../TimeAgo';
 import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
 import EditDropDownButton from '../PostLists/editDropDown';
 
-const FeedsPagePostList = ({authorId, friends}) => {
-    const posts = useSelector(state => state.posts.byId ? state.posts : {byId: {}})
-    const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === authorId))
-    const userPosts = Object.values(posts.byId).reverse().filter(post => post.authorId === authorId || userProfile.friends.includes(post.authorId));
-    
+const FeedsPagePostList = ({userId}) => {
+    const sessionUser = useSelector(state => state.session.currentUserId);
+    const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === parseInt(userId)));
+    const sessionUserProfile = useSelector(state => Object.values(state.users).find((row) => row.id === sessionUser.id))
+    const posts = useSelector(state => state.posts.byId);
+    // const posts = useSelector(state => state.posts.byId ? state.posts : {byId: {}})
+    const users = useSelector(state => state.users);
+
     const [showMenu, setShowMenu] = useState(false);
-    const [postUpdated, setPostUpdated] = useState(false);
+
+    const allUsers = [userProfile];
+    
+    Object.values(users).forEach((user) => {
+        if(userProfile.friends.includes(user.id)) {
+            allUsers.push(user)
+        }
+    })
+
+    const relatedPosts = [];
+    Object.values(posts).reverse().map((post) => {
+        if(userProfile.friends.includes(post.authorId) || userProfile.id === post.authorId) {
+            relatedPosts.push(post);
+        }
+    })
+
+    const getUserFromId = (id, allUsers) => {
+        return(
+            allUsers.find((user) => user.id === id)
+        )
+    }
     
     useEffect(() => {
         if(!showMenu) return;
@@ -21,40 +44,32 @@ const FeedsPagePostList = ({authorId, friends}) => {
         
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
-
-    if(!userPosts || !userProfile) {
+    
+    if(!userProfile || !sessionUser) {
         return (
             <p>User has no posts</p>
-        )
-    }
+            )
+        }
 
     const openMenu = () => {
         if(showMenu) return;
         setShowMenu(true);
     }
 
-    userPosts.forEach((post) => {
-        if(post.authorId === userProfile.id) {
-            post['authorDetails'] = userProfile;
-        } else {
-            post['authorDetails'] = friends.find((friend) => friend.id === post.authorId)
-        }
-    })
-
-    const renderedPosts = userPosts.map(post => (
+    const renderedPosts = relatedPosts.map(post => (
         <div className="post-box" key={post.id}>
             <div className="head-post-form">
 
             <div className="profile-pic-name">
                 
-                <img src={post.authorDetails.photo || defaultProfilePhoto}/>
+                <img src={getUserFromId(post.authorId, allUsers).photo || defaultProfilePhoto}/>
                 <div className="username-timeago">
-                    <p>{post.authorDetails.firstName} {post.authorDetails.lastName}</p>
+                    <p>{getUserFromId(post.authorId, allUsers).firstName} {getUserFromId(post.authorId, allUsers).lastName}</p>
                     <TimeAgo timestamp={post.updatedAt} />
                 </div>
             </div>
             <div className="edit-post-button-div">
-                { userProfile.id === post.authorDetails.id && <EditDropDownButton post={post} userProfile={userProfile}/>}
+                { userProfile.id === getUserFromId(post.authorId, allUsers).id && <EditDropDownButton post={post} userProfile={userProfile}/>}
             </div>
             </div>
             <p className="post-content">{post.body}</p>
