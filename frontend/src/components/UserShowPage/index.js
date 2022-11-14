@@ -87,30 +87,32 @@ const UserShowPage = () => {
                 <img src={userProfile.coverImage ? userProfile.coverImage : defaultCoverImage} className='cover-image'/>
                  
                 <div className="user-show-head">
-                    <div className="user-left-head">
+                        <div className="user-left-head">
 
-                        <div className="user-profile-photo">
-                            <img src={userProfile.photo || defaultProfilePhoto} height="175px" width="175px"/>
-                            {sessionUserProfile.id === userProfile.id && 
-                                <UploadPhotoModal sessionUserProfile={sessionUserProfile} />
-                            }
+                            <div className="user-profile-photo">
+                                <img src={userProfile.photo || defaultProfilePhoto} height="175px" width="175px"/>
+                                {sessionUserProfile.id === userProfile.id && 
+                                    <UploadPhotoModal sessionUserProfile={sessionUserProfile} />
+                                }
+                            </div>
+                            <div className="user-name">
+                                <h1 id="username">{userProfile.firstName} {userProfile.lastName}</h1>
+                            </div>
                         </div>
-                        <div className="user-name">
-                            <h1 id="username">{userProfile.firstName} {userProfile.lastName}</h1>
-                        </div>
-                    </div>
+                        
                         <div className='edit-user-form-modal-div'>
                             {sessionUser.id === userProfile.id && 
                             (
                                 <EditUserFormModal userId={userProfile.id}/>
                             )}
                         </div>
+                        
                         <div className="friending">
                             {sessionUserProfile.senders.includes(parseInt(userId)) && (
                                 <button onClick={handleCancelRequest}>Cancel Request</button>
                             )}
                             {sessionUserProfile.friends.includes(parseInt(userId)) && (
-                                <button onClick={handleRemoveFriendship}>Unfriend</button>
+                                <button onClick={handleRemoveFriendship}>Remove Friend</button>
                             )}
                             {sessionUser.id !== userProfile.id && 
                                 !sessionUserProfile.friends.includes(parseInt(userId)) && 
