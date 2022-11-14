@@ -61,7 +61,7 @@ export const fetchUsers = (userList) => async dispatch => {
 export const fetchUser = (userId) => async dispatch => {
     const response = await csrfFetch(`/api/users/${userId}`)
     const data = await response.json();
-    dispatch(addUser(data.user));
+    return dispatch(addUser(data.user));
 }
 
 export const editUser = (user) => async dispatch => {

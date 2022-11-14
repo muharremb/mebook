@@ -18,11 +18,22 @@ const FeedsPagePostList = ({userId}) => {
     const [friendsFetch, setFriendsFetch] = useState(false);
 
     useEffect(() => {
-        if(userId) {
-            userProfile.friends.forEach(friend => dispatch(fetchUser(friend)));
-            userProfile.friends.forEach(friend => dispatch(fetchPosts(friend)));
+        const fetchUsersPostsData = async() => {
+            if(userId) {
+                setFriendsFetch(false)
+                for (const friend of userProfile.friends) {
+                    await dispatch(fetchUser(friend));
+                    await dispatch(fetchPosts(friend));
+                }                
+                setFriendsFetch(true);
+            }
         }
-    }, []);
+        fetchUsersPostsData();
+        // if(userId) {
+        //     userProfile.friends.forEach(friend => dispatch(fetchUser(friend)));
+        //     userProfile.friends.forEach(friend => dispatch(fetchPosts(friend)));
+        // }
+    }, [dispatch]);
 
     const allUsers = [userProfile];
     Object.values(users).forEach((user) => {
@@ -39,6 +50,7 @@ const FeedsPagePostList = ({userId}) => {
     })
 
     const getUserFromId = (id, allUsers) => {
+        
         return(
             allUsers.find((user) => user.id === id)
         )
@@ -64,13 +76,17 @@ const FeedsPagePostList = ({userId}) => {
         if(showMenu) return;
         setShowMenu(true);
     }
-    console.log('posts onemli ', relatedPosts)
+    
+    console.log('posts onemli ', relatedPosts);
+    console.log('allUsers ', allUsers);
+    console.log('friends fethc ', friendsFetch);
+    if(!friendsFetch) return null;
+    
     const renderedPosts = relatedPosts.map(post => (
         <div className="post-box" key={post.id}>
             <div className="head-post-form">
 
             <div className="profile-pic-name">
-                
                 <img src={getUserFromId(post.authorId, allUsers).photo || defaultProfilePhoto}/>
                 <div className="username-timeago">
                     <p>{getUserFromId(post.authorId, allUsers).firstName} {getUserFromId(post.authorId, allUsers).lastName}</p>
