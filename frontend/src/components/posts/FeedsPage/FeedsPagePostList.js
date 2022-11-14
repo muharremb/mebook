@@ -77,9 +77,9 @@ const FeedsPagePostList = ({userId}) => {
         setShowMenu(true);
     }
     
-    console.log('posts onemli ', relatedPosts);
-    console.log('allUsers ', allUsers);
-    console.log('friends fethc ', friendsFetch);
+    // console.log('posts onemli ', relatedPosts);
+    // console.log('allUsers ', allUsers);
+    // console.log('friends fethc ', friendsFetch);
     if(!friendsFetch) return null;
     
     const renderedPosts = relatedPosts.map(post => (

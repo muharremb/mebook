@@ -7,20 +7,18 @@ import './Friend.css'
 function FriendRequestCard({profile, sessionUserId, cb}) {
     const dispatch = useDispatch();
     const handleAcceptRequest = () => {
-        console.log('accept request');
         dispatch(acceptFriendRequest(sessionUserId, profile.id));
         cb(false);
     }
     const handleDeclineRequest = () => {
-        console.log('decline request');
     }
     return (
-        <>
+        <div className="request-card-container">
             <h1>{profile.firstName}</h1>
             <h1>{profile.lastName}</h1>
             <button onClick={handleAcceptRequest}>Accept</button>
             <button onClick={handleDeclineRequest}>Decline</button>
-        </>
+        </div>
     )
 }
 
@@ -54,20 +52,27 @@ function FriendRequestList() {
     ));
 
     return (
-        <>
-            <h1>Friend Request List</h1>
-            {requests}
-            <h1>Friends List</h1>
-        </>
+        <div className="friend-container">
+            <div className="friend-request-list">
+                <h1>Friend Requests</h1>
+                {requests.length === 0 ? 
+                (<h2 id="no-friend-request">When you have friend requests, you will see them here</h2>)
+                : 
+                (requests) }
+            </div>
+            <div className="friends-list">
+                <h1>Friends List</h1>
+            </div>
+        </div>
     )
 }
 
 const Friends = () => {
     return ( 
-        <>
+        <div>
             <NavBar />
             <FriendRequestList />
-        </>
+        </div>
      );
 }
  
