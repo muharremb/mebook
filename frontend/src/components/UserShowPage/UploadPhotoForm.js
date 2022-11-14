@@ -30,16 +30,18 @@ const UploadPhotoForm = ({sessionUserProfile, close}) => {
         close(false);
     }
     return ( 
-        <>
-            <h2>Upload Profile Picture</h2>
+        <div className="upload-photo-modal">
+            <h1>Update Profile Picture</h1>
             <form onSubmit={handleUpload} >
-                <label>
-                    Select Photo 
-                    <input type="file" onChange={handleFile}/>
-                </label>
-                <button type="submit" id="upload-photo-button">Upload</button>
+                <div className="upload">
+                    <label id="upload-select-photo">
+                        Select Photo 
+                        <input type="file" onChange={handleFile}/>
+                    </label>
+                    <button type="submit" id="upload-photo-button">Upload Picture</button>
+                </div>
             </form>
-        </>
+        </div>
     );
 }
 

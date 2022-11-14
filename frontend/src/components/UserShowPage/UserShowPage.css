@@ -126,3 +126,51 @@
 .edit-form-modal-button:hover {
     background-color: #b7b8ba;
 }
+
+.upload-photo-modal {
+    padding: 15px;
+    width: 400px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upload-photo-modal > h1 {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+#upload-select-photo {
+    font-size: 15px;
+    background-color: #3b69de;
+    color: white;
+    margin: 10px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    width: 175px;
+    height: 40px;
+}
+
+.upload-photo-modal input {
+    display: none;
+}
+
+#upload-photo-button {
+    background-color: #3b69de;
+    color: white;
+    width: 175px;
+    height: 40px;
+    border-radius: 7px;
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+.upload {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
