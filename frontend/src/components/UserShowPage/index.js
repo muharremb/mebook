@@ -27,7 +27,7 @@ const UserShowPage = () => {
     const sessionUser = useSelector(state => state.session.currentUserId);
     const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === parseInt(userId)));
     const sessionUserProfile = useSelector(state => Object.values(state.users).find((row) => row.id === sessionUser.id))
-    
+
     useEffect(() => {
         dispatch(fetchUser(userId));
         dispatch(fetchUser(sessionUser.id));
@@ -91,10 +91,6 @@ const UserShowPage = () => {
 
                         <div className="user-profile-photo">
                             <img src={userProfile.photo || defaultProfilePhoto} height="175px" width="175px"/>
-                            {/* <form onSubmit={handleUpload}>
-                                <input type="file" onChange={handleFile} />
-                                <button>upload</button>
-                            </form> */}
                             {sessionUserProfile.id === userProfile.id && 
                                 <UploadPhotoModal sessionUserProfile={sessionUserProfile} />
                             }
@@ -140,23 +136,26 @@ const UserShowPage = () => {
                         <h2>Hobbies</h2>
                         {userProfile.hobbies ? <p>{userProfile.hobbies}</p> : <p>Add hobbies</p>}    
                     </div>
-
+                    
                     <div className="user-post-section">
-                        <div className="post-form-div">
-                            <div className="post-form" onClick={() => setShowModal(true)}>
-                                <div className="user-pic-name">
-                                    <img src={userProfile.photo || defaultProfilePhoto} width="50px" height="50px" />
-                                </div>                       
-                        <button id="new-post-input">What is on your mind?</button>
-                    </div>
-                            {showModal && (
-                                <Modal onClose={() => setShowModal(false)} >
-                                    <PostModal userProfile={userProfile} setShowModalFnc={setShowModal} />
-                                </Modal>
-                            )}
-                        </div>
+                            {userProfile.id === sessionUserProfile.id && 
+                                <div className="post-form-div">
+                                        <div className="post-form" onClick={() => setShowModal(true)}>
+                                            <div className="user-pic-name">
+                                                <img src={userProfile.photo || defaultProfilePhoto} width="50px" height="50px" />
+                                            </div>                       
+                                            <button id="new-post-input">What is on your mind?</button>
+                                        </div>
+                                    {showModal && (
+                                        <Modal onClose={() => setShowModal(false)} >
+                                            <PostModal userProfile={userProfile} setShowModalFnc={setShowModal} />
+                                        </Modal>
+                                    )
+                                    }
+                                </div>
+                                } 
                         <div className="user-post-wall">
-                            <PostLists authorId={userProfile.id}/>
+                            <PostLists authorId={userProfile.id} sessionUser={sessionUser}/>
                         </div>
                     </div>
 

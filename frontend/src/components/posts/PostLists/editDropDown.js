@@ -13,8 +13,6 @@ const EditDropDownButton = ({post, userProfile}) => {
         if(!showMenu) return;
         
         const closeMenu = (e) => {
-            // console.log('closeMenu e ', e.target);
-            // setShowMenu(false);
 
             if(e.target.id !== "editPostModalDiv" && e.target.id !== "postContent") {
                 setShowModal(false);

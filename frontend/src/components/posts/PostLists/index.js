@@ -7,13 +7,12 @@ import './PostLists.css';
 import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
 import EditDropDownButton from './editDropDown';
 
-const PostLists = ({authorId}) => {
+const PostLists = ({authorId, sessionUser}) => {
     const posts = useSelector(state => state.posts.byId ? state.posts : {byId: {}})
     const userPosts = Object.values(posts.byId).reverse().filter(post => post.authorId === authorId);
     const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === authorId))
 
     const [showMenu, setShowMenu] = useState(false);
-    
     useEffect(() => {
         if(!showMenu) return;
         const closeMenu = () => {
@@ -39,17 +38,19 @@ const PostLists = ({authorId}) => {
         <div className="post-box" key={post.id}>
             <div className="head-post-form">
 
-            <div className="profile-pic-name">
-                
-                <img src={userProfile.photo || defaultProfilePhoto}/>
-                <div className="username-timeago">
-                    <p>{userProfile.firstName} {userProfile.lastName}</p>
-                    <TimeAgo timestamp={post.updatedAt} />
+                <div className="profile-pic-name">
+                    
+                    <img src={userProfile.photo || defaultProfilePhoto}/>
+                    <div className="username-timeago">
+                        <p>{userProfile.firstName} {userProfile.lastName}</p>
+                        <TimeAgo timestamp={post.updatedAt} />
+                    </div>
                 </div>
-            </div>
-            <div className="edit-post-button-div">
-                {<EditDropDownButton post={post} userProfile={userProfile}/>}
-            </div>
+                {sessionUser.id === userProfile.id && 
+                    <div className="edit-post-button-div">
+                        { <EditDropDownButton post={post} userProfile={userProfile}/>}
+                    </div>
+                }
             </div>
             <p className="post-content">{post.body}</p>
         </div>
