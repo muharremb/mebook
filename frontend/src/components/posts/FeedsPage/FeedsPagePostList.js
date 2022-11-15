@@ -20,7 +20,6 @@ const FeedsPagePostList = ({userId}) => {
 
     const history = useHistory();
 
-
     useEffect(() => {
         const fetchUsersPostsData = async() => {
             if(userId) {
@@ -33,10 +32,6 @@ const FeedsPagePostList = ({userId}) => {
             }
         }
         fetchUsersPostsData();
-        // if(userId) {
-        //     userProfile.friends.forEach(friend => dispatch(fetchUser(friend)));
-        //     userProfile.friends.forEach(friend => dispatch(fetchPosts(friend)));
-        // }
     }, [dispatch]);
 
     const allUsers = [userProfile];
@@ -55,7 +50,6 @@ const FeedsPagePostList = ({userId}) => {
         
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
-
 
     const relatedPosts = [];
     Object.values(posts).reverse().map((post) => {
@@ -90,18 +84,18 @@ const FeedsPagePostList = ({userId}) => {
     
     const renderedPosts = relatedPosts.map(post => (
         <div className="post-box" key={post.id}>
-            <div className="head-post-form" onClick={event => goToUserPage(event, post.authorId)}>
+            <div className="head-post-form">
 
-            <div className="profile-pic-name">
-                <img src={getUserFromId(post.authorId, allUsers).photo || defaultProfilePhoto}/>
-                <div className="username-timeago">
-                    <p>{getUserFromId(post.authorId, allUsers).firstName} {getUserFromId(post.authorId, allUsers).lastName}</p>
-                    <TimeAgo timestamp={post.updatedAt} />
+                <div className="profile-pic-name" onClick={event => goToUserPage(event, post.authorId)}>
+                    <img src={getUserFromId(post.authorId, allUsers).photo || defaultProfilePhoto}/>
+                    <div className="username-timeago">
+                        <p>{getUserFromId(post.authorId, allUsers).firstName} {getUserFromId(post.authorId, allUsers).lastName}</p>
+                        <TimeAgo timestamp={post.updatedAt} />
+                    </div>
                 </div>
-            </div>
-            <div className="edit-post-button-div">
-                { userProfile.id === getUserFromId(post.authorId, allUsers).id && <EditDropDownButton post={post} userProfile={userProfile}/>}
-            </div>
+                <div className="edit-post-button-div">
+                    { userProfile.id === getUserFromId(post.authorId, allUsers).id && <EditDropDownButton post={post} userProfile={userProfile}/>}
+                </div>
             </div>
             <p className="post-content">{post.body}</p>
         </div>

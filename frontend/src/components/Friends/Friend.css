@@ -36,6 +36,7 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
+    width: 90%;
     width: 70%;
     margin: 5px;
     padding: 10px;
@@ -109,4 +110,51 @@
     background-color: lightgray;
     color: black;
     font-weight: bold;
+}
+
+.friends-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 90%;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.friend-list-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#friend-card-photo {
+    border-radius: 7px;
+}
+
+.friend-card-container {
+    width: 380px;
+    height: 90px;
+    border: 1px solid lightgray;
+    border-radius: 7px;
+    padding: 15px;
+    margin: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.friend-card-container:hover {
+    background-color: rgb(243, 240, 240);
+}
+
+.friend-card-name {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.friend-card-name:hover {
+    text-decoration: underline;
 }
