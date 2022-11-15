@@ -6,8 +6,9 @@
 .post-box {
     padding: 25px;
     background-color: white;
-    margin-top: 17px;
+    margin-top: 0px;
     margin-left: 10px;
+    margin-bottom: 17px;
     border-radius: 7px;
     display: flex;
     flex-direction: column;
