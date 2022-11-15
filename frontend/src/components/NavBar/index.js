@@ -5,11 +5,7 @@ import './NavBar.css'
 import SignoutButton from '../Navigation/SignoutButton';
 
 const NavBar = () => {
-    const history = useHistory();
-    const goToHome = (e) => {
-        history.push("/")
-    };
-
+    
     const sessionUser = useSelector(state => state.session.currentUserId);
     
     if(!sessionUser) return null;

@@ -5,6 +5,7 @@ import defaultProfilePhoto from '../../../assets/defaultProfileImage.png';
 import EditDropDownButton from '../PostLists/editDropDown';
 import { fetchUser } from '../../../store/users';
 import { fetchPosts } from '../../../store/posts';
+import { useHistory } from 'react-router-dom';
 
 const FeedsPagePostList = ({userId}) => {
     const dispatch = useDispatch();
@@ -16,6 +17,9 @@ const FeedsPagePostList = ({userId}) => {
 
     const [showMenu, setShowMenu] = useState(false);
     const [friendsFetch, setFriendsFetch] = useState(false);
+
+    const history = useHistory();
+
 
     useEffect(() => {
         const fetchUsersPostsData = async() => {
@@ -42,20 +46,6 @@ const FeedsPagePostList = ({userId}) => {
         }
     })
 
-    const relatedPosts = [];
-    Object.values(posts).reverse().map((post) => {
-        if(userProfile.friends.includes(post.authorId) || userProfile.id === post.authorId) {
-            relatedPosts.push(post);
-        }
-    })
-
-    const getUserFromId = (id, allUsers) => {
-        
-        return(
-            allUsers.find((user) => user.id === id)
-        )
-    }
-    
     useEffect(() => {
         if(!showMenu) return;
         const closeMenu = () => {
@@ -65,6 +55,25 @@ const FeedsPagePostList = ({userId}) => {
         
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
+
+
+    const relatedPosts = [];
+    Object.values(posts).reverse().map((post) => {
+        if(userProfile.friends.includes(post.authorId) || userProfile.id === post.authorId) {
+            relatedPosts.push(post);
+        }
+    })
+
+    const getUserFromId = (id, allUsers) => {    
+        return(
+            allUsers.find((user) => user.id === id)
+        )
+    }
+
+    const goToUserPage = (e, id) => {
+        history.push(`/users/${id}`);
+    };
+    
     
     if(!userProfile || !sessionUser ) {
         return (
@@ -77,14 +86,11 @@ const FeedsPagePostList = ({userId}) => {
         setShowMenu(true);
     }
     
-    // console.log('posts onemli ', relatedPosts);
-    // console.log('allUsers ', allUsers);
-    // console.log('friends fethc ', friendsFetch);
-    if(!friendsFetch) return null;
+    if(!friendsFetch || posts.length === 0) return null;
     
     const renderedPosts = relatedPosts.map(post => (
         <div className="post-box" key={post.id}>
-            <div className="head-post-form">
+            <div className="head-post-form" onClick={event => goToUserPage(event, post.authorId)}>
 
             <div className="profile-pic-name">
                 <img src={getUserFromId(post.authorId, allUsers).photo || defaultProfilePhoto}/>

@@ -66,9 +66,9 @@ class Api::UsersController < ApplicationController
         render 'api/users/getUser'
       end
     elsif params.has_key?(:cancelling)
-      cancelled_friendship = Friendship.find_by(
-        request_sender_id: @user.id,
-        request_receiver_id: user_params[:cancelling]
+      cancelled_friendship = Friendship.find_request(
+        @user.id,
+        user_params[:cancelling]
       )
       if cancelled_friendship
         cancelled_friendship.destroy

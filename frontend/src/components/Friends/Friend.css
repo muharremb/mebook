@@ -10,7 +10,7 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
-    width: 70%;
+    width: 90%;
     margin: 10px;
     padding: 10px;
     border-radius: 7px;
@@ -20,6 +20,12 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+.friend-cards-container h2 {
+    font-weight: bold;
+    color: gray;
+}
+
 
 #no-friend-request {
     margin: 20px;
@@ -34,4 +40,73 @@
     margin: 5px;
     padding: 10px;
     border-radius: 7px;
+}
+
+#no-friend-request {
+    font-size: 13px;
+}
+
+.friend-cards-container {
+    display: flex;
+
+}
+
+.img-container {
+    padding: 5px;
+}
+
+.request-card-container > h1 {
+    padding: 5px;
+    margin: 5px;
+
+}
+.request-card-container {
+    width: 225px;
+    height: 385px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    margin: 10px;
+    border-radius: 7px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+
+}
+
+.request-card-name {
+    display: flex;
+    flex-direction: column;
+    width: 225px;
+}
+
+.request-card-name h1 {
+    padding: 10px;
+}
+
+.request-card-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7px;
+}
+
+.request-card-buttons > button {
+    width: 100%;
+    border: none;
+    margin: 10px 0px;
+    height: 30px;
+    border-radius: 7px;
+}
+
+#accept {
+    background-color: #3b69de;
+    color: white;
+    font-weight: bold;
+}
+
+#decline {
+    background-color: lightgray;
+    color: black;
+    font-weight: bold;
 }

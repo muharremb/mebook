@@ -91,7 +91,6 @@ export const sendFriendRequest = (userId) => async dispatch => {
 }
 
 export const acceptFriendRequest = (id, userId) => async dispatch => {
-    console.log('acceptFriend')
     const response = await csrfFetch(`/api/users/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
@@ -99,18 +98,17 @@ export const acceptFriendRequest = (id, userId) => async dispatch => {
         })
     })
     const data = await response.json()
-    // console.log('data accepFriendship ', data);
     dispatch(updateUser(data))
 }
 
-export const cancelFriendRequest = (userId) => async dispatch => {
-    const response = await csrfFetch(`/api/users/${userId}`, {
+export const cancelFriendRequest = (id, userId) => async dispatch => {
+    const response = await csrfFetch(`/api/users/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
             cancelling: userId
         })
     })
-    const data = await response.json()
+    const data = await response.json();
     dispatch(updateUser(data));
 }
 
