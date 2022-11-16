@@ -32,6 +32,7 @@ const UserShowPage = () => {
         dispatch(fetchUser(userId));
         dispatch(fetchUser(sessionUser.id));
         dispatch(fetchPosts({author_id: parseInt(userId)}));
+        console.log('we are in useEffect');
     }, [userId, friendStatus, dispatch]);
 
     const [post, setPost] = useState('');
@@ -68,6 +69,7 @@ const UserShowPage = () => {
     const handleFriendRequest = e => {
         dispatch(sendFriendRequest(userId));
         setFriendStatus('pending');
+        console.log('handleFriendRequest done')
     }
 
     const handleCancelRequest = e => {
@@ -79,7 +81,7 @@ const UserShowPage = () => {
         dispatch(removeFriendship(sessionUser.id, userId));
         setFriendStatus('notFriend');
     }
-    
+    console.log('check for rerender ', sessionUserProfile.senders.includes(parseInt(userId)))
     return (
         <>
             <NavBar />
