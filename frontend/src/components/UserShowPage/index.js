@@ -22,7 +22,7 @@ const UserShowPage = () => {
 
     const [showModal, setShowModal] = useState(false);
     const [profilePhoto, setProfilePhoto] = useState(null);
-    const [friendStatus, setFriendStatus] = useState(null);
+    const [friendStatus, setFriendStatus] = useState("add friend");
     
     const sessionUser = useSelector(state => state.session.currentUserId);
     const userProfile = useSelector(state => Object.values(state.users).find((row) => row.id === parseInt(userId)));
