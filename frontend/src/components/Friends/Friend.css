@@ -26,6 +26,10 @@
     color: gray;
 }
 
+.friend-card-container img {
+    object-fit: cover;
+}
+
 #no-friend-request {
     margin: 20px;
 }
