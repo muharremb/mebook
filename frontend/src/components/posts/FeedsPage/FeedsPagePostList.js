@@ -87,7 +87,7 @@ const FeedsPagePostList = ({userId}) => {
             <div className="head-post-form">
 
                 <div className="profile-pic-name" onClick={event => goToUserPage(event, post.authorId)}>
-                    <img src={getUserFromId(post.authorId, allUsers).photo || defaultProfilePhoto}/>
+                    <img src={getUserFromId(post.authorId, allUsers).photo || defaultProfilePhoto} width="40px" height="40px"/>
                     <div className="username-timeago">
                         <p>{getUserFromId(post.authorId, allUsers).firstName} {getUserFromId(post.authorId, allUsers).lastName}</p>
                         <TimeAgo timestamp={post.updatedAt} />

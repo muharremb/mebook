@@ -29,6 +29,7 @@
 
 .user-profile-photo img{
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .upload-pic {
