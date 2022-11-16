@@ -84,7 +84,7 @@ const UserShowPage = () => {
         <>
             <NavBar />
             <div className="user-show">  
-                <img src={userProfile.coverImage ? userProfile.coverImage : defaultCoverImage} className='cover-image'/>
+                <img src={userProfile.coverImage ? userProfile.coverImage : imageSource} className='cover-image'/>
                  
                 <div className="user-show-head">
                         <div className="user-left-head">
