@@ -1,6 +1,5 @@
 import React, {useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import './SignupForm.css';
 
@@ -15,7 +14,10 @@ const SignupForm = () => {
 
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
-    const [firstnameError, setFirstnameError] = useState(false);
+    const [emailError, setEmailError] = useState(true);
+    const [passwordError, setPasswordError] = useState(true);
+    const [firstnameError, setFirstNameError] = useState(true);
+    const [lastnameError, setLastNameError] = useState(true);
 
     const nameRef = useRef();
 
@@ -23,7 +25,6 @@ const SignupForm = () => {
         e.preventDefault();
         if (password === confirmPassword) {
           setErrors([]);
-          // console.log("handleOnchangeValue ", gender)
 
           return dispatch(sessionActions.signup({ firstName, lastName, email, password, gender }))
             .catch(async (res) => {
@@ -44,17 +45,30 @@ const SignupForm = () => {
     const handleOnChange = (e) => {
       setGender(e.target.value);
     }
-
-    const firstnameBlur = (e) => {
-      if(firstName === '') {
-        setFirstnameError(true);
-      } else {
-        setFirstnameError(false);
-      }
-      // console.log(firstnameError)
+    const handleEmailBlur = (e) => {
+      const isValid = email.includes('@') ;
+      if(isValid) setEmailError(true);
+      else setEmailError(false);
     }
-    return (
+    const handlePasswordBlur = (e) => {
+      const isValid = password.length > 5 && password === confirmPassword;
+      if(isValid) setPasswordError(true);
+      else setPasswordError(false);
+    }
+    
+    const handleFirstNameBlur = (e) => {
+      const isValid = firstName.length !== 0;
+      if(isValid) setFirstNameError(true);
+      else setFirstNameError(false);
+    }
+    
+    const handleLastNameBlur = (e) => {
+      const isValid = lastName.length !== 0;
+      if(isValid) setLastNameError(true);
+      else setLastNameError(false);
+    }
 
+    return (
       <div className="signup-form-container">
         <form onSubmit={handleSubmit} className="signup-form">
            {errors[0] && (
@@ -64,13 +78,13 @@ const SignupForm = () => {
             </div>
            )}
             <div className="signup-name-block">
-              <input  ref={nameRef} className='name-items' type="text" value={firstName} placeholder={"First Name".toString()} onChange={(e) => setFirstName(e.target.value)} />
-              <input className='name-items' type="text" value={lastName} placeholder={"Last Name".toString()} onChange={(e) => setLastName(e.target.value)} />
+              <input className={firstnameError ? "name-items":"invalid-names"} type="text" value={firstName} placeholder={"First Name".toString()} onChange={(e) => setFirstName(e.target.value)} onBlur={handleFirstNameBlur}/>
+              <input className={lastnameError ? "name-items":"invalid-names"} type="text" value={lastName} placeholder={"Last Name".toString()} onChange={(e) => setLastName(e.target.value)} onBlur={handleLastNameBlur} />
             </div>
 
-            <input className='user-items' type="text"  value={email} placeholder={"Email".toString()} onChange={(e) => setEmail(e.target.value)} />
-            <input className='user-items' type="password"  value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} />
-            <input className='user-items' type="password"  value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} />
+            <input id="email-input" className={emailError ? 'user-items':'invalid'} type="text"  value={email} placeholder={"Email".toString()} onChange={(e) => setEmail(e.target.value)} onBlur={handleEmailBlur} />
+            <input className={passwordError ? 'user-items':'invalid'} type="password"  value={password} placeholder={"Password".toString()} onChange={(e) => setPassword(e.target.value)} onBlur={handlePasswordBlur}/>
+            <input className={passwordError ? 'user-items':'invalid'} type="password"  value={confirmPassword} placeholder={"Confirm Password".toString()} onChange={(e) => setConfirmPassword(e.target.value)} onBlur={handlePasswordBlur} />
             
             <div className="titles">
               <p>Birthday</p>

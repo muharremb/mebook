@@ -9,6 +9,28 @@
 
 }
 
+.signup-form  input.invalid {
+    width: 375px;
+    padding: 7px;
+    margin: 5px;
+    border: 1px solid red;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.signup-form input.invalid {
+    outline: none;
+}
+
+#email-input:focus {
+    width: 375px;
+    padding: 7px;
+    margin: 5px;
+    border: 1px solid #ccd0d5;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
 .signup-name-block {
     display: flex;
     justify-content: center;
@@ -25,11 +47,31 @@
     border-radius: 5px;
 }
 
+.invalid-names {
+    width: 175px;
+    padding: 7px;
+    margin: 5px;
+    margin-bottom: 0px;
+    border: 1px solid red;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+
 .user-items {
     width: 375px;
     padding: 7px;
     margin: 5px;
     border: 1px solid #ccd0d5;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.user-items:focus {
+    width: 375px;
+    padding: 7px;
+    margin: 5px;
+    border: 1px solid #ccd0d5 !important;
     font-size: 15px;
     border-radius: 5px;
 }
