@@ -29,10 +29,13 @@ const UserShowPage = () => {
     const sessionUserProfile = useSelector(state => Object.values(state.users).find((row) => row.id === sessionUser.id))
 
     useEffect(() => {
-        dispatch(fetchUser(userId));
-        dispatch(fetchUser(sessionUser.id));
-        dispatch(fetchPosts({author_id: parseInt(userId)}));
-        console.log('we are in useEffect');
+        const fetchData = async () => {
+            await dispatch(fetchUser(userId));
+            await dispatch(fetchUser(sessionUser.id));
+            await dispatch(fetchPosts({author_id: parseInt(userId)})); 
+        }
+        fetchData();
+        console.log('in useEffect, friendStatus ', friendStatus);
     }, [userId, friendStatus, dispatch]);
 
     const [post, setPost] = useState('');
@@ -70,6 +73,7 @@ const UserShowPage = () => {
         dispatch(sendFriendRequest(userId));
         setFriendStatus('pending');
         console.log('handleFriendRequest done')
+        return null;
     }
 
     const handleCancelRequest = e => {
