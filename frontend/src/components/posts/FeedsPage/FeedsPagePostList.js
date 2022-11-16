@@ -40,7 +40,7 @@ const FeedsPagePostList = ({userId}) => {
             allUsers.push(user)
         }
     })
-
+    
     useEffect(() => {
         if(!showMenu) return;
         const closeMenu = () => {
@@ -52,6 +52,8 @@ const FeedsPagePostList = ({userId}) => {
     }, [showMenu]);
 
     const relatedPosts = [];
+    if(!posts) return null;
+    
     Object.values(posts).reverse().map((post) => {
         if(userProfile.friends.includes(post.authorId) || userProfile.id === post.authorId) {
             relatedPosts.push(post);

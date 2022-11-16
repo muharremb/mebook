@@ -48,12 +48,17 @@
 
 .friend-cards-container {
     display: flex;
-
 }
 
 .img-container {
     padding: 5px;
 }
+
+.img-container img {
+    object-fit: cover;    
+}
+
+
 
 .request-card-container > h1 {
     padding: 5px;

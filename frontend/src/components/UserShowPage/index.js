@@ -71,7 +71,7 @@ const UserShowPage = () => {
     }
 
     const handleCancelRequest = e => {
-        dispatch(cancelFriendRequest(userId));
+        dispatch(cancelFriendRequest(sessionUser.id, userId));
         setFriendStatus('notFriend');
     }
 
