@@ -59,7 +59,8 @@
 }
 
 .img-container img {
-    object-fit: cover;    
+    object-fit: cover;
+    cursor: pointer;    
 }
 
 
@@ -106,6 +107,7 @@
     margin: 10px 0px;
     height: 30px;
     border-radius: 7px;
+    cursor: pointer;
 }
 
 #accept {

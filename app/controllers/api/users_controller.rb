@@ -37,8 +37,6 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    # @user = current_user
-    # TODO not sure update has @user
     @user = User.includes(:sent_requests, :received_requests).find(current_user.id)
     
     if params.has_key?(:photo)
@@ -94,6 +92,16 @@ class Api::UsersController < ApplicationController
       else
         render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
       end
+    end
+  end
+
+  def index
+    @users = User.all
+    if @users
+      render 'api/users/getUsers'
+      # render json: {users: @users}
+    else  
+      render json: { errors: @users.errors.full_messages }, status: :unprocessable_entity
     end
   end
   

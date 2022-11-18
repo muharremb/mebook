@@ -104,7 +104,7 @@ const LoginFormPage = () => {
             </div>
             <button type="submit" id="login-button" >Log In</button>
             
-            <button id="demo-user-button" onClick={handleDemoSubmit}>Demo User</button>
+            <button id="demo-user-button" onClick={handleDemoSubmit}>Demo Log In</button>
             <hr color="gray" width="70%" size="5"/>
         </form>
             <div className="signup-modal-div">

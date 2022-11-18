@@ -47,7 +47,7 @@
 }
 
 #postContent {
-    width: 30vw;
+    width: 90%;
 }
 
 .post-modal-div {
@@ -99,7 +99,7 @@
 }
 
 .textarea-div > textarea {
-    width: 400px;
+    width: 90%;
     height: 150px;
     resize: none;
     border: none;

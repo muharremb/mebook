@@ -58,6 +58,24 @@ function FriendCard({profile}) {
     )
 }
 
+function SuggestedFriendCard({profile}) {
+    const history = useHistory();
+    const goToUserPage = (e, id) => {
+        history.push(`/users/${id}`);
+    }
+
+    return (
+        <>
+            <div className="friend-card-container">
+                <img src={profile.photo || defaultProfilePhoto} width="80px" height="80px" id="friend-card-photo"/>
+                <div className="friend-card-name" onClick={e => goToUserPage(e, profile.id)}>
+                    <h1>{profile.firstName} {profile.lastName}</h1>
+                </div>
+            </div>
+        </>
+    )
+}
+
 function FriendRequestList() {
     const sessionUser = useSelector(state => state.session.currentUserId);
     const sessionUserProfile = useSelector(state => Object.values(state.users).find((row) => row.id === sessionUser.id))
@@ -95,6 +113,8 @@ function FriendRequestList() {
         <FriendCard key={friend.id} profile={friend} />
     ));
 
+    const suggestionLists = <h2>Suggestion Lists</h2>
+
     return (
         <div className="friend-container">
             <div className="friend-request-list">
@@ -112,6 +132,12 @@ function FriendRequestList() {
                     {friendLists}
                 </div>
             </div>
+            {/* <div className="friends-list">
+                <h1>Suggestions</h1>
+                <div className="friend-list-box">
+                    {suggestionLists}
+                </div>
+            </div> */}
         </div>
     )
 }
