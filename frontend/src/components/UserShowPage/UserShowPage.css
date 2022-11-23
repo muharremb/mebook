@@ -3,6 +3,16 @@
 
 }
 
+.cover-image-container {
+    position: relative;
+}
+
+.cover-image-container button {
+    position: absolute;
+    bottom: 15%;
+    right: 7%;
+}
+
 .cover-image {
     width: 100%;
     height: 420px;
