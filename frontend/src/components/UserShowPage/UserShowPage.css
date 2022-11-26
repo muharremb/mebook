@@ -9,8 +9,18 @@
 
 .cover-image-container button {
     position: absolute;
-    bottom: 15%;
-    right: 7%;
+    bottom: 10%;
+    right: 5%;
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.edit-cover-photo-container {
+    display: flex;
 }
 
 .cover-image {

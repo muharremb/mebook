@@ -91,7 +91,7 @@ const UserShowPage = () => {
                     <img src={userProfile.coverImage ? userProfile.coverImage : imageSource} className='cover-image'/>
                     {
                         sessionUserProfile.id == userProfile.id && 
-                        <button>Edit Cover Photo</button>
+                        <button><i className="fa-solid fa-camera"></i> Edit Cover Photo </button>
                     }
                  </div>
                 <div className="user-show-head">
