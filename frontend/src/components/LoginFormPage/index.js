@@ -54,7 +54,7 @@ const LoginFormPage = () => {
     const handleDemoSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        const user = {email: "muha@mb.io", password: "password"};
+        const user = {email: "js@gmail.com", password: "password"};
         return dispatch(sessionActions.login(user))
             .catch(async (res) => {
                 let data;

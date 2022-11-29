@@ -19,14 +19,14 @@ ApplicationRecord.transaction do
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
     user = User.create!(
-      first_name: 'Muharrem', 
-      last_name: 'Boztepe', 
-      email: 'muha@mb.io', 
+      first_name: 'Jerry', 
+      last_name: 'Seinfeld', 
+      email: 'js@gmail.com', 
       password: 'password'
     )
 
     # file = URI.open('app/assets/image/istanbul.jpg')
-    file = File.open('app/assets/image/istanbul.jpg')
+    file = File.open('app/assets/images/istanbul.jpg')
     user.photo.attach(io: file, filename: 'istanbul.jpg')
 
     # first_name= Faker::Name.unique.first_name
@@ -38,14 +38,14 @@ ApplicationRecord.transaction do
     user.posts.create!(body: 'Time for change has come')
     user.posts.create!(body: 'The buck stops here')
 
-    10.times do 
-      User.create!({
-        first_name: Faker::Name.unique.first_name,
-        last_name: Faker::Name.unique.last_name,
-        email: Faker::Internet.unique.email,
-        password: 'password'
-      }) 
-    end
+    # 10.times do 
+    #   User.create!({
+    #     first_name: Faker::Name.unique.first_name,
+    #     last_name: Faker::Name.unique.last_name,
+    #     email: Faker::Internet.unique.email,
+    #     password: 'password'
+    #   }) 
+    # end
 
   
     puts "Users Done!"

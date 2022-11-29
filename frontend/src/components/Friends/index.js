@@ -132,12 +132,6 @@ function FriendRequestList() {
                     {friendLists}
                 </div>
             </div>
-            {/* <div className="friends-list">
-                <h1>Suggestions</h1>
-                <div className="friend-list-box">
-                    {suggestionLists}
-                </div>
-            </div> */}
         </div>
     )
 }

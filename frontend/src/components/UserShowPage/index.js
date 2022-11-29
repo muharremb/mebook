@@ -13,7 +13,7 @@ import defaultProfilePhoto from '../../assets/defaultProfileImage.png';
 import defaultCoverImage from '../../assets/grayBackground.jpg';
 import demoCoverImage from '../../assets/demoCoverImage.jpeg';
 import csrfFetch from '../../store/csrf';
-import UploadPhotoForm, { UploadPhotoModal } from './UploadPhotoForm';
+import UploadPhotoForm, { UploadCoverPhotoModal, UploadPhotoModal } from './UploadPhotoForm';
 
 
 const UserShowPage = () => {
@@ -91,7 +91,7 @@ const UserShowPage = () => {
                     <img src={userProfile.coverImage ? userProfile.coverImage : imageSource} className='cover-image'/>
                     {
                         sessionUserProfile.id == userProfile.id && 
-                        <button><i className="fa-solid fa-camera"></i> Edit Cover Photo </button>
+                        <UploadCoverPhotoModal sessionUserProfile={sessionUserProfile} />
                     }
                  </div>
                 <div className="user-show-head">
