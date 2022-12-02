@@ -28,6 +28,7 @@
     height: 420px;
     border-radius: 6px;
     margin-bottom: 20px;
+    object-fit: cover;
 }
 
 .user-show-head {
@@ -46,6 +47,11 @@
 .user-left-head {
     display: flex;
     align-items: flex-end;
+}
+
+.user-profile-photo {
+    /* margin-top: -65px;
+    z-index: 10; */
 }
 
 .user-profile-photo img{
